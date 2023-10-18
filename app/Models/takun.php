@@ -11,5 +11,7 @@ class takun extends Model
 
     protected $table = "takun";
 
-    protected $fillable = [''] ;
+    protected $fillable = ['username','password','role'] ;
+    protected $primaryKey = 'id_akun' ;
+    public $timestamps = 'id_akun' ;
 }
