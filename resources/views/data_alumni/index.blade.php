@@ -45,6 +45,11 @@
                             <td></td>
                             <td></td>
                             <td><a href="">klik untuk lihat pesan</a></td>
+                            <td>
+                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
+                              <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
+                              <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                            </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                             <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                           </tr>
@@ -64,11 +69,11 @@
                     <!-- head tabel -->
                     <thead>
                       <tr>
-                        <th class="font-table" scope="col">Id</th>
-                        <th class="font-table" scope="col">Waktu Kehadiran</th>
+                        <th class="font-table" scope="col">No</th>
                         <th class="font-table" scope="col">Nama</th>
-                        <th class="font-table" scope="col">Nomor Handphone</th>
-                        <th class="font-table" scope="col">Alamat</th>
+                        <th class="font-table" scope="col">Angkatan</th>
+                        <th class="font-table" scope="col">Sosmed</th>
+                        <th class="font-table" scope="col">jurusan</th>
                         <th class="font-table" scope="col">Pesan</th>
                         <th class="font-table" scope="col" colspan="2">Aksi</th>
                       </tr>
@@ -85,6 +90,11 @@
                         <td></td>
                         <td></td>
                         <td><a href="">klik untuk lihat pesan</a></td>
+                        <td>
+                          <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
+                          <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
+                          <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                        </td>
                         <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                         <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                       </tr>
@@ -104,7 +114,7 @@
                         <!-- head tabel -->
                         <thead>
                           <tr>
-                            <th class="font-table" scope="col">Id</th>
+                            <th class="font-table" scope="col">No</th>
                             <th class="font-table" scope="col">Waktu Kehadiran</th>
                             <th class="font-table" scope="col">Nama</th>
                             <th class="font-table" scope="col">Nomor Handphone</th>
@@ -125,12 +135,20 @@
                             <td></td>
                             <td></td>
                             <td><a href="">klik untuk lihat pesan</a></td>
+                            <td>
+                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
+                              <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
+                              <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                            </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                             <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                           </tr>
                         </tbody>
                         <!-- end body tabel -->
                       </table>
+
+                      <button type="submit" class="btn btn-success"><img src="{{asset('img/plus.png')}}" alt="" style="width: 20px;">tambah</button>
+                      <button type="submit" class="btn btn-success">Log</button>
                       <!-- end tabel -->
                     </div>
                 </div>
