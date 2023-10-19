@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integer('id_berita',true);
             $table->integer('id_alumni',false)->nullable(false);
             $table->integer('id_superadmin',false)->nullable(false);
-            $table->integer('id_jenis_berita',false)->nullable(false);
             $table->string('judul_berita')->nullable(false);
             $table->date('tgl_post')->nullable(false);
             $table->integer('kode_berita',false)->nullable(false);
