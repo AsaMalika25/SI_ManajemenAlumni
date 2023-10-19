@@ -26,7 +26,7 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Tanggal Lahir</label>
-                  <input type="text" class="form-control"  aria-label="First name">
+                  <input type="date" class="form-control"  aria-label="First name">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Sosial Media</label>
@@ -35,8 +35,8 @@
               </div>
               <div class="row">
                 <div class="col"> 
-                  <label style="color: #fff;">Jurusan</label>
-                  <input type="text" class="form-control"  aria-label="First name">
+                  <label style="color: #fff;">Ijazah</label>
+                  <input type="file" class="form-control"  aria-label="First name">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Nama Perguruan Tinggi</label>
@@ -56,7 +56,13 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Jenis Kelamin</label>
-                  <input type="text" class="form-control"  aria-label="First name">
+                  <select name="jenkel" id="jenkel" class="form-control">
+                  <option selected disabled hidden>Pilih Jenis Kelamin</option>
+                  
+                  <option value="perempuan">Perempuan</option>
+                  <option value="laki-laki">Laki-Laki</option>
+                  
+                  </select>
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Angkatan</label>

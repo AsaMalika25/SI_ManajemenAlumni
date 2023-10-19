@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\talumni;
+use App\Models\tjenis_berita;
 use App\Models\tberita;
 use Illuminate\Http\Request;
 
@@ -10,12 +12,12 @@ class TberitaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(tberita $data_berita)
     {
         $data = [
-            'data_alumni' => $data_alumni->all()
+            'data_berita' => $data_berita->all()
         ];
-        return view('data_alumni.index', $data);
+        return view('data_berita.index', $data);
     }
 
     /**
@@ -23,7 +25,7 @@ class TberitaController extends Controller
      */
     public function create()
     {
-        //
+        return view('data_berita.tambah');
     }
 
     /**
