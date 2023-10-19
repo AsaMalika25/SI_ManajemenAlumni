@@ -24,12 +24,11 @@
                         <!-- head tabel -->
                         <thead>
                           <tr>
-                            <th class="font-table" scope="col">no</th>
+                          <th class="font-table" scope="col">No</th>
                             <th class="font-table" scope="col">Nama</th>
                             <th class="font-table" scope="col">Angkatan</th>
-                            <th class="font-table" scope="col">Sosmed</th>
+                            <th class="font-table" scope="col">SosMed</th>
                             <th class="font-table" scope="col">Jurusan</th>
-                            <th class="font-table" scope="col">Pesan</th>
                             <th class="font-table" scope="col" colspan="2">Aksi</th>
                           </tr>
                         </thead>
@@ -38,21 +37,22 @@
                         <!-- body tabel -->
                         <tbody>
                           <tr></tr>
-                          <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="">klik untuk lihat pesan</a></td>
+                          @foreach($data_alumni as $r)
+                          <th scope="row"></th>
+                              <tr>
+                                <td>{{$r->id_alumni}}</td>
+                                <td>{{$r->nama}}</td>
+                                
+                              <tr>
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
                               <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
-                              <a href="{{url('alumni/tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                              <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                             <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                           </tr>
+                          @endforeach
                         </tbody>
                         <!-- end body tabel -->
                       </table>
@@ -88,9 +88,8 @@
                         <th class="font-table" scope="col">No</th>
                         <th class="font-table" scope="col">Nama</th>
                         <th class="font-table" scope="col">Angkatan</th>
-                        <th class="font-table" scope="col">Sosmed</th>
+                        <th class="font-table" scope="col">SosMed</th>
                         <th class="font-table" scope="col">jurusan</th>
-                        <th class="font-table" scope="col">Pesan</th>
                         <th class="font-table" scope="col" colspan="2">Aksi</th>
                       </tr>
                     </thead>
@@ -105,7 +104,7 @@
                         <td></td>
                         <td></td>
                         <td></td>
-                        <td><a href="">klik untuk lihat pesan</a></td>
+                        <td></td>
                         <td>
                           <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
                           <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
@@ -138,52 +137,48 @@
               </div>
             </div>
             <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
-                    <div class="card-body">  
-          
-                      <!-- tabel -->
-                      <table class="table">
-                        <!-- head tabel -->
-                        <thead>
-                          <tr>
-                            <th class="font-table" scope="col">No</th>
-                            <th class="font-table" scope="col">Waktu Kehadiran</th>
-                            <th class="font-table" scope="col">Nama</th>
-                            <th class="font-table" scope="col">Nomor Handphone</th>
-                            <th class="font-table" scope="col">Alamat</th>
-                            <th class="font-table" scope="col">Pesan</th>
-                            <th class="font-table" scope="col" colspan="2">Aksi</th>
-                          </tr>
-                        </thead>
-                        <!-- end head tabel -->
-          
-                        <!-- body tabel -->
-                        <tbody>
-                          <tr></tr>
-                          <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="">klik untuk lihat pesan</a></td>
-                            <td>
-                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
-                              <a href="{{url('alumni/tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
-                            </td>
-                            <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
-                            <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
-                          </tr>
-                        </tbody>
-                        <!-- end body tabel -->
-                      </table>
-
-                      <button type="submit" class="btn btn-success"><img src="{{asset('img/plus.png')}}" alt="" style="width: 20px;">tambah</button>
-                      <button type="submit" class="btn btn-success">Log</button>
-                      <!-- end tabel -->
-                    </div>
+            <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
+                <div class="card-body">  
+      
+                  <!-- tabel -->
+                  <table class="table">
+                    <!-- head tabel -->
+                    <thead>
+                      <tr>
+                        <th class="font-table" scope="col">No</th>
+                        <th class="font-table" scope="col">Nama</th>
+                        <th class="font-table" scope="col">Angkatan</th>
+                        <th class="font-table" scope="col">SosMed</th>
+                        <th class="font-table" scope="col">jurusan</th>
+                        <th class="font-table" scope="col" colspan="2">Aksi</th>
+                      </tr>
+                    </thead>
+                    <!-- end head tabel -->
+      
+                    <!-- body tabel -->
+                    <tbody>
+                      <tr></tr>
+                      <tr>
+                        <th scope="row"></th>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                          <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
+                          <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
+                          <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                        </td>
+                        <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
+                        <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
+                      </tr>
+                    </tbody>
+                    <!-- end body tabel -->
+                  </table>
+                  <!-- end tabel -->
                 </div>
+            </div>
                 <div style="margin-left: 5rem;">
                 <a class="btn btn-primary" href="#" role="button"> 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
@@ -204,5 +199,4 @@
           </div>
         <!-- end konten utama -->
       </div> 
-
 @endsection

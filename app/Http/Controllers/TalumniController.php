@@ -10,10 +10,12 @@ class TalumniController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(talumni $talumni)
+    public function index(talumni $data_alumni)
     {
-        
-        return view('data_alumni.index');
+        $data = [
+            'data_alumni' => $data_alumni->all()
+        ];
+        return view('data_alumni.index', $data);
     }
 
     /**
