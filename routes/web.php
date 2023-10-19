@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TakunController;
 use App\Http\Controllers\TalumniController;
+use App\Http\Controllers\TjenisBeritaController;
 use App\Http\Controllers\TberitaController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,9 @@ Route::get('alumni', [TalumniController::class, 'index']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
 
 
+Route::get('jenis_berita', [TjenisBeritaController::class, 'index']);
+Route::get('jenis_berita/tambah', [TjenisBeritaController::class, 'create']);
+Route::post('jenis_berita/simpan', [TjenisBeritaController::class, 'store']);
 Route::get('berita', [TberitaController::class, 'index']);
 Route::get('berita/tambah', [TberitaController::class, 'create']);
 

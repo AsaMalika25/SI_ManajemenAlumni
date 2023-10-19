@@ -7,7 +7,7 @@
           <div class="container" style="margin-top: 3rem;">
             <!-- text judul   -->
             <!-- form tambah -->
-        <form action="/tambah" method="post">
+        <form action="/simpan" method="post">
           <div class="text-center">
             <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Tambah</b></h1>
             <br>
@@ -16,12 +16,12 @@
             <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Id_admin</label>
-                  <input type="text" class="form-control" placeholder="" aria-label="First name">
+                  <input type="text" class="form-control" placeholder="" name="id_jenis_berita" aria-label="First name">
                 </div>
                 <!-- foreign key -->
                 <div class="col"> 
                     <label style="color: #fff;">Id_alumni</label>
-                    <input type="text" class="form-control"  aria-label="First name">
+                    <input type="text" class="form-control" name="" aria-label="First name">
                   </div>
             </div>
             <div class="row">
