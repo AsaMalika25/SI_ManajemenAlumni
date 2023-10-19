@@ -24,12 +24,10 @@
                         <!-- head tabel -->
                         <thead>
                           <tr>
-                            <th class="font-table" scope="col">Id</th>
-                            <th class="font-table" scope="col">Waktu Kehadiran</th>
-                            <th class="font-table" scope="col">Nama</th>
-                            <th class="font-table" scope="col">Nomor Handphone</th>
-                            <th class="font-table" scope="col">Alamat</th>
-                            <th class="font-table" scope="col">Pesan</th>
+                          <th class="font-table" scope="col">No</th>
+                            <th class="font-table" scope="col">Judul</th>
+                            <th class="font-table" scope="col">Tanggal Post</th>
+                            <th class="font-table" scope="col">Keterangan</th>
                             <th class="font-table" scope="col" colspan="2">Aksi</th>
                           </tr>
                         </thead>
@@ -40,7 +38,6 @@
                           <tr></tr>
                           <tr>
                             <th scope="row"></th>
-                            <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
@@ -205,4 +202,4 @@
         <!-- end konten utama -->
       </div> 
 
-@endsection
+@endsectionx    
