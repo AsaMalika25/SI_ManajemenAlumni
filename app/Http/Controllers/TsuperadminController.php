@@ -13,6 +13,7 @@ class TsuperadminController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**

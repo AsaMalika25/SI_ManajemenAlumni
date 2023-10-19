@@ -93,13 +93,17 @@
               <label for="inputNama" class="form-label font-form">Username</label>
               <input type="text" class="form-control" id="inputNama" name="nama" style="border-radius:  1.8635607321131447vh;" required>
             </div>
-            <div class="mb-3">
-              <label for="inputJurusan" class="form-label font-form">Jurusan</label>
-              <input type="text" class="form-control" id="inputJurusan" name="id_jurusan" style="border-radius:  1.8635607321131447vh;" required>
+            <div class="form-group">
+              <label>Password :</label>
+              <input type="password" class="form-control font-form" name="password" name="nama" style="border-radius:  1.8635607321131447vh;"/>
             </div>
-            <div class="mb-3">
-              <label for="inputEmail" class="form-label font-form">Email</label>
-              <textarea class="form-control" name="email" style="resize:none; border-radius: 1.8635607321131447vh; width: 80.14311270125224vh; height: 11.449016100178891vh" id="inputAlamat" rows="3" required></textarea>
+            <div class="form-group">
+              <label>Role</label><br>
+              <select name="role" id="role" class="form-control">
+                <option>SuperAdmin</option>
+                <option>Kaprog</option>
+                <option>Alumni</option>
+              </select>
             </div>
             <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Submit</button>
           </form>
