@@ -12,10 +12,7 @@ class TalumniController extends Controller
      */
     public function index(talumni $data_alumni)
     {
-        $data = [
-            'data_alumni' => $data_alumni->all()
-        ];
-        return view('data_alumni.index', $data);
+        return view('data_alumni.index');
     }
 
     /**
@@ -23,7 +20,7 @@ class TalumniController extends Controller
      */
     public function create()
     {
-        //
+        return view('data_alumni.tambah');
     }
 
     /**

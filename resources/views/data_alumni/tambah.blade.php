@@ -26,7 +26,7 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Tanggal Lahir</label>
-                  <input type="text" class="form-control"  aria-label="First name" name="no_telp">
+                  <input type="text" class="form-control"  aria-label="First name" name="tgl_lahir">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Sosial Media</label>
@@ -56,7 +56,7 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Jenis Kelamin</label>
-                  <select name="jenkel" id="">
+                  <select name="jenkel" id="" class="">
                     <option value=""></option>
                   </select>
                 </div>
