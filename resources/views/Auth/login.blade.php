@@ -22,7 +22,7 @@
         <div class="card" style="width: 25rem;">
             <div class="card-body" style="align-items: center;">
                
-                        <form method="POST" action="auth/check">
+                        <form method="post" action="{{url('login')}}">
                             @csrf
                         <div class="row d-flex items-center">
                             <div class="ms-6">
