@@ -36,13 +36,16 @@
                 <i class="fa fa-home fa-lg"></i>
                 <span class="nav-text">Dashboard</span>
                 </a>
-            </li>      
-            <li>                                 
-                <a href="">
-                <i class="fa fa-align-left fa-lg"></i>
-                <span class="nav-text">Kelola Alumni</span>
-                </a>
             </li> 
+            
+                <li>                                 
+                    <a href="">
+                    <i class="fa fa-align-left fa-lg"></i>
+                    <span class="nav-text">Kelola Alumni</span>
+                    </a>
+                </li> 
+                
+           
             <li>                                 
                 <a href="">
                 <i class="fa fa-user fa-lg"></i>
@@ -56,6 +59,14 @@
                 <span class="nav-text">Kelola Berita</span> 
                  </a>
             </li>  
+
+            <li>
+                <a href="{{url('logout')}}">
+                <i class="fa fa-right-from-bracket"></i>
+                <span class="nav-text">Logout</span> 
+                 </a>
+            </li>  
+
             </ul>
         </nav>
         @yield('content')

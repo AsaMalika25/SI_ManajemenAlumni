@@ -26,7 +26,7 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Tanggal Lahir</label>
-                  <input type="text" class="form-control"  aria-label="First name" name="no_telp">
+                  <input type="date" class="form-control"  aria-label="First name">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Sosial Media</label>
@@ -36,7 +36,7 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Jurusan</label>
-                  <input type="text" class="form-control"  aria-label="First name" name="sosmed">
+                  <input type="text" class="form-control"  aria-label="First name">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Nama Perguruan Tinggi</label>
@@ -56,9 +56,7 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Jenis Kelamin</label>
-                  <select name="jenkel" id="">
-                    <option value=""></option>
-                  </select>
+                  <input type="text" class="form-control"  aria-label="First name">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">No Angkatan</label>

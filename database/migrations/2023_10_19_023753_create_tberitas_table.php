@@ -16,7 +16,7 @@ return new class extends Migration
             $table->integer('id_alumni',false)->nullable(false);
             $table->integer('id_superadmin',false)->nullable(false);
             $table->integer('id_jenis_berita',false)->nullable(false);
-            $table->text('gambar',false)->nullable(false);
+            $table->text('gambar')->nullable(false);
             $table->string('judul_berita')->nullable(false);
             $table->date('tgl_post')->nullable(false);
             $table->integer('kode_berita',false)->nullable(false);
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tberitas');
+        Schema::dropIfExists('tberita');
     }
 };
