@@ -20,6 +20,8 @@ return new class extends Migration
             $table->text('alamat')->nullable(false);
             $table->string('email')->nullable(false);
             $table->integer('no_telp')->nullable(false);
+            $table->text('sosmed')->nullable(false);
+            $table->text('ijazah');
             $table->enum('jenkel',['L','P'])->nullable(false);
 
             $table->foreign('id_akun')->references('id_akun')->on('takun')->onDelete('cascade')->onUpdate('cascade');

@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-
 return new class extends Migration
 {
     /**
@@ -17,6 +16,7 @@ return new class extends Migration
             $table->integer('id_alumni',false)->nullable(false);
             $table->integer('id_superadmin',false)->nullable(false);
             $table->integer('id_jenis_berita',false)->nullable(false);
+            $table->text('gambar',false)->nullable(false);
             $table->string('judul_berita')->nullable(false);
             $table->date('tgl_post')->nullable(false);
             $table->integer('kode_berita',false)->nullable(false);
