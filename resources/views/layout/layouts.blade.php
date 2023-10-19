@@ -27,7 +27,7 @@
             <ul>
             <li>                                   
                 <a href="">
-                <img src="img/3966983-removebg-preview.png" class="justify-content-center" style="max-height: 40px;">
+                <img src="{{asset('img/3966983-removebg-preview.png')}}" class="justify-content-center" style="max-height: 40px;">
                 <span class="justify-content-center ms-4">Welcome to SIMA!</span>
                 </a>
                 </li>  

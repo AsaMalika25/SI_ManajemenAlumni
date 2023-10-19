@@ -88,18 +88,15 @@
           <!-- end text judul -->
     
           <!-- form tambah -->
-          <form action="/tambah" method="post">
+          <form action="/list_akun/edit/simpan" method="post">
             <div class="mb-3" >
               <label for="inputNama" class="form-label font-form">Username</label>
-              <input type="text" class="form-control" id="inputNama" name="nama" style="border-radius:  1.8635607321131447vh;" required>
-            </div>
-            <div class="form-group">
-              <label>Password :</label>
-              <input type="password" class="form-control font-form" name="password" name="nama" style="border-radius:  1.8635607321131447vh;"/>
-            </div>
+              <input type="hidden" class="form-control" id="inputNama" name="" style="border-radius:  1.8635607321131447vh;" value="{{$takun->id_user}}" required>
+              <input type="text" class="form-control" id="inputNama" name="nama" style="border-radius:  1.8635607321131447vh;" value="{{$takun->username}}" required>
+            </div> 
             <div class="form-group">
               <label>Role</label><br>
-              <select name="role" id="role" class="form-control">
+              <select name="role" id="role" class="form-control" value="{{$takun->role}}">
                 <option>SuperAdmin</option>
                 <option>Kaprog</option>
                 <option>Alumni</option>

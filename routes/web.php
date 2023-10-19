@@ -25,16 +25,21 @@ Route::group(['middleware' => ['AdminOnly']], function () {
 
 Route::get('alumni', [TalumniController::class, 'index']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
-
-
-
 Route::get('jenis_berita', [TjenisBeritaController::class, 'index']);
 Route::get('jenis_berita/tambah', [TjenisBeritaController::class, 'create']);
 Route::post('jenis_berita/simpan', [TjenisBeritaController::class, 'store']);
-Route::post('jenis_berita/edit/{id}', [TjenisBeritaController::class, 'update']);
+Route::get('jenis_berita/edit/{id}', [TjenisBeritaController::class, 'update']);
+Route::delete('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy']);
+
 Route::get('berita', [TberitaController::class, 'index']);
 Route::get('berita/tambah', [TberitaController::class, 'create']);
-Route::delete('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy']);
+
+Route::get('list_akun', [TakunController::class, 'list']);
+Route::get('tambah_akun', [TakunController::class, 'create']);
+Route::post('tambah_akun/tambah', [TakunController::class, 'store']);
+Route::get('list_akun/edit/{id}', [TakunController::class, 'edit']);
+Route::post('list_akun/edit/simpan', [TakunController::class, 'store']);
+
 
 
 });
