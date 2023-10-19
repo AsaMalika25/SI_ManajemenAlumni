@@ -26,22 +26,18 @@ Route::group(['middleware' => ['AdminOnly']], function () {
 Route::get('alumni', [TalumniController::class, 'index']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
 
-Route::get('akun', [TakunController::class, 'index']);
-Route::get('akun/tambah', [TakunController::class, 'create']);
-
-
-
 });
-
-
-// Route::get('berita', [TberitaController::class, 'index']);
-// Route::get('berita/tambah', [TberitaController::class, 'create']);
 
 Route::get('jenis_berita', [TjenisBeritaController::class, 'index']);
 Route::get('jenis_berita/tambah', [TjenisBeritaController::class, 'create']);
 Route::post('jenis_berita/simpan', [TjenisBeritaController::class, 'store']);
+Route::post('jenis_berita/edit/{id}', [TjenisBeritaController::class, 'update']);
 Route::get('berita', [TberitaController::class, 'index']);
 Route::get('berita/tambah', [TberitaController::class, 'create']);
+Route::delete('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy']);
+
+
+});
 
 
 // Route::prefix('dashboard')->middleware('OnlyAdmin')->group(function(){
