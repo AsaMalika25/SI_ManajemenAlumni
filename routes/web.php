@@ -15,11 +15,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/', [TakunController::class,'index']);
+Route::post('login', [TakunController::class,'login']);
+Route::get('logout', [TakunController::class,'logout']);
 
+Route::group(['middleware' => ['AdminOnly']], function () {
 
-Route::get('alumni', [TalumniController::class, 'index']);
-Route::get('alumni/tambah', [TalumniController::class, 'create']);
+    Route::get('alumni', [TalumniController::class, 'index']);
+    Route::get('alumni/tambah', [TalumniController::class, 'create']);
 
+});
 
 // Route::get('berita', [TberitaController::class, 'index']);
 // Route::get('berita/tambah', [TberitaController::class, 'create']);
