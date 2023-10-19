@@ -24,11 +24,11 @@
                         <!-- head tabel -->
                         <thead>
                           <tr>
-                            <th class="font-table" scope="col">Id</th>
-                            <th class="font-table" scope="col">Waktu Kehadiran</th>
+                            <th class="font-table" scope="col">no</th>
                             <th class="font-table" scope="col">Nama</th>
-                            <th class="font-table" scope="col">Nomor Handphone</th>
-                            <th class="font-table" scope="col">Alamat</th>
+                            <th class="font-table" scope="col">Angkatan</th>
+                            <th class="font-table" scope="col">Sosmed</th>
+                            <th class="font-table" scope="col">Jurusan</th>
                             <th class="font-table" scope="col">Pesan</th>
                             <th class="font-table" scope="col" colspan="2">Aksi</th>
                           </tr>
