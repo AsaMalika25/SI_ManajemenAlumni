@@ -23,8 +23,8 @@ Route::get('akun', [TalumniController::class, 'index']);
 Route::get('akun/tambah', [TalumniController::class, 'create']);
 
 
-// Route::get('berita', [TberitaController::class, 'index']);
-// Route::get('berita/tambah', [TberitaController::class, 'create']);
+Route::get('berita', [TberitaController::class, 'index']);
+Route::get('berita/tambah', [TberitaController::class, 'create']);
 
 // Route::prefix('dashboard')->middleware('OnlyAdmin')->group(function(){
     

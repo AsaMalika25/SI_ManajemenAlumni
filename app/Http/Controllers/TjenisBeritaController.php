@@ -2,24 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tberita;
+use App\Models\tjenis_berita;
 use Illuminate\Http\Request;
 
-class TberitaController extends Controller
+class TjenisBeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-<<<<<<< HEAD
         //
-=======
-        $data = [
-            'data_alumni' => $data_alumni->all()
-        ];
-        return view('data_alumni.index', $data);
->>>>>>> 805c0a560fda3bb4a8c2b67a5a0d8b80d14f5b32
     }
 
     /**
@@ -41,7 +34,7 @@ class TberitaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(tberita $tberita)
+    public function show(tjenis_berita $tjenis_berita)
     {
         //
     }
@@ -49,7 +42,7 @@ class TberitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(tberita $tberita)
+    public function edit(tjenis_berita $tjenis_berita)
     {
         //
     }
@@ -57,7 +50,7 @@ class TberitaController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, tberita $tberita)
+    public function update(Request $request, tjenis_berita $tjenis_berita)
     {
         //
     }
@@ -65,7 +58,7 @@ class TberitaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tberita $tberita)
+    public function destroy(tjenis_berita $tjenis_berita)
     {
         //
     }
