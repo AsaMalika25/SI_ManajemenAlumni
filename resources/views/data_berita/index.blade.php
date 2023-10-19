@@ -41,7 +41,6 @@
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td><a href="">klik untuk lihat pesan</a></td>
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
                               <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
