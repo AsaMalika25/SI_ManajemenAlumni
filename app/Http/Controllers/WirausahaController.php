@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\talumni;
+use App\Models\wirausaha;
 use Illuminate\Http\Request;
 
-class TalumniController extends Controller
+class WirausahaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(talumni $data_alumni)
+    public function index()
     {
-        $data = [
-            'data_alumni' => $data_alumni->all()
-        ];
-        return view('data_alumni.index', $data);
+        //
     }
 
     /**
@@ -37,7 +34,7 @@ class TalumniController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(talumni $talumni)
+    public function show(wirausaha $wirausaha)
     {
         //
     }
@@ -45,7 +42,7 @@ class TalumniController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(talumni $talumni)
+    public function edit(wirausaha $wirausaha)
     {
         //
     }
@@ -53,7 +50,7 @@ class TalumniController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, talumni $talumni)
+    public function update(Request $request, wirausaha $wirausaha)
     {
         //
     }
@@ -61,7 +58,7 @@ class TalumniController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(talumni $talumni)
+    public function destroy(wirausaha $wirausaha)
     {
         //
     }

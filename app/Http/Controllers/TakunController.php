@@ -12,7 +12,10 @@ class TakunController extends Controller
      */
     public function index()
     {
-        return view("Auth.login");
+        //
+        return view('Auth.login');
+        
+
     }
 
     /**
