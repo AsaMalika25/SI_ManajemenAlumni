@@ -37,28 +37,17 @@ class TjenisBeritaController extends Controller
                 'jenis_berita' => ['required'],
             ]
         );
-        if($request->input('id_jenis_berita') !== null ){
-            //Proses Update
-            $dataUpdate = tjenis_berita::where('id_jenis_berita',$request->input('id_jenis_berita'))
-                            ->update($data);
-            if($dataUpdate){
-                return redirect('/jenis_berita')->with('success', 'Jenis berita Berhasil di Update');
-            }else{
-                return back()->with('error','Data Jenis berita gagal di update');
-            }
-        }
-        else{
-            //Proses Insert
-            if($data):
-                // $data['id_jenis_berita'] = 1;
-            //Simpan jika data terisi semua
-                $jenis_berita->create($data);
-                return redirect('/jenis_berita')->with('succes','data jenis berita berhasil ditambah');
-            else:
-            //Kembali ke form tambah data
-                return back()->with('error','Data jenis berita gagal ditambahkan');
-            endif;
-        }
+        if($data):
+        //Simpan jika data terisi semua
+            $jenis_berita->create($data);
+            return redirect('/jenis_berita')->with('succes','data jenis berita berhasil ditambah');
+        else:
+        //Kembali ke form tambah data
+            return back()->with('error','Data jenis berita gagal ditambahkan');
+        endif;
+
+
+        
     }
 
     /**
@@ -83,13 +72,43 @@ class TjenisBeritaController extends Controller
     public function update(Request $request, tjenis_berita $tjenis_berita)
     {
         //
+        $data = $request->validate(
+            [
+                'id_jenis_berita' => ['required'],
+                'jenis_berita' => ['required'],
+            ]
+        );
+
+        if($request->input('id_jenis_berita') !== null ){
+            //Proses Update
+            $dataUpdate = tjenis_berita::where('id_jenis_berita',$request->input('id_jenis_berita'))
+            ->update($data);
+        if($dataUpdate){
+            return redirect('/jenis_berita')->with('success', 'Jenis berita Berhasil di Update');
+        }else{
+        return back()->with('error','Data Jenis berita gagal di update');
+        }
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tjenis_berita $tjenis_berita)
+    public function destroy(tjenis_berita $jenis_berita, Request $request)
     {
-        //
+        $id_jenis_berita = $request->input('id_jenis_berita');
+        $aksi = $jenis_berita->where('id_jenis_berita', $id_jenis_berita)->delete();
+        if($aksi):
+            $pesan = [
+                'success' => true,
+                'pesan' => 'Data Jenis berita Berhasil dihapus'
+            ];
+        else:
+            $pesan = [
+                'success' => false,
+                'pesan' => 'Data gagal dihapus'
+            ];
+        endif;
+        return response()->json($pesan);
     }
 }
