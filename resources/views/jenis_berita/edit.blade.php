@@ -9,20 +9,16 @@
             <!-- form tambah -->
         <form action="simpan" method="post">
           <div class="text-center">
-            <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Tambah</b></h1>
+            <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Edit</b></h1>
             <br>
           </div>
           <!-- end text judul -->
             <div class="row">
-                <!-- <div class="col"> 
-                  <label style="color: #fff;">Id_jenis_berita</label>
-                  <input type="text" class="form-control" placeholder="" aria-label="First name" name="id_jenis_berita">
-                </div> -->
-                <!-- foreign key -->
-                <div class="col"> 
-                    <label style="color: #fff;">jenis_berita</label>
-                    <input type="text" class="form-control"  aria-label="First name" name="jenis_berita">
-                  </div>
+            <label>Jenis Surat</label>
+            <input type="hidden" class="form-control" name="id_jenis_berita"  value="{{$jenis_berita->id_jenis_berita}}"/>
+            <input type="text" class="form-control" name="jenis_berita" value="{{$jenis_berita->jenis_berita}}"/>
+               
+
             </div>
                 <div class="col"> 
                     <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 1rem;">Simpan</button>

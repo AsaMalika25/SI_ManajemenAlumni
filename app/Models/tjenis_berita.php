@@ -11,6 +11,6 @@ class tjenis_berita extends Model
     protected $table= 'tjenis_berita' ;
     protected $fillable= ['jenis_berita'] ;
 
-    protected $primaryKey= 'id_jenis';
+    protected $primaryKey= 'id_jenis_berita';
     public $timestamps= false ;
 }

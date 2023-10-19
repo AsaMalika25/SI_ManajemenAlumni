@@ -61,9 +61,18 @@ class TjenisBeritaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(tjenis_berita $tjenis_berita)
+    public function edit(tjenis_berita $jenis_berita, Request $request)
     {
-        //
+        // $data = [
+        //     'jenis_berita' => $jenis->all()
+        // ];
+        // return view('jenis_berita.edit', $data);
+        $jenis_berita = tjenis_berita::where('id_jenis_berita', $request->id)->first();
+
+        if ($jenis_berita) {
+            return view('jenis_berita.edit')->with(['jenis_berita' => $jenis_berita]);
+        }
+          
     }
 
     /**
@@ -94,21 +103,28 @@ class TjenisBeritaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tjenis_berita $jenis_berita, Request $request)
+    public function destroy($id, Request $request)
     {
-        $id_jenis_berita = $request->input('id_jenis_berita');
-        $aksi = $jenis_berita->where('id_jenis_berita', $id_jenis_berita)->delete();
-        if($aksi):
-            $pesan = [
-                'success' => true,
-                'pesan' => 'Data Jenis berita Berhasil dihapus'
-            ];
-        else:
-            $pesan = [
-                'success' => false,
-                'pesan' => 'Data gagal dihapus'
-            ];
-        endif;
-        return response()->json($pesan);
+        $aksi = tjenis_berita::where('id_jenis_berita',$id)->first();
+        // dd($aksi);
+        if($aksi){
+            $aksi->delete();
+            return redirect('jenis_berita')->with('success','data berhasil dihapus');
+        }else {
+            return redirect()->back();
+        }
+            // $pesan = [
+            //     'success' => true,
+            //     'pesan' => 'Data Jenis berita Berhasil dihapus'
+            // ];
+            
+        
+            // $pesan = [
+            //     'success' => false,
+            //     'pesan' => 'Data gagal dihapus'
+            // ];
+            
+        
+        // return response()->json($pesan);
     }
 }
