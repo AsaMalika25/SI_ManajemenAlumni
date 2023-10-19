@@ -26,7 +26,7 @@ Route::group(['middleware' => ['AdminOnly']], function () {
 Route::get('alumni', [TalumniController::class, 'index']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
 
-});
+
 
 Route::get('jenis_berita', [TjenisBeritaController::class, 'index']);
 Route::get('jenis_berita/tambah', [TjenisBeritaController::class, 'create']);
