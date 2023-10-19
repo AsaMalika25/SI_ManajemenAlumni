@@ -109,7 +109,7 @@
                         <td>
                           <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
                           <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
-                          <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                          <a href="{{url('alumni/tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                         </td>
                         <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                         <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->

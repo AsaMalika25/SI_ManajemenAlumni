@@ -66,7 +66,7 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Upload Ijazah</label>
-                  <input type="text" class="form-control"  aria-label="First name">
+                  <input type="file" class="form-control"  aria-label="First name">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Alamat Perguruan</label>
