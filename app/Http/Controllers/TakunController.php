@@ -15,6 +15,7 @@ class TakunController extends Controller
         //
         return view('Auth.login');
         
+        
 
     }
 
@@ -29,9 +30,41 @@ class TakunController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, data_akun $data_akun)
     {
         //
+        $data = $request->validate(
+            [
+                'username' => ['required'],
+                'password' => ['required'],
+                'role' =>['required'],
+            ]
+        );
+        if($request->input('id_akun') !== null){
+            //proses Update
+            $data['password'] = Hash::make($data['password']);
+            $dataUpdate = takun::where('id_akun', $request->input('id_akun'))
+                            ->update($data);
+        if($dataUpdate){
+            return redirect('/dashboard/manajemenuser');
+        }else{
+            return back()->with('error', 'Akun User gagal di update');
+        }
+        }else{
+            //proses Insert
+            $data['password'] = Hash::make($data['password']);
+
+            if($data):
+                $data['id_akun']= 1;
+            //simpan jika sudah terisi semua
+                $user->create($data);
+                return redirect('/dashboard/manajemenuser');
+            else:
+            //kembali ke form tambah dataa
+                return back()->with('erorr', 'Data User gagal ditambah');
+            endif;
+        }
+
     }
 
     /**

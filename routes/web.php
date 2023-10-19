@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\TakunController;
 use App\Http\Controllers\TalumniController;
+use App\Http\Controllers\TsuperadminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,12 +20,12 @@ Route::get('/', [TakunController::class,'index']);
 
 Route::get('alumni', [TalumniController::class, 'index']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
-Route::get('akun', [TalumniController::class, 'index']);
-Route::get('akun/tambah', [TalumniController::class, 'create']);
+Route::get('akun', [TakunController::class, 'index']);
+Route::get('akun/tambah', [TakunController::class, 'create']);
 
 
-Route::get('berita', [TberitaController::class, 'index']);
-Route::get('berita/tambah', [TberitaController::class, 'create']);
+// Route::get('berita', [TberitaController::class, 'index']);
+// Route::get('berita/tambah', [TberitaController::class, 'create']);
 
 // Route::prefix('dashboard')->middleware('OnlyAdmin')->group(function(){
     

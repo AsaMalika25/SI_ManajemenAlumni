@@ -12,10 +12,10 @@ class TkaprogController extends Controller
      */
     public function index()
     {
-        $data = [
-            'akun_data' => $akun_data->all()
-        ];
-        return view('akun_data.index', $data);
+        // $data = [
+        //     'akun_data' => $akun_data->all()
+        // ];
+        // return view('akun_data.index', $data);
     }
 
     /**
