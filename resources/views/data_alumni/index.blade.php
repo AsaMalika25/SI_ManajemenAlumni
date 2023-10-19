@@ -37,7 +37,7 @@
                         <!-- body tabel -->
                         <tbody>
                           <tr></tr>
-<<<<<<< HEAD
+
                           <tr>
                             <th scope="row"></th>
                             <td></td>
@@ -45,7 +45,7 @@
                             <td></td>
                             <td></td>
                             <td><a href="">klik untuk lihat pesan</a></td>
-=======
+
                           @foreach($data_alumni as $r)
                           <th scope="row"></th>
                               <tr>
@@ -58,7 +58,7 @@
                               <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
                               <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
->>>>>>> 805c0a560fda3bb4a8c2b67a5a0d8b80d14f5b32
+
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                             <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                           </tr>
