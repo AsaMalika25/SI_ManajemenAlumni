@@ -8,9 +8,4 @@ use Illuminate\Database\Eloquent\Model;
 class tsuperadmin extends Model
 {
     use HasFactory;
-    protected $table= 'tsuperadmin' ;
-    protected $fillable= ['id_akun','username','password','nama','email'] ;
-
-    protected $primaryKey= 'id_superadmin';
-    public $timestamps= false ;
 }
