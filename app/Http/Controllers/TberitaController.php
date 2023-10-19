@@ -12,7 +12,10 @@ class TberitaController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'data_alumni' => $data_alumni->all()
+        ];
+        return view('data_alumni.index', $data);
     }
 
     /**
