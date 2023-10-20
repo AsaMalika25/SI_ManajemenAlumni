@@ -13,11 +13,12 @@ return new class extends Migration
     {
         Schema::create('twirausaha', function (Blueprint $table) {
             $table->integer('id_wirausaha',true);
-            $table->integer('id_alumni',false)->nullable(false);
+            // $table->integer('id_alumni',false)->nullable(false);
             $table->text('nama_usaha')->nullable(false);
             $table->text('bidang')->nullable(false);
+            $table->text('gambar_usaha')->nullable(false);
 
-            $table->foreign('id_alumni')->references('id_alumni')->on('talumni')->onDelete('cascade')->onUpdate('cascade');
+            // $table->foreign('id_alumni')->references('id_alumni')->on('talumni')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('twirausahas');
+        Schema::dropIfExists('twirausaha');
     }
 };

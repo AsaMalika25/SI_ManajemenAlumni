@@ -90,7 +90,7 @@ class TakunController extends Controller
             $dataUpdate = takun::where('id_akun', $request->input('id_akun'))
                             ->update($data);
         if($dataUpdate){
-            return redirect('akun');
+            return redirect('list_akun');
         }else{
             return back()->with('error', 'Akun User gagal di update');
         }
@@ -144,8 +144,37 @@ class TakunController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(takun $takun)
+    public function destroy($id, Request $request)
     {
         //
-    }
+        
+// $id_akun = $request->input('id_akun');
+
+
+// Hapus
+$aksi = takun::where('id_akun', $id)->first();
+
+
+if ($aksi) {
+    $aksi->delete();
+    // Pesan Berhasil
+    // $pesan = [
+    //     'success' => true,
+    //     'pesan'   => 'Data akun berhasil dihapus'
+    // ];
+    return redirect("list_akun")->with('success','data berhasill ditambah');
+} else {
+    // Pesan Gagal
+    // $pesan = [
+    //     'success' => false,
+    //     'pesan'   => 'Data gagal dihapus'
+    // ];
+    return redirect()->back();
 }
+
+
+// return response()->json($pesan);
+}
+
+    }
+

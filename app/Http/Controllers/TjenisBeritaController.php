@@ -108,7 +108,9 @@ class TjenisBeritaController extends Controller
         $aksi = tjenis_berita::where('id_jenis_berita',$id)->first();
         // dd($aksi);
         if($aksi){
+
             $aksi->delete();
+            
             return redirect('jenis_berita')->with('success','data berhasil dihapus');
         }else {
             return redirect()->back();
