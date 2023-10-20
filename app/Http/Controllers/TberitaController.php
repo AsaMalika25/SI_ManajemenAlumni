@@ -12,10 +12,10 @@ class TberitaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(tberita $data_berita)
+    public function index(tberita $tberita)
     {
         $data = [
-            'data_berita' => $data_berita->all()
+            'tberita' => $tberita->all()
         ];
         return view('data_berita.index', $data);
     }
@@ -23,17 +23,46 @@ class TberitaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(tjenis_berita $tjenis_berita)
     {
-        return view('data_berita.tambah');
+        $data = [
+            'tjenis_berita' => $tjenis_berita->all(),
+        ];
+        return view('data_berita.tambah', $data);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, tjenis_berita $tjenis_berita, tberita $tberita )
     {
-        //
+        $data = $request->validate([
+            'id_jenis_berita' => ['required'],
+            'judul_berita' => ['required'],
+            'tgl_post' => ['required'],
+            'kode_berita' => ['required'],
+            'ket_berita' => ['required'],
+            'file' => ['required'], 
+        ]);
+
+        if($data)
+        {
+        if($request->hasFile('file') && $request->file('file')->isValid())
+        {
+            $foto_file = $request->file('file');
+            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_file->move(public_path('foto'), $foto_nama);
+            $data['file'] = $foto_nama;
+        }
+
+            if(tberita::create($data))
+            {
+                return redirect('/berita')->with('success', 'Berita Berhasil di tambah');
+            }else
+            {
+                return back()->with('error','Data berita gagal di update');
+            }
+        }
     }
 
     /**

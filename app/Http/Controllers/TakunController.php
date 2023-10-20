@@ -58,7 +58,7 @@ class TakunController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, data_akun $data_akun)
+    public function store(Request $request)
     {
         //
         // $data = $request->validate(

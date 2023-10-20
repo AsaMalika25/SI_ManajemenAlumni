@@ -33,7 +33,7 @@ class TjenisBeritaController extends Controller
     {
         $data = $request->validate(
             [
-                'id_jenis_berita' => ['required'],
+                // 'id_jenis_berita' => ['required'], 
                 'jenis_berita' => ['required'],
             ]
         );

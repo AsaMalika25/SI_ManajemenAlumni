@@ -13,4 +13,8 @@ class tjenis_berita extends Model
 
     protected $primaryKey= 'id_jenis_berita';
     public $timestamps= false ;
+
+    public function berita(){
+        return $this->HasMany(berita::class, 'id_berita');
+    }
 }

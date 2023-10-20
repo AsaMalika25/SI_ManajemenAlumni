@@ -34,6 +34,7 @@ Route::post('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy'
 
 Route::get('berita', [TberitaController::class, 'index']);
 Route::get('berita/tambah', [TberitaController::class, 'create']);
+Route::post('berita/simpan', [TberitaController::class, 'store']);
 
 
 
