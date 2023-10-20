@@ -13,6 +13,7 @@
     <style>
         body{
             background-color: #688EF2;
+            height: 100%;
         }
     </style> 
 </head>
