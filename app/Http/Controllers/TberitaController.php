@@ -122,16 +122,40 @@ class TberitaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id, Request $request)
+    public function destroy($id, Request $request, tberita $tberita)
     {
         //
-        $aksi = tberita::where('id_berita',$id)->first();
-        // dd($aksi);
-        if($aksi){
-            $aksi->delete();
-            return redirect('berita')->with('success','data berhasil dihapus');
-        }else {
-            return redirect()->back();
+        // $aksi = tberita::where('id_berita',$id)->first();
+        // // dd($aksi);
+        // if($aksi){
+        //     $aksi->delete();
+        //     return redirect('berita')->with('success','data berhasil dihapus');
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $id_berita = $request->input('id_berita');
+        // $data = tberita::find($id_berita);
+
+        // if (!$data) {
+        //     return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
+        // }
+        
+        // if ($data) {
+        //     $data->delete();
+        //     return response()->json(['success' => true]);
+        // }
+
+        $id_berita = $request->input('id_berita');
+        $data = tberita::find($id_berita);
+
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
         }
+
+        $filePath = public_path('foto') . '/' . $data->file;
+
+            $data->delete();
+            return response()->json(['success' => true]);
     }
 }

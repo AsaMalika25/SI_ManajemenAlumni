@@ -105,37 +105,24 @@ class TjenisBeritaController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        $aksi = tjenis_berita::where('id_jenis_berita',$id)->first();
-        // dd($aksi);
-        if($aksi){
+        $id_jenis_berita = $request->input('id_jenis_berita');
+        $data = tjenis_berita::find($id_jenis_berita);
 
-            $aksi->delete();
-            
-            return redirect('jenis_berita')->with('success','data berhasil dihapus');
-            $pesan = [
-                'success' => true,
-                'pesan' => 'Data Jenis berita Berhasil dihapus'
-            ];
-        }else {
-            return redirect()->back();
-            
-            $pesan = [
-                'success' => false,
-                'pesan' => 'Data gagal dihapus'
-            ];
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
         }
-            // $pesan = [
-            //     'success' => true,
-            //     'pesan' => 'Data Jenis berita Berhasil dihapus'
-            // ];
-            
         
-            // $pesan = [
-            //     'success' => false,
-            //     'pesan' => 'Data gagal dihapus'
-            // ];
-            
-        
-        // return response()->json($pesan);
+        if ($data) {
+            $data->delete();
+            return response()->json(['success' => true]);
+        }
+        // $aksi = tjenis_berita::where('id_jenis_berita',$id)->first();
+        // // dd($aksi);
+        // if($aksi){
+        //     $aksi->delete();
+        //     return redirect('jenis_berita')->with('success','data berhasil dihapus');
+        // }else {
+        //     return redirect()->back();
+        // }
     }
 }

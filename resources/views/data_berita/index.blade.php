@@ -9,7 +9,7 @@
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table">
+                      <table class="table DataTable">
                         <!-- head tabel -->
                         <thead>
                           <tr>
@@ -41,10 +41,12 @@
                             </td>
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <form action="{{url('berita/hapus/'. $r->id_berita)}}" idBerita="{{$r->id_berita}}" method="post" onsubmit="return confirm('apakah ingin menghapus data ini ?')">
+                              <!-- <form action="{{url('berita/hapus/'. $r->id_berita)}}" idBerita="{{$r->id_berita}}" method="post" onsubmit="return confirm('apakah ingin menghapus data ini ?')">
                               @csrf
                                 <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
-                              </form>
+                              </form> -->
+
+                              <btn class="btnHapus" idBerita="{{ $r->id_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></btn>
                               <a href="berita/edit/{{$r->id_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
@@ -80,7 +82,7 @@
       <script type="module">
     $('.DataTable tbody').on('click','.btnHapus',function(a){
         a.preventDefault();
-        let idSurat = $(this).closest('.btnHapus').attr('idSurat');
+        let idBerita = $(this).closest('.btnHapus').attr('idBerita');
         swal.fire({
             title : "Apakah anda ingin menghapus data ini?",
             showCancelButton: true,
@@ -95,7 +97,7 @@
                     type: 'DELETE',
                     url: "berita/hapus/"+idBerita,
                     data: {
-                        id_surat : idSurat,
+                        id_berita : idBerita,
                         _token : "{{csrf_token()}}"
                     },
                     success : function(data){
@@ -114,4 +116,4 @@
         $('.DataTable').DataTable();
     });
 </script>
-@endsection    
+@endsection
