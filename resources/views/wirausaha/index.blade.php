@@ -1,7 +1,7 @@
 @extends('layout.layouts')
 @section('content')
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST AKUN</b></h1>
+        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST Wirausaha</b></h1>
         <br>
        
           <div class="tab-content" id="pills-tabContent">   
@@ -15,9 +15,9 @@
                         <thead>
                           <tr>
                           <th class="font-table" scope="col">Id</th>
-                            <th class="font-table" scope="col">Username</th>
-                            <!-- <th class="font-table" scope="col">Password</th> -->
-                            <th class="font-table" scope="col">Role</th>
+                            <th class="font-table" scope="col">Nama Usaha</th>
+                            <th class="font-table" scope="col">Bidang Usaha</th>
+                            <th class="font-table" scope="col">Gambar Usaha</th>
                             <th class="font-table" scope="col" colspan="2">Aksi</th>
                           </tr>
                         </thead>
@@ -26,12 +26,14 @@
                         <!-- body tabel -->
                         <tbody>
                           <tr></tr>
-                          @foreach($takun as $r)
+                          @foreach($tusaha as $r)
                           <tr>  
-                            <th scope="row">{{$r->id_akun}}</th>
-                            <td>{{$r->username}}</td>
-                            <!-- <td>{{$r->password}}</td> -->
-                            <td>{{$r->role}}</td>
+                            <th scope="row">{{$r->id_wirausaha}}</th>
+                            <td>{{$r->nama_usaha}}</td>
+                            <td>{{$r->bidang}}</td>
+                            <!-- <td><img src="{{$r->gambar_usaha}}" alt=""><{{$r->gambar_usaha}}></td> -->
+                            <td><img src='/foto/{{$r->gambar_usaha}}' width='200px'/></td>
+                            
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
                               <form action="{{url('list_akun/hapus/'. $r->id_akun)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
@@ -39,7 +41,7 @@
                                 @csrf
                               </form>
                               
-                              <a href="list_akun/edit/{{$r->id_akun}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                              <a href="wirausaha/edit/{{$r->id_wirausaha}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                             <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
@@ -59,7 +61,7 @@
                   </svg>
                 CETAK
                 </a>
-                <a class="btn btn-primary" href="tambah_akun" role="button">
+                <a class="btn btn-primary" href="tambah_wirausaha" role="button">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                   </svg>

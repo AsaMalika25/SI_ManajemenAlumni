@@ -6,6 +6,7 @@ use App\Http\Controllers\TkuliahController;
 use App\Http\Controllers\LogsJenisBeritaController;
 use App\Http\Controllers\TjenisBeritaController;
 use App\Http\Controllers\TberitaController;
+use App\Http\Controllers\TwirausahaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -49,6 +50,23 @@ Route::post('kuliah/edit/simpan', [TkuliahController::class, 'update']);
 Route::post('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
 
 Route::get('log_jenis_berita', [LogsJenisBeritaController::class, 'index']);
+
+Route::get('list_akun', [TakunController::class, 'list']);
+Route::get('tambah_akun', [TakunController::class, 'create']);
+Route::post('tambah_akun/tambah', [TakunController::class, 'store']);
+Route::get('list_akun/edit/{id}', [TakunController::class, 'edit']);
+Route::post('list_akun/edit/simpan', [TakunController::class, 'store']);
+Route::post('list_akun/hapus/{id}', [TakunController::class, 'destroy']);
+
+Route::get('wirausaha', [TwirausahaController::class, 'index']);
+Route::get('tambah_wirausaha', [TwirausahaController::class, 'create']);
+Route::post('tambah_wirausaha/simpan', [TwirausahaController::class, 'store']);
+Route::get('wirausaha/edit/{id}', [TwirausahaController::class, 'edit']);
+Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'store']);
+Route::post('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
+
+
+
 });
 
 
