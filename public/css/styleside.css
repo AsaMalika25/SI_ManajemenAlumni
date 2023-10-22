@@ -108,10 +108,11 @@ opacity:1;
 
 .main-menu {
 background:#F7F7F7;
-position:absolute;
+position:fixed;
 top:0;
 bottom:0;
-height:100%;
+height:auto;
+padding-bottom: 10;
 left:0;
 width:55px;
 overflow:hidden;
