@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\takun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class TakunController extends Controller
@@ -49,9 +50,45 @@ class TakunController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function register(){
+        return view('Auth.register');
+    }
+
+    public function prosesregister(Request $request)
     {
-        //
+        $request->validate([
+            'username' => 'required|unique:takun,username',
+            'password' => 'required|min:8'
+        ], [
+            'username.required' => 'Nama wajib diisi',
+            'username.username' => 'Email yang dimasukkan tidak valid',
+            'username.unique' => 'Email sudah digunakan, silakan masukkan email yang lain',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Minumum password 8 karakter'
+        ]);
+
+        $CekUser = takun::where('username', $request->username)->first();
+
+        if ($CekUser) {
+            return redirect()->back()->with('username sudah terdaftar');
+        }
+
+        $data = [
+            'username' => $request->username,
+            // 'passwords' => $request->password,
+            'password' => Hash::make($request->password),
+            'role' => 'alumni',
+        ];
+
+        // dd($data);
+
+        takun::create($data);
+
+        // $infologin = [
+        //     'email' => $request->email,
+        //     'password' => $request->password
+        // ];
+        return redirect('/')->with('success', $request->username . 'Berhasil register');
     }
 
     /**

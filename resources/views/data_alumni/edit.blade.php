@@ -7,31 +7,35 @@
 <div class="container" style="margin-top: 3rem;">
     <!-- text judul   -->
     <!-- form tambah -->
-    <form action="simpan" method="post" enctype="multipart/form-data">
+    <form action="{{url('alumni/update/'. $alumni->id_alumni)}}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="text-center">
-            <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Tambah Alumni</b></h1>
+            <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Edit Alumni</b></h1>
             <br>
         </div>
         <!-- end text judul -->
         <div class="row">
+            <input type="hidden" class="form-control" value="{{$alumni->id_alumni}}" name="id_alumni">
+            {{-- <input type="hidden" class="form-control" value="{{$kelas->id_kelas}}" name="">
+            <input type="hidden" class="form-control" value="{{$angkatan->id_angkatan}}" name="">
+            <input type="hidden" class="form-control" value="{{$akun->id_akun}}" name=""> --}}
             <div class="col">
                 <label style="color: #fff;">Nama lengkap</label>
-                <input type="text" class="form-control" placeholder="" aria-label="First name" name="nama">
+                <input type="text" class="form-control" value="{{$alumni->nama}}" name="nama">
             </div>
             <div class="col">
                 <label style="color: #fff;">Email</label>
-                <input type="text" class="form-control" aria-label="First name" name="email">
+                <input type="text" class="form-control" value="{{$alumni->email}}" name="email">
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <label style="color: #fff;">Tanggal Lahir</label>
-                <input type="date" class="form-control" name="tgl_lahir">
+                <input type="date" class="form-control" name="tgl_lahir" value="{{$alumni->tgl_lahir}}">
             </div>
             <div class="col">
                 <label style="color: #fff;">Sosial Media</label>
-                <input type="text" class="form-control" aria-label="First name" name="sosmed">
+                <input type="text" class="form-control" value="{{$alumni->sosmed}}" name="sosmed">
             </div>
 
         </div>
@@ -49,7 +53,7 @@
 
             <div class="col">
                 <label style="color: #fff;">ALAMAT</label>
-                <input type="text" class="form-control" aria-label="First name" name="alamat">
+                <input type="text" class="form-control" value="{{$alumni->alamat}}" name="alamat">
             </div>
 
         </div>
@@ -66,7 +70,7 @@
 
             <div class="col">
                 <label style="color: #fff;">Nomor Telp</label>
-                <input type="text" class="form-control" aria-label="First name" name="no_telp">
+                <input type="text" class="form-control" value="{{$alumni->no_telp}}" name="no_telp">
             </div>
         </div>
 
@@ -91,9 +95,17 @@
 
                 <div class="col">
                     <label style="color: #fff;">Upload Ijazah</label>
-                    <input type="file" class="form-control" aria-label="First name" name="ijazah">
+                    <input type="file" class="form-control" value="{{$alumni->ijazah}}" name="ijazah">
                 </div>
             </div>
+
+            <div class="row">
+
+                <div class="col">
+                    <img src="{{asset('foto/'. $alumni->ijazah)}}" alt="" style="width: 50px;height:50px;margin-top:20px;">
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col">
                     <button type="submit" class="btn btn-primary"

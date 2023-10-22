@@ -14,4 +14,9 @@ class takun extends Authenticatable
     protected $fillable = ['username','password','role'] ;
     protected $primaryKey = 'id_akun' ;
     public $timestamps = false ;
+    
+    public function alumni(){
+        
+        return $this->hasMany(talumni::class, 'id_akun');
+    }
 }
