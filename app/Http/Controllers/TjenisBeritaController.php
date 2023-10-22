@@ -110,8 +110,17 @@ class TjenisBeritaController extends Controller
         if($aksi){
             $aksi->delete();
             return redirect('jenis_berita')->with('success','data berhasil dihapus');
+            $pesan = [
+                'success' => true,
+                'pesan' => 'Data Jenis berita Berhasil dihapus'
+            ];
         }else {
             return redirect()->back();
+            
+            $pesan = [
+                'success' => false,
+                'pesan' => 'Data gagal dihapus'
+            ];
         }
             // $pesan = [
             //     'success' => true,
