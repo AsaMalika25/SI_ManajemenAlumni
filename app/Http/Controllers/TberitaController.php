@@ -37,6 +37,7 @@ class TberitaController extends Controller
      */
     public function store(Request $request, tjenis_berita $tjenis_berita, tberita $tberita )
     {
+        //validasi data
         $data = $request->validate([
             'id_jenis_berita' => ['required'],
             'judul_berita' => ['required'],
@@ -124,28 +125,6 @@ class TberitaController extends Controller
      */
     public function destroy($id, Request $request, tberita $tberita)
     {
-        //
-        // $aksi = tberita::where('id_berita',$id)->first();
-        // // dd($aksi);
-        // if($aksi){
-        //     $aksi->delete();
-        //     return redirect('berita')->with('success','data berhasil dihapus');
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $id_berita = $request->input('id_berita');
-        // $data = tberita::find($id_berita);
-
-        // if (!$data) {
-        //     return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
-        // }
-        
-        // if ($data) {
-        //     $data->delete();
-        //     return response()->json(['success' => true]);
-        // }
-
         $id_berita = $request->input('id_berita');
         $data = tberita::find($id_berita);
 
