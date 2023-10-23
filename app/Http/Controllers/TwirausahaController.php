@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\twirausaha;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TwirausahaController extends Controller
 {
@@ -36,7 +37,7 @@ class TwirausahaController extends Controller
      */
     public function store(Request $request, twirausaha $tusaha)
     {
-        //
+        //validasi data
         $data = $request->validate([
             'nama_usaha' => ['required'],
             'bidang' => ['required'],
@@ -96,17 +97,18 @@ class TwirausahaController extends Controller
             'nama_usaha' => ['required'],
             'bidang' => ['required'],
             'gambar_usaha' => ['sometimes'],
+            'id_wirausaha' => ['required'],
             ]
         );
 
         if($data)
         {
-            if($request->hasgambar_usaha('gambar_usaha')) {
-                $foto_gambar_usaha = $request->gambar_usaha('gambar_usaha');
-                $foto_nama = md5($foto_gambar_usaha->getClientOriginalName() . time()) . '.' . $foto_gambar_usaha->getClientOriginalExtension();
+            if($request->hasFile('gambar_usaha')) {
+                $foto_gambar_usaha = $request->file('gambar_usaha');
+                $foto_nama = md5($foto_gambar_usaha->getClientOriginalName() . time()) . '.' . $foto_gambar_usaha->getClientOriginalExtension();  
                 $foto_gambar_usaha->move(public_path('foto'), $foto_nama);
-                $update_data = $twirausaha->where('id_wirausaha', $request->input('id_wirausaha'))->first();
-                gambar_usaha::delete(public_path('foto').'/'.$update_data->gambar_usaha);
+                $update_data = $tusaha->where('id_wirausaha', $request->input('id_wirausaha'))->first();
+                File::delete(public_path('foto').'/'.$update_data->file);
                 $data['gambar_usaha'] = $foto_nama;
             }
             twirausaha::where('id_wirausaha', $request->input('id_wirausaha'))->update($data);
@@ -124,33 +126,33 @@ class TwirausahaController extends Controller
     {
         //
         
-// $id_wirausaha = $request->input('id_wirausaha');
+        // $id_wirausaha = $request->input('id_wirausaha');
 
 
-// Hapus
-$aksi = twirausaha::where('id_wirausaha', $id)->first();
+        // Hapus
+        $aksi = twirausaha::where('id_wirausaha', $id)->first();
 
 
-if ($aksi) {
-    $aksi->delete();
-    // Pesan Berhasil
-    // $pesan = [
-    //     'success' => true,
-    //     'pesan'   => 'Data akun berhasil dihapus'
-    // ];
-    return redirect("wirausaha")->with('success','data berhasill dihapus');
-} else {
-    // Pesan Gagal
-    // $pesan = [
-    //     'success' => false,
-    //     'pesan'   => 'Data gagal dihapus'
-    // ];
-    return redirect()->back();
-}
+        if ($aksi) {
+            $aksi->delete();
+            // Pesan Berhasil
+            // $pesan = [
+            //     'success' => true,
+            //     'pesan'   => 'Data akun berhasil dihapus'
+            // ];
+            return redirect("wirausaha")->with('success','data berhasill dihapus');
+        } else {
+            // Pesan Gagal
+            // $pesan = [
+            //     'success' => false,
+            //     'pesan'   => 'Data gagal dihapus'
+            // ];
+            return redirect()->back();
+        }
 
 
-// return response()->json($pesan);
-}
+        // return response()->json($pesan);
+        }
 
     }
 

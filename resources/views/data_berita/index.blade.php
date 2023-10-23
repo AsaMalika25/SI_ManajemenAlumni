@@ -3,32 +3,22 @@
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
         <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA BERITA</b></h1>
         <br>
-        <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Berita</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="true"></button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-selected="true" value="wirausaha"></button>
-            </li>
-          </ul>
           <div class="tab-content" id="pills-tabContent">   
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
+                <div class="card" style="width: 160.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; ">
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table">
+                      <table class="table DataTable">
                         <!-- head tabel -->
                         <thead>
                           <tr>
                           <th class="font-table" scope="col">No</th>
                             <th class="font-table" scope="col">Judul</th>
                             <th class="font-table" scope="col">Tanggal Post</th>
+                            <th class="font-table" scope="col">Jenis Berita</th>
                             <th class="font-table" scope="col">Keterangan</th>
-                            <<th class="font-table" scope="col">Gambar Berita</th>
+                            <th class="font-table" scope="col">Gambar Berita</th>
                             <th class="font-table" scope="col" colspan="2">Aksi</th>
                           </tr>
                         </thead>
@@ -42,6 +32,7 @@
                             <th scope="row">{{$r->id_berita}}</th>
                             <td>{{$r->judul_berita}}</td>
                             <td>{{$r->tgl_post}}</td>
+                            <td>{{$r->jenis_berita}}</td>
                             <td>{{$r->ket_berita}}</td>
                             <td>
                               @if ($r->file)
@@ -50,7 +41,12 @@
                             </td>
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
+                              <!-- <form action="{{url('berita/hapus/'. $r->id_berita)}}" idBerita="{{$r->id_berita}}" method="post" onsubmit="return confirm('apakah ingin menghapus data ini ?')">
+                              @csrf
+                                <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
+                              </form> -->
+
+                              <btn class="btnHapus" idBerita="{{ $r->id_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></btn>
                               <a href="berita/edit/{{$r->id_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
@@ -60,10 +56,10 @@
                         </tbody>
                         <!-- end body tabel -->
                       </table>
-                      <!-- end tabel -->
+                      <!-- end tabel -->  
                     </div>
                 </div>
-                <div style="margin-left: 5rem;">
+                <div style="margin-left: 5rem; margin-top: 2rem;">
                 <a class="btn btn-primary" href="#" role="button"> 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
@@ -83,5 +79,41 @@
           </div>
         <!-- end konten utama -->
       </div> 
+      <script type="module">
+    $('.DataTable tbody').on('click','.btnHapus',function(a){
+        a.preventDefault();
+        let idBerita = $(this).closest('.btnHapus').attr('idBerita');
+        swal.fire({
+            title : "Apakah anda ingin menghapus data ini?",
+            showCancelButton: true,
+            confirmButtonText: 'Setuju',
+            cancelButtonText: `Batal`,
+            confirmButtonColor: 'red'
 
-@endsectionx    
+        }).then((result)=>{
+            if(result.isConfirmed){
+                //Ajax Delete
+                $.ajax({
+                    type: 'DELETE',
+                    url: "berita/hapus/"+idBerita,
+                    data: {
+                        id_berita : idBerita,
+                        _token : "{{csrf_token()}}"
+                    },
+                    success : function(data){
+                        if(data.success){
+                            swal.fire('Berhasil di hapus!', '', 'success').then(function(){
+                                //Refresh Halaman
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.DataTable').DataTable();
+    });
+</script>
+@endsection

@@ -1,7 +1,7 @@
 @extends('layout.layouts')
 @section('content')
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST Wirausaha</b></h1>
+        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA WIRAUSAHA</b></h1>
         <br>
        
           <div class="tab-content" id="pills-tabContent">   
@@ -36,15 +36,13 @@
                             
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <form action="{{url('list_akun/hapus/'. $r->id_akun)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
+                              <form action="{{url('wirausaha/hapus/'. $r->id_wirausaha)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
                                 <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
                                 @csrf
                               </form>
                               
                               <a href="wirausaha/edit/{{$r->id_wirausaha}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
-                            <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
-                            <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                           </tr>
                           @endforeach
                         </tbody>
@@ -54,7 +52,7 @@
                     </div>
                 </div>
                 <div style="margin-left: 5rem;">
-                <a class="btn btn-primary" href="takun/edit/{id}" role="button"> 
+                <a class="btn btn-primary" href="tusaha/edit/{id}" role="button"> 
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
                     <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
@@ -67,7 +65,7 @@
                   </svg>
                 TAMBAH
                 </a>
-                <a class="btn btn-primary" href="#" role="button">LOG</a>
+                <a class="btn btn-primary" href="/logs_wirausaha" role="button">LOG</a>
               </div>
               </div>
             </div>

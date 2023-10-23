@@ -12,8 +12,9 @@
           <!-- end text judul -->
     
           <!-- form tambah -->
-          <form action="simpan" method="post"> 
+          <form action="simpan" method="post" enctype="multipart/form-data"> 
             <div class="mb-3" >
+              <input type="hidden" class="form-control" name="id_wirausaha" value="{{$twirausaha->id_wirausaha}}"/>
               <label for="nama_usaha" class="form-label font-form">Nama Usaha</label>
               <input type="text" class="form-control" id="namaUsaha" placeholder="Nama usaha" name="nama_usaha" style="border-radius:  1.8635607321131447vh;"  value="{{$twirausaha->nama_usaha}}"required>
             </div>
@@ -24,10 +25,10 @@
             <div class="form-group mt-2">
                 <label>File</label>
                 <input type="file" class="form-control" name="gambar_usaha" value="{{$twirausaha->gambar_usaha}}">  
-
-            
             <br>
             @csrf
+            </div>
+
             <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Submit</button>
           </form>
           <!-- end form tambah -->

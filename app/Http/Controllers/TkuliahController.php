@@ -10,9 +10,12 @@ class TkuliahController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(tkuliah $tkuliah)
     {
-        //
+        $data = [
+            'tkuliah' => $tkuliah->all()
+        ];
+        return view('data_kuliah.index', $data);
     }
 
     /**

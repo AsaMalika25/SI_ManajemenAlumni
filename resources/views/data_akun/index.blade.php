@@ -6,7 +6,7 @@
        
           <div class="tab-content" id="pills-tabContent">   
            
-                <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
+                <div class="card" style="width: 130; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
                     <div class="card-body">  
           
                       <!-- tabel -->
@@ -16,7 +16,7 @@
                           <tr>
                           <th class="font-table" scope="col">Id</th>
                             <th class="font-table" scope="col">Username</th>
-                            <!-- <th class="font-table" scope="col">Password</th> -->
+                            <th class="font-table" scope="col">Password</th>
                             <th class="font-table" scope="col">Role</th>
                             <th class="font-table" scope="col" colspan="2">Aksi</th>
                           </tr>
@@ -30,7 +30,7 @@
                           <tr>  
                             <th scope="row">{{$r->id_akun}}</th>
                             <td>{{$r->username}}</td>
-                            <!-- <td>{{$r->password}}</td> -->
+                            <td>{{$r->password}}</td>
                             <td>{{$r->role}}</td>
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
