@@ -7,6 +7,15 @@
 <div class="container" style="margin-top: 3rem;">
     <!-- text judul   -->
     <!-- form tambah -->
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <form action="simpan" method="post" enctype="multipart/form-data">
         @csrf
         <!-- end text judul -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\takun;
 use App\Models\talumni;
 use App\Models\tangkatan;
@@ -83,7 +84,6 @@ class TalumniController extends Controller
             'id_kelas' => ['required'],
             'jenkel' => ['required'],
         ]);
-
         if ($request->hasFile('ijazah')) {
             $foto_file = $request->file('ijazah');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
@@ -92,7 +92,7 @@ class TalumniController extends Controller
         }
 
         if ($talumni->create($data)) {
-            return redirect ('alumni')->with('success','your added data alumni');
+            return redirect()->to('alumni')->with('success', 'Data surat baru berhasil ditambah');
         }else {
             return redirect()->back();
         }

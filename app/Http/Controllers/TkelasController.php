@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\tangkatan;
 use App\Models\tjurusan;
 use App\Models\tkelas;
@@ -62,12 +63,18 @@ class TkelasController extends Controller
             'id_angkatan' => ['required'],
         ]);
         
-        if ($data) {
-            // Simpan jika data terisi semua
-            $tkelas->create($data);
-            return redirect('kelas')->with('success', 'Data jenis surat baru berhasil ditambah');
-        }else {
-            return redirect()->back();
+        // dd($data);
+        DB::beginTransaction();
+        try {
+            $kelasId = $tkelas->create($data)->id_kelas;
+            DB::statement("CALL Createkelas(?, ?, ?)", [$data['id_jurusan'], $data['id_angkatan'], $data['nama_kelas']]);
+            DB::commit();
+            return redirect('kelas')->with('success','data kamu berhasil ditambahkan');
+        } catch (Exception $e) {
+            // $e->getMessage();
+            dd($e->getMessage());
+            DB::rollback();
+            return back()->with('error', 'Data siswa gagal ditambahkan');
         }
     }
 

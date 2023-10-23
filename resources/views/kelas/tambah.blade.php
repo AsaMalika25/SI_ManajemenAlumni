@@ -89,7 +89,7 @@
           <!-- end text judul -->
     
           <!-- form tambah -->
-          <form action="{{url('kelas/simpan')}}" method="post">
+          <form action="/kelas/simpan" method="post">
             @csrf
             <div class="mb-3" >
               <label for="inputNama" class="form-label font-form">Nama kelas</label>
