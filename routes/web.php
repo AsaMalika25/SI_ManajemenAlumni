@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogsWirausahaController;
 use App\Http\Controllers\TakunController;
 use App\Http\Controllers\TalumniController;
 use App\Http\Controllers\TsuperadminController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\TjenisBeritaController;
 use App\Http\Controllers\TberitaController;
 use App\Http\Controllers\TwirausahaController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +50,10 @@ Route::get('wirausaha', [TwirausahaController::class, 'index']);
 Route::get('tambah_wirausaha', [TwirausahaController::class, 'create']);
 Route::post('tambah_wirausaha/simpan', [TwirausahaController::class, 'store']);
 Route::get('wirausaha/edit/{id}', [TwirausahaController::class, 'edit']);
-Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'store']);
+Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'update']);
 Route::post('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
+
+Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
 
 
 

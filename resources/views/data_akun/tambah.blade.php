@@ -31,10 +31,10 @@
                 <option value="alumni">Alumni</option>
               </select>
             </div>
-            <div class="form-group mt-2">
+            <!-- <div class="form-group mt-2">
                             <label>File</label>
                                 <input type="file" class="form-control" name="file">
-                            </div>
+                            </div> -->
                             @csrf
                 <div class="col"> 
                     <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 1rem;">Simpan</button>
