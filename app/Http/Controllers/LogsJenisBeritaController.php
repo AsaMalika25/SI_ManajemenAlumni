@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tkuliah;
+use App\Models\logsJenisBerita;
 use Illuminate\Http\Request;
 
-class TkuliahController extends Controller
+class LogsJenisBeritaController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(tkuliah $tkuliah)
+    public function index(logsJenisBerita $logsJenisBerita)
     {
+        //
         $data = [
-            'tkuliah' => $tkuliah->all()
+            'log_jenis_berita'=> $logsJenisBerita->all()
         ];
-        return view('data_kuliah.index', $data);
+        return view('log_jenis_berita.index',$data);
     }
 
     /**
@@ -37,7 +38,7 @@ class TkuliahController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(tkuliah $tkuliah)
+    public function show(logsJenisBerita $logsJenisBerita)
     {
         //
     }
@@ -45,7 +46,7 @@ class TkuliahController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(tkuliah $tkuliah)
+    public function edit(logsJenisBerita $logsJenisBerita)
     {
         //
     }
@@ -53,7 +54,7 @@ class TkuliahController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, tkuliah $tkuliah)
+    public function update(Request $request, logsJenisBerita $logsJenisBerita)
     {
         //
     }
@@ -61,7 +62,7 @@ class TkuliahController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tkuliah $tkuliah)
+    public function destroy(logsJenisBerita $logsJenisBerita)
     {
         //
     }

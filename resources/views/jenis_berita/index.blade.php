@@ -10,7 +10,7 @@
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table">
+                      <table class="table DataTable">
                         <!-- head tabel -->
                         <thead>
                           <tr>
@@ -30,10 +30,11 @@
                             <td>{{$r->jenis_berita}}</td>
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <form action="{{url('jenis_berita/hapus/'. $r->id_jenis_berita)}}" method="post" onsubmit="return confirm('apakah ingin menghapus data ini ?')">
+
+                              <!-- <form action="{{url('jenis_berita/hapus/'. $r->id_jenis_berita)}}" method="post">
                               @csrf
-                                <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
-                              </form>
+                            </form> -->
+                            <btn class="btnHapus" idJenisBerita="{{ $r->id_jenis_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></btn>
                               
                               <a href="jenis_berita/edit/{{$r->id_jenis_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
@@ -63,12 +64,48 @@
                   </svg>
                 TAMBAH
                 </a>
-                <a class="btn btn-primary" href="#" role="button">LOG</a>
+                <a class="btn btn-primary" href="log_jenis_berita" role="button">LOG</a>
               </div>
               </div>
             </div>
           </div>
         <!-- end konten utama -->
       </div> 
+      <script type="module">
+    $('.DataTable tbody').on('click','.btnHapus',function(a){
+        a.preventDefault();
+        let idJenisBerita = $(this).closest('.btnHapus').attr('idJenisBerita');
+        swal.fire({
+            title : "Apakah anda ingin menghapus data ini?",
+            showCancelButton: true,
+            confirmButtonText: 'Setuju',
+            cancelButtonText: `Batal`,
+            confirmButtonColor: 'red'
 
-@endsection    
+        }).then((result)=>{
+            if(result.isConfirmed){
+                //Ajax Delete
+                $.ajax({
+                    type: 'DELETE',
+                    url: "jenis_berita/hapus/"+idJenisBerita,
+                    data: {
+                        id_jenis_berita : idJenisBerita,
+                        _token : "{{csrf_token()}}"
+                    },
+                    success : function(data){
+                        if(data.success){
+                            swal.fire('Berhasil di hapus!', '', 'success').then(function(){
+                                //Refresh Halaman
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.DataTable').DataTable();
+    });
+</script>
+@endsection

@@ -6,6 +6,7 @@ use App\Models\talumni;
 use App\Models\tjenis_berita;
 use App\Models\tberita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class TberitaController extends Controller
 {
@@ -36,6 +37,7 @@ class TberitaController extends Controller
      */
     public function store(Request $request, tjenis_berita $tjenis_berita, tberita $tberita )
     {
+        //validasi data
         $data = $request->validate([
             'id_jenis_berita' => ['required'],
             'judul_berita' => ['required'],
@@ -76,24 +78,63 @@ class TberitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(tberita $tberita)
+    public function edit(tberita $tberita, Request $request, tjenis_berita $tjenis_berita)
     {
-        //
+        $data = [
+            'tberita' => tberita::where('id_berita', $request->id)->first(),
+            'tjenis_berita' => $tjenis_berita->all()
+        ];
+        return view('data_berita.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, tberita $tberita)
+    public function update(Request $request, tberita $tberita )
     {
-        //
+        $data = $request->validate(
+        [
+            'id_jenis_berita' => ['required'],
+            'judul_berita' => ['required'],
+            'tgl_post' => ['required'],
+            'kode_berita' => ['required'],
+            'ket_berita' => ['required'],
+            'file' => ['sometimes'], 
+        ]);
+
+        if($data)
+        {
+            if($request->hasFile('file')) {
+                $foto_file = $request->file('file');
+                $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+                $foto_file->move(public_path('foto'), $foto_nama);
+                $update_data = $tberita->where('id_berita', $request->input('id_berita'))->first();
+                File::delete(public_path('foto').'/'.$update_data->file);
+                $data['file'] = $foto_nama;
+            }
+            tberita::where('id_berita', $request->input('id_berita'))->update($data);
+            return redirect('/berita')->with('success', 'berita Berhasil di Update');
+        }else 
+        {
+            return back()->with('error','Data berita gagal di update');
+        }   
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tberita $tberita)
+    public function destroy($id, Request $request, tberita $tberita)
     {
-        //
+        $id_berita = $request->input('id_berita');
+        $data = tberita::find($id_berita);
+
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
+        }
+
+        $filePath = public_path('foto') . '/' . $data->file;
+
+            $data->delete();
+            return response()->json(['success' => true]);
     }
 }

@@ -7,9 +7,9 @@
           <div class="container" style="margin-top: 3rem;">
             <!-- text judul   -->
             <!-- form tambah -->
-        <form action="simpan" method="post">
+        <form action="simpan" method="post" enctype="multipart/form-data">
           <div class="text-center">
-            <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Tambah</b></h1>
+            <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Edit</b></h1>
             <br>
           </div>
           <!-- end text judul -->
@@ -26,7 +26,8 @@
             </div> -->
             <div class="row">
                 <!-- foreign key -->
-                <div class="col"> 
+                <div class="col">
+                <input type="hidden" class="form-control" name="id_berita" value="{{$tberita->id_berita}}"/> 
                   <label style="color: #fff;">Jenis_berita</label>
                   <select name="id_jenis_berita" required class="form-control">
                         @foreach($tjenis_berita as $u)
@@ -42,17 +43,17 @@
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Tanggal Post</label>
-                  <input type="date" class="form-control" name="tgl_post" aria-label="First name" value="{{$tberita->tgl_post}}>
+                  <input type="date" class="form-control" name="tgl_post" aria-label="First name" value="{{$tberita->tgl_post}}">
                 </div>
                 <div class="col"> 
                     <label style="color: #fff;">Kode Berita</label>
-                    <input type="text" class="form-control" name="kode_berita" aria-label="First name" value="{{$tberita->kode_berita}}>
+                    <input type="text" class="form-control" name="kode_berita" aria-label="First name" value="{{$tberita->kode_berita}}">
                   </div>
               </div>
               <div class="row">
                 <div class="col"> 
                   <label style="color: #fff;">Keterangan Berita</label>
-                  <input type="text" class="form-control" name="ket_berita" aria-label="First name" value="{{$tberita->ket_berita}}>
+                  <input type="text" class="form-control" name="ket_berita" aria-label="First name" value="{{$tberita->ket_berita}}">
                 </div>
                 <div class="col"> 
                   <!-- <label style="color: #fff;">Gambar Berita</label> -->
