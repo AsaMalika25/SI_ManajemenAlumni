@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\takun;
 use App\Models\talumni;
 use App\Models\tangkatan;
-use App\Models\tjurusan;
 use App\Models\tkelas;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +18,8 @@ class TalumniController extends Controller
      */
     public function index(talumni $talumni)
     {
-        $data =[
+        // untuk mengambil data join 
+        $data =[ 
               
             'alumni' => DB::table('talumni')
             ->orderBy('id_alumni','desc')
@@ -41,7 +41,7 @@ class TalumniController extends Controller
             ->get()
         ];
 
-        // dd($data);
+        
         
         return view('data_alumni.index',$data);
     }
@@ -55,12 +55,13 @@ class TalumniController extends Controller
         $akun = $takun->all();
         $kelas = $tkelas->all();
 
-        return view('data_alumni.tambah', [
+        return view('data_alumni.tambah', [                       
             'angkatan' => $angkatan,
             'kelas' => $kelas,
             'akun' => $akun,
             
         ]);
+        // untuk mengambil data foregin key
     }
 
     /**
@@ -68,6 +69,7 @@ class TalumniController extends Controller
      */
     public function store(Request $request, talumni $talumni)
     {
+        // mengambil data validasi
         $data = $request->validate([
             'nama' => ['required'],
             'email' => ['required'],
@@ -113,7 +115,7 @@ class TalumniController extends Controller
         $angkatan = $tangkatan->all();
         $akun = $takun->all();
         $kelas = $tkelas->all();
-
+        // mengambil data foregin untuk edit
         return view('data_alumni.edit', [
             'alumni' => $alumni,
             'angkatan' => $angkatan,
@@ -129,7 +131,7 @@ class TalumniController extends Controller
     public function update(Request $request, talumni $talumni)
     {
         $id_alumni = $request->input('id_alumni');
-
+        // mengambil data validasi
         $data = $request->validate([
             'nama' => ['required'],
             'email' => ['required'],

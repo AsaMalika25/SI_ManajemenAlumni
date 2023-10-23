@@ -20,7 +20,7 @@
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table">
+                      <table class="table Datatable">
                         <!-- head tabel -->
                         <thead>
                           <tr>
@@ -28,7 +28,8 @@
                             <th class="font-table" scope="col">Nama</th>
                             <th class="font-table" scope="col">Angkatan</th>
                             <th class="font-table" scope="col">SosMed</th>
-                            <th class="font-table" scope="col">Jurusan</th>
+                            <th class="font-table" scope="col">kelas</th>
+                            <th class="font-table" scope="col">Ijazah</th>
                             <th class="font-table" scope="col" colspan="2">Aksi</th>
                           </tr>
                         </thead>
@@ -36,14 +37,28 @@
           
                         <!-- body tabel -->
                         <tbody>
-                          <tr></tr>
+                          <?php $i = 1 ?>
+                          @foreach ($alumni as $item)
                           <tr>
-                            <th scope="row"></th>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td><a href="">klik untuk lihat pesan</a></td>
+                            <td>{{$i++}}</td>
+                            <td>{{$item->nama}}</td>
+                            @foreach ($angkatan as $item)
+                                  <td>{{$item->no_angkatan}}</td>    
+                            @endforeach
+                            <td>{{$item->sosmed}}</td>
+                            @foreach ($kelas as $item)
+                                  <td>{{$item->nama_kelas}}</td>    
+                            @endforeach
+                            <td>
+                              @if ($item->ijazah)
+                                  <img src="{{ url('foto') . '/' . $item->ijazah }} "
+                                      style="max-width: 50px; height: auto;" />
+                              @endif
+                          </td>
+                          <td>
+                            <a href="{{url('alumni/edit/'. $item->id_alumni)}}" class="btn btn-success">Edit</a>
+                            <btn class="btn btn-danger btnHapus" idAlumni="{{$item->id_alumni}}">HAPUS
+                          </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                             <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                           </tr>
@@ -62,7 +77,7 @@
                   </svg>
                 CETAK
                 </a>
-                <a class="btn btn-primary" href="#" role="button">
+                <a class="btn btn-primary" href="{{url('alumni/tambah')}}" role="button">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                   </svg>
@@ -76,14 +91,16 @@
                 <div class="card-body">  
       
                   <!-- tabel -->
-                  <table class="table">
+                  <table class="table Datatable">
                     <!-- head tabel -->
                     <thead>
                       <tr>
+                      <th class="font-table" scope="col">No</th>
                         <th class="font-table" scope="col">Nama</th>
                         <th class="font-table" scope="col">Angkatan</th>
                         <th class="font-table" scope="col">SosMed</th>
-                        <th class="font-table" scope="col">jurusan</th>
+                        <th class="font-table" scope="col">kelas</th>
+                        <th class="font-table" scope="col">Ijazah</th>
                         <th class="font-table" scope="col" colspan="2">Aksi</th>
                       </tr>
                     </thead>
@@ -91,22 +108,32 @@
       
                     <!-- body tabel -->
                     <tbody>
-                      <tr></tr>
+                      <?php $i = 1 ?>
+                      @foreach ($alumni as $item)
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$i++}}</td>
+                        <td>{{$item->nama}}</td>
+                        @foreach ($angkatan as $item)
+                              <td>{{$item->no_angkatan}}</td>    
+                        @endforeach
+                        <td>{{$item->sosmed}}</td>
+                        @foreach ($kelas as $item)
+                              <td>{{$item->nama_kelas}}</td>    
+                        @endforeach
                         <td>
-                          <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                          <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
-                          <a href="{{url('alumni/tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
-                        </td>
+                          @if ($item->ijazah)
+                              <img src="{{ url('foto') . '/' . $item->ijazah }} "
+                                  style="max-width: 50px; height: auto;" />
+                          @endif
+                      </td>
+                      <td>
+                        <a href="{{url('alumni/edit/'. $item->id_alumni)}}" class="btn btn-success">Edit</a>
+                        <btn class="btn btn-danger btnHapus" idAlumni="{{$item->id_alumni}}">HAPUS
+                      </td>
                         <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                         <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                       </tr>
+                      @endforeach
                     </tbody>
                     <!-- end body tabel -->
                   </table>
@@ -121,7 +148,7 @@
                   </svg>
                 CETAK
                 </a>
-                <a class="btn btn-primary" href="#" role="button">
+                <a class="btn btn-primary" href="{{url('alumni/tambah')}}" role="button">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                   </svg>
@@ -135,15 +162,16 @@
                 <div class="card-body">  
       
                   <!-- tabel -->
-                  <table class="table">
+                  <table class="table Datatable">
                     <!-- head tabel -->
                     <thead>
                       <tr>
-                        <th class="font-table" scope="col">No</th>
+                      <th class="font-table" scope="col">No</th>
                         <th class="font-table" scope="col">Nama</th>
                         <th class="font-table" scope="col">Angkatan</th>
                         <th class="font-table" scope="col">SosMed</th>
-                        <th class="font-table" scope="col">jurusan</th>
+                        <th class="font-table" scope="col">kelas</th>
+                        <th class="font-table" scope="col">Ijazah</th>
                         <th class="font-table" scope="col" colspan="2">Aksi</th>
                       </tr>
                     </thead>
@@ -151,22 +179,32 @@
       
                     <!-- body tabel -->
                     <tbody>
-                      <tr></tr>
+                      <?php $i = 1 ?>
+                      @foreach ($alumni as $item)
                       <tr>
-                        <th scope="row"></th>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{$i++}}</td>
+                        <td>{{$item->nama}}</td>
+                        @foreach ($angkatan as $item)
+                              <td>{{$item->no_angkatan}}</td>    
+                        @endforeach
+                        <td>{{$item->sosmed}}</td>
+                        @foreach ($kelas as $item)
+                              <td>{{$item->nama_kelas}}</td>    
+                        @endforeach
                         <td>
-                          <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                          <a href=""><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></a>
-                          <a href="{{url('tambah')}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
-                        </td>
+                          @if ($item->ijazah)
+                              <img src="{{ url('foto') . '/' . $item->ijazah }} "
+                                  style="max-width: 50px; height: auto;" />
+                          @endif
+                      </td>
+                      <td>
+                        <a href="{{url('alumni/edit/'. $item->id_alumni)}}" class="btn btn-success">Edit</a>
+                        <btn class="btn btn-danger btnHapus" idAlumni="{{$item->id_alumni}}">HAPUS
+                      </td>
                         <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                         <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                       </tr>
+                      @endforeach
                     </tbody>
                     <!-- end body tabel -->
                   </table>
@@ -181,7 +219,7 @@
                   </svg>
                 CETAK
                 </a>
-                <a class="btn btn-primary" href="#" role="button">
+                <a class="btn btn-primary" href="{{url('alumni/tambah')}}" role="button">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                   </svg>
@@ -192,5 +230,43 @@
             </div>
           </div>
         <!-- end konten utama -->
-      </div> 
+      </div>
+      <script type="module">
+        $('.Datatable tbody').on('click', '.btnHapus', function(a) {
+            a.preventDefault();
+            let idAlumni = $(this).closest('.btnHapus').attr('idAlumni');
+            swal.fire({
+                title: "Apakah anda ingin menghapus data ini?",
+                showCancelButton: true,
+                confirmButtonText: 'Setuju',
+                cancelButtonText: `Batal`,
+                confirmButtonColor: 'red'
+    
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //Ajax Delete
+                    $.ajax({
+                        type: 'post',
+                        url: 'alumni/hapus',
+                        data: {
+                            id_alumni: idAlumni,
+                            _token: "{{ csrf_token() }}"
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                swal.fire('Berhasil di hapus!', '', 'success').then(function() {
+                                    //Refresh Halaman
+                                    location.reload();
+                                });
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    
+        $(document).ready(function() {
+                $('.Datatable').DataTable();
+            });
+    </script> 
 @endsection

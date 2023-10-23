@@ -14,7 +14,7 @@ class tberita extends Model
     protected $fillable= ['id_jenis_berita','judul_berita','tgl_post','kode_berita','ket_berita','file'] ;
 
     protected $primaryKey= 'id_berita';
-    public $timestamps= false ;
+    public $timestamps= false;
 
     public function jenis_berita(){
         return $this->belongsTo(jenis_berita::class);

@@ -63,7 +63,7 @@ Route::get('wirausaha/edit/{id}', [TwirausahaController::class, 'edit']);
 Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'store']);
 Route::post('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
 
-Route::get('angkatan', [TangkatanController::class, 'index']);
+    Route::get('angkatan', [TangkatanController::class, 'index']);
     Route::get('angkatan/tambah', [TangkatanController::class, 'create']);
     Route::post('angkatan/simpan', [TangkatanController::class, 'store']);
     Route::post('angkatan/hapus', [TangkatanController::class, 'destroy']);
