@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -11,6 +12,9 @@
     <link href="{{asset('css/styleside.css')}}" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" href="{!! ('public/css/styleside.css') !!}"> -->
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7/dist/sweetalert2.min.css" rel="stylesheet">
+
     <style>
         body{
             background-color: #688EF2;
@@ -39,21 +43,25 @@
                 <span class="nav-text">Dashboard</span>
                 </a>
             </li> 
-            
+            @if (Auth::user()->role == 'superadmin' && Auth::user()->role == 'kaprog')
                 <li>                                 
                     <a href="">
                     <i class="fa fa-align-left fa-lg"></i>
                     <span class="nav-text">Kelola Alumni</span>
                     </a>
                 </li> 
+            @endif
                 
-           
+                
+           @if (Auth::user()->role == 'superadmin')
             <li>                                 
                 <a href="">
                 <i class="fa fa-user fa-lg"></i>
                 <span class="nav-text">Kelola Akun</span>
                 </a>
             </li>   
+           @endif
+               
             <!-- <ul class="logout"> -->
             <li>
                 <a href="">
@@ -73,5 +81,8 @@
         </nav>
         @yield('content')
 
+
+
 </body>
+
 </html>

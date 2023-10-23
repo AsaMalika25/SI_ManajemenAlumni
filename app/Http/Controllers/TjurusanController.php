@@ -10,9 +10,12 @@ class TjurusanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(tjurusan $tjurusan)
     {
-        //
+        $data = [
+            'jurusan' => tjurusan::all(),
+        ];
+        return view("jurusan.index",$data);
     }
 
     /**
@@ -20,15 +23,28 @@ class TjurusanController extends Controller
      */
     public function create()
     {
-        //
+        return view ("jurusan.tambah");
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, tjurusan $tjurusan)
     {
-        //
+        $data = $request->validate([
+            'nama_jurusan'=> ['required'],
+        ]);
+
+        if ($data) {
+            
+            $tjurusan->create($data);
+
+            return redirect()->to('jurusan')->with('success','you have create data jurusan');
+
+        }else {
+
+            return redirect()->back();
+        }
     }
 
     /**

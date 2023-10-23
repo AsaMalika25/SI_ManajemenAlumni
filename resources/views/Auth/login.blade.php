@@ -19,6 +19,7 @@
 </head>
 <body>
     <div class="container d-flex justify-content-center" style="margin-top: 3.5%; margin-bottom: 10px; vertical-align: middle;">
+       
         <div class="card" style="width: 25rem;">
             <div class="card-body" style="align-items: center;">
                
@@ -35,11 +36,11 @@
                                 </span>
                                 <div class="form-group"><br>
                                     <label>Username</label>
-                                    <input type="text" class="form-control" style="width: 250px;" name="username" />
+                                    <input type="text" class="form-control @error('username') is-invalid @enderror" style="width: 250px;" name="username" />
                                 </div>
                                 <div class="form-group"><br>
                                     <label>Password</label>
-                                    <input type="password" class="form-control" style="width: 250px;" name="password" />
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" style="width: 250px;" name="password" />
                                     </div>
                                 <!-- <div class="form-group mt-2"><br> -->
                                     <!-- <label>Role</label>
@@ -56,6 +57,12 @@
                             <div class="col-md-4" style="margin-left: 9rem;">
                                 <button type="submit" class="btn btn-success">LOGIN</button>
                             </div>
+                            <div class="row">
+                                <div class="col-md-4" style="margin-left: 9rem;">
+                                    <a href="{{url('register')}}">You have any account ?</a>
+                                </div>
+                            </div>
+                            
                             <p>
                         </div>
                         </form>

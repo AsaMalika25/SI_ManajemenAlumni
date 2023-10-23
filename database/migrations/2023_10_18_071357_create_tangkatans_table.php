@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('tangkatan', function (Blueprint $table) {
             $table->integer('id_angkatan',true);
             $table->integer('no_angkatan',false)->nullable(false);
-            $table->year('tahun_masuk')->nullable(false);
-            $table->year('tahun_keluar')->nullable(false);
+            $table->date('tahun_masuk')->nullable(false);
+            $table->date('tahun_keluar')->nullable(false);
             $table->timestamps();
         });
     }

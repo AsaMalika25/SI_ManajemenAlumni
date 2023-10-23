@@ -9,8 +9,18 @@ class tangkatan extends Model
 {
     use HasFactory;
     protected $table= 'tangkatan' ;
-    protected $fillable= ['id_angkatan','no_angkatan','tahun_masuk','tahun_keluar'] ;
+    protected $fillable= ['no_angkatan','tahun_masuk','tahun_keluar'] ;
 
-    protected $primaryKey= 'id_alumni';
+    protected $primaryKey= 'id_angkatan';
     public $timestamps= false ;
+
+
+    public function angkatan(){
+        
+        return $this->hasMany(talumni::class, 'id_angkatan');
+    }
+    public function kelasangkatan(){
+        
+        return $this->hasMany(tkelas::class, 'id_angkatan');
+    }
 }
