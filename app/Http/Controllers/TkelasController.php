@@ -16,6 +16,9 @@ class TkelasController extends Controller
      */
     public function index(tkelas $tkelas)
     {
+
+        $totalKelas = DB::select('SELECT CountNamaKelas() AS totalKelas')[0]->totalKelas;
+
         $data =[
               
             'kelas' => DB::table('tkelas')
@@ -30,7 +33,9 @@ class TkelasController extends Controller
             'angkatan' => DB::table('tkelas')
             ->join('tangkatan', 'tkelas.id_kelas', '=', 'tangkatan.id_angkatan')
             // ->select('tkelas.*', 'tangkatan.no_angkatan')
-            ->get()
+            ->get(),
+
+            'jumlahKelas' => $totalKelas
         ];
 
         // dd($data);
@@ -89,17 +94,40 @@ class TkelasController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(tkelas $tkelas)
+    public function edit(tangkatan $tangkatan, tjurusan $tjurusan, $id)
     {
-        //
+        $kelas = tkelas::where('id_kelas',$id)->first();
+        $angkatan = $tangkatan->all();
+        $jurusan = $tjurusan->all();
+
+        return view('kelas.edit', [
+            'jurusan' => $jurusan,
+            'angkatan' => $angkatan,
+            'kelas' => $kelas,
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, tkelas $tkelas)
+    public function update(Request $request, $id)
     {
-        //
+        
+        $data = $request->validate([
+            'nama_kelas' => ['required'],
+            'id_jurusan' => ['required'],
+            'id_angkatan' => ['required'],
+        ]);
+
+        if ($data) {
+            
+            tkelas::where('id_kelas',$id)->update($data);
+
+            return redirect()->to('kelas')->with('success','your update data');
+            
+        }else {
+            return redirect()->back();
+        }
     }
 
     /**

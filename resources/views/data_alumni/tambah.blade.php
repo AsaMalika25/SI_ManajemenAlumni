@@ -2,7 +2,47 @@
 @section('content')
 <!-- konten utama -->
 <!-- div one page -->
+<style>
+    .input-with-icon {
+        background-image: url('/img/user.png');
+        background-size: 20px 20px;
+        background-position: 10px center;
+        background-repeat: no-repeat;
+        padding-left: 40px;
+    }
 
+    .surat{
+        background-image: url('/img/surat.png');
+        background-size: 20px 20px;
+        background-position: 10px center;
+        background-repeat: no-repeat;
+        padding-left: 40px;
+    }
+
+    .sosial{
+        background-image: url('/img/bumi.png');
+        background-size: 20px 20px;
+        background-position: 10px center;
+        background-repeat: no-repeat;
+        padding-left: 40px;
+    }
+
+    .user{
+        background-image: url('/img/user2.png');
+        background-size: 20px 20px;
+        background-position: 10px center;
+        background-repeat: no-repeat;
+        padding-left: 40px;
+    }
+
+    .telp{
+        background-image: url('/img/telepon.png');
+        background-size: 20px 20px;
+        background-position: 10px center;
+        background-repeat: no-repeat;
+        padding-left: 40px;
+    }
+</style>
 <!-- form tambah -->
 <div class="container" style="margin-top: 3rem;">
     <!-- text judul   -->
@@ -22,11 +62,11 @@
         <div class="row">
             <div class="col">
                 <label style="color: #fff;">Nama lengkap</label>
-                <input type="text" class="form-control" placeholder="" aria-label="First name" name="nama">
+                <input type="text" class="form-control input-with-icon" placeholder="" aria-label="First name" name="nama">
             </div>
             <div class="col">
                 <label style="color: #fff;">Email</label>
-                <input type="text" class="form-control" aria-label="First name" name="email">
+                <input type="text" class="form-control surat" aria-label="First name" name="email">
             </div>
         </div>
         <div class="row">
@@ -36,7 +76,7 @@
             </div>
             <div class="col">
                 <label style="color: #fff;">Sosial Media</label>
-                <input type="text" class="form-control" aria-label="First name" name="sosmed">
+                <input type="text" class="form-control sosial" aria-label="First name" name="sosmed">
             </div>
 
         </div>
@@ -44,7 +84,7 @@
 
             <div class="col">
                 <label style="color: #fff;">Angkatan</label>
-                <select name="id_angkatan" class="form-control">
+                <select name="id_angkatan" class="form-control user">
                     @foreach($angkatan as $ang)
                         <option value="{{ $ang->id_angkatan }}">{{ $ang->no_angkatan }}
                         </option>
@@ -54,7 +94,7 @@
 
             <div class="col">
                 <label style="color: #fff;">ALAMAT</label>
-                <input type="text" class="form-control" aria-label="First name" name="alamat">
+                <textarea name="alamat" id="" class="form-control"></textarea>
             </div>
 
         </div>
@@ -62,7 +102,7 @@
 
             <div class="col">
                 <label style="color: #fff;">User</label>
-                <select name="id_akun" class="form-control">
+                <select name="id_akun" class="form-control input-with-icon">
                     @foreach($akun as $ak)
                         <option value="{{ $ak->id_akun }}">{{ $ak->username }}</option>
                     @endforeach
@@ -71,21 +111,21 @@
 
             <div class="col">
                 <label style="color: #fff;">Nomor Telp</label>
-                <input type="text" class="form-control" aria-label="First name" name="no_telp">
+                <input type="text" class="form-control telp" aria-label="First name" name="no_telp">
             </div>
         </div>
 
         <div class="row">
             <div class="col">
                 <label style="color: #fff;">Jenis Kelamin</label>
-                <select name="jenkel" id="" class="form-control">
+                <select name="jenkel" id="" class="form-control user">
                     <option value="Laki-laki" name="jenkel">Laki-laki</option>
                     <option value="Perempuan" name="jenkel">Perempuan</option>
                 </select>
             </div>
             <div class="col">
                 <label style="color: #fff;">Kelas</label>
-                <select name="id_kelas" class="form-control">
+                <select name="id_kelas" class="form-control sosial">
                     @foreach($kelas as $kel)
                         <option value="{{ $kel->id_kelas }}">{{ $kel->nama_kelas }}
                         </option>

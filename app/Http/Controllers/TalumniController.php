@@ -20,30 +20,17 @@ class TalumniController extends Controller
     public function index(talumni $talumni)
     {
         // untuk mengambil data join 
+        $total_alumni = DB::select('SELECT CountNamaAlumni() AS totalalumni')[0]->totalalumni;
+
         $data =[ 
               
-            'alumni' => DB::table('talumni')
-            ->orderBy('id_alumni','desc')
-            ->get(),
+            'alumni' => DB::table('views_alumni')->orderBy('id_alumni', 'desc')->get(),
 
-            'kelas' => DB::table('talumni')
-            ->join('tkelas', 'talumni.id_alumni', '=', 'tkelas.id_kelas')
-            // ->select('tkelas.*', 'tjurusan.nama_jurusan')
-            ->get(),
-
-            'angkatan' => DB::table('talumni')
-            ->join('tangkatan', 'talumni.id_alumni', '=', 'tangkatan.id_angkatan')
-            // ->select('tkelas.*', 'tangkatan.no_angkatan')
-            ->get(),
-
-            'akun' => DB::table('talumni')
-            ->join('takun', 'talumni.id_alumni', '=', 'takun.id_akun')
-            // ->select('tkelas.*', 'tangkatan.no_angkatan')
-            ->get()
+            'jumlah_alumni' => $total_alumni,
         ];
 
-        
-        
+        // dd($data);
+
         return view('data_alumni.index',$data);
     }
 
@@ -101,9 +88,12 @@ class TalumniController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(talumni $talumni)
+    public function show(talumni $talumni, $id)
     {
-        //
+        $data = [
+            'alumni' => DB::table('views_alumni')->where('id_alumni', $id)->first(),
+        ];
+        return view('data_alumni.detail',$data);
     }
 
     /**
