@@ -83,7 +83,7 @@
           <!-- text judul   -->
           
           <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4 font-nav">Form Tambah Angkatan</h1>
+            <h1 class="h4 text-gray-900 mb-4 font-nav">Form Tambah Jurusan</h1>
             <br>
           </div>
           <!-- end text judul -->

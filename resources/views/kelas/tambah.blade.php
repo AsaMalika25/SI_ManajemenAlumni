@@ -83,13 +83,13 @@
           <!-- text judul   -->
           
           <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4 font-nav">Form Tambah Angkatan</h1>
+            <h1 class="h4 text-gray-900 mb-4 font-nav">Form Tambah kelas</h1>
             <br>
           </div>
           <!-- end text judul -->
     
           <!-- form tambah -->
-          <form action="{{url('kelas/simpan')}}" method="post">
+          <form action="/kelas/simpan" method="post">
             @csrf
             <div class="mb-3" >
               <label for="inputNama" class="form-label font-form">Nama kelas</label>

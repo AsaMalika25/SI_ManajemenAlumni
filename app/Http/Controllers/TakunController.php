@@ -102,7 +102,7 @@ class TakunController extends Controller
         //     'email' => $request->email,
         //     'password' => $request->password
         // ];
-        return redirect('/')->with('success', $request->username . 'Berhasil register');
+        return redirect('login')->with('success', $request->username . 'Berhasil register');
     }
 
     /**
