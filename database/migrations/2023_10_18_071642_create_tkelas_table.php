@@ -15,7 +15,7 @@ return new class extends Migration
             $table->integer('id_kelas',true);
             $table->integer('id_jurusan',false)->nullable(false);
             $table->integer('id_angkatan',false)->nullable(false);
-            $table->string('nama_kelas')->nullable(false);
+            $table->string('nama_kelas', 255)->nullable(false);
 
             $table->foreign('id_jurusan')->references('id_jurusan')->on('tjurusan')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_angkatan')->references('id_angkatan')->on('tangkatan')->onDelete('cascade')->onUpdate('cascade');

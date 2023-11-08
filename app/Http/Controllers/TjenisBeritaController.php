@@ -3,17 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\tjenis_berita;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TjenisBeritaController extends Controller
-{
+{   
     /**
      * Display a listing of the resource.
      */
-    public function index(tjenis_berita $jenis)
+    public function index(tjenis_berita $jenis )
     {
+        //pemanggilan store function
+        $totalJenisBerita = DB::select('SELECT jenisBerita() AS totalJenisBerita')[0]->totalJenisBerita;
         $data = [
-            'jenis_berita' => $jenis->all()
+            'jenis_berita'=> $jenis->all(),
+            'jumlahJenisBerita'=>$totalJenisBerita
         ];
         return view('jenis_berita.index', $data);
     }
@@ -37,12 +42,12 @@ class TjenisBeritaController extends Controller
                 'jenis_berita' => ['required'],
             ]
         );
-        if($data):
-        //Simpan jika data terisi semua
-            $jenis_berita->create($data);
+        if(DB::statement("CALL CreateJenisBerita(?)", [$data['jenis_berita']])):
+        // Simpan jika data terisi semua
+    //    $jenis_berita->create($data);
             return redirect('/jenis_berita')->with('succes','data jenis berita berhasil ditambah');
         else:
-        //Kembali ke form tambah data
+        // Kembali ke form tambah data
             return back()->with('error','Data jenis berita gagal ditambahkan');
         endif;
 

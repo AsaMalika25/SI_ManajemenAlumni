@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogsBeritaController;
 use App\Http\Controllers\LogsWirausahaController;
 use App\Http\Controllers\TakunController;
 use App\Http\Controllers\TalumniController;
@@ -39,6 +40,7 @@ Route::post('alumni/simpan', [TalumniController::class, 'store']);
 Route::get('alumni/edit/{id}', [TalumniController::class, 'edit']);
 Route::post('alumni/update/{id}', [TalumniController::class, 'update']);
 Route::post('alumni/hapus', [TalumniController::class, 'destroy']);
+Route::get('alumni/detail/{id}', [TalumniController::class, 'show']);
 
 Route::get('jenis_berita', [TjenisBeritaController::class, 'index']);
 Route::get('jenis_berita/tambah', [TjenisBeritaController::class, 'create']);
@@ -47,6 +49,7 @@ Route::get('jenis_berita/edit/{id}', [TjenisBeritaController::class, 'edit']);
 Route::post('jenis_berita/edit/simpan', [TjenisBeritaController::class, 'update']);
 Route::delete('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy']);
 Route::get('log_jenis_berita', [LogsJenisBeritaController::class, 'index']);
+Route::get('log_berita', [LogsBeritaController::class, 'index']);
 
 
 
@@ -98,8 +101,8 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::get('kelas/tambah', [TkelasController::class, 'create']);
     Route::post('kelas/simpan', [TkelasController::class, 'store']);
     Route::post('kelas/hapus', [TkelasController::class, 'destroy']);
-    Route::get('kelas/edit/{id}', [TjurusanController::class, 'edit']);
-    Route::post('kelas/update/{id}', [TjurusanController::class, 'update']);
+    Route::get('kelas/edit/{id}', [TkelasController::class, 'edit']);
+    Route::post('kelas/update/{id}', [TkelasController::class, 'update']);
 });
 
 

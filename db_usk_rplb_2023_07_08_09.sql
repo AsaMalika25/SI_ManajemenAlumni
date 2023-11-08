@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2023 at 03:52 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 22 Okt 2023 pada 17.51
+-- Versi server: 10.4.25-MariaDB
+-- Versi PHP: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,60 +24,67 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Struktur dari tabel `failed_jobs`
 --
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logs`
+-- Struktur dari tabel `logs_jenis_berita`
 --
 
-CREATE TABLE `logs` (
-  `id_log` int(11) NOT NULL,
-  `logs` text NOT NULL,
+CREATE TABLE `logs_jenis_berita` (
+  `id_logs` int(11) NOT NULL,
+  `log` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `logs`
+-- Dumping data untuk tabel `logs_jenis_berita`
 --
 
-INSERT INTO `logs` (`id_log`, `logs`, `created_at`, `updated_at`) VALUES
-(1, 'MalikaAbdi: Melakukan Penambahan Surat Dengan Nomor 1', NULL, NULL),
-(2, 'MalikaAbdi: Melakukan Penambahan Surat Dengan Nomor 2', NULL, NULL),
-(3, 'MalikaAbdia: Melakukan Penambahan Surat Dengan Nomor 3', NULL, NULL),
-(4, 'MalikaAbdi: Melakukan Penambahan Surat Dengan Nomor 1', NULL, NULL),
-(5, 'MalikaAbdi: Melakukan Penambahan Surat Dengan Nomor 2', NULL, NULL),
-(6, 'MalikaAbdi: Melakukan Penambahan Surat Dengan Nomor 3', NULL, NULL),
-(7, 'Indomarco cabang banjar: Melakukan Penambahan Surat Dengan Nomor 4', NULL, NULL),
-(8, 'MalikaAbdi: Melakukan Penambahan Surat Dengan Nomor 5', NULL, NULL);
+INSERT INTO `logs_jenis_berita` (`id_logs`, `log`, `created_at`, `updated_at`) VALUES
+(1, 'jenis_berita lowongan telah ditambahkan pada 2023-10-21 22:47:07', NULL, NULL),
+(2, 'jenis_berita dispen34 telah ditambahkan pada 2023-10-22 10:09:21', NULL, NULL),
+(3, 'jenis_berita dispen34 telah diperbarui menjadi jenis_berita  Haiii pada 2023-10-22 10:09:37', NULL, NULL),
+(4, 'jenis_berita Haiii telah dihapus pada 2023-10-22 10:10:01', NULL, NULL),
+(5, 'jenis_berita dispen telah ditambahkan pada 2023-10-22 10:12:10', NULL, NULL),
+(6, 'jenis_berita dispen telah dihapus pada 2023-10-22 14:22:25', NULL, NULL),
+(7, 'jenis_berita halo telah ditambahkan pada 2023-10-22 14:22:54', NULL, NULL),
+(8, 'jenis_berita halo telah dihapus pada 2023-10-22 14:23:11', NULL, NULL),
+(9, 'jenis_berita dispen34 telah ditambahkan pada 2023-10-22 14:44:23', NULL, NULL),
+(10, 'jenis_berita dispen34 telah dihapus pada 2023-10-22 14:44:28', NULL, NULL),
+(11, 'jenis_berita Lowongan Pekerjaan PT. XZ telah ditambahkan pada 2023-10-22 15:21:05', NULL, NULL),
+(12, 'jenis_berita lowongan telah diperbarui menjadi jenis_berita  Lowongan Magang PT. YY pada 2023-10-22 15:21:32', NULL, NULL),
+(13, 'jenis_berita Lowongan Pekerjaan PT. XZ telah dihapus pada 2023-10-22 16:20:44', NULL, NULL),
+(14, 'jenis_berita Lowogan Magang PT. XX telah ditambahkan pada 2023-10-22 16:55:47', NULL, NULL),
+(15, 'jenis_berita Lowogan Magang PT. XX telah dihapus pada 2023-10-22 16:55:53', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Struktur dari tabel `migrations`
 --
 
 CREATE TABLE `migrations` (
   `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Dumping data untuk tabel `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -97,34 +104,33 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (14, '2023_10_18_071916_create_tkerjas_table', 1),
 (15, '2023_10_19_023730_create_tsuperadmin_table', 1),
 (16, '2023_10_19_023753_create_tberitas_table', 1),
-(17, '2023_10_22_002249_create_trigger_alumni', 1),
-(18, '2023_10_22_003216_create_logs', 1);
+(17, '2023_10_21_152154_create_logs_jenis_beritas_table', 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_reset_tokens`
+-- Struktur dari tabel `password_reset_tokens`
 --
 
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `personal_access_tokens`
+-- Struktur dari tabel `personal_access_tokens`
 --
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
+  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -134,153 +140,150 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `takun`
+-- Struktur dari tabel `takun`
 --
 
 CREATE TABLE `takun` (
   `id_akun` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` text NOT NULL,
-  `role` enum('superadmin','alumni','kaprog') NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `role` enum('superadmin','alumni','kaprog') COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `takun`
+-- Dumping data untuk tabel `takun`
 --
 
 INSERT INTO `takun` (`id_akun`, `username`, `password`, `role`, `created_at`, `updated_at`) VALUES
-(1, 'superadmin', '$2y$10$lCd/.cNP9Wd.Dx3zzKMbq.9WHA9ZvpLH7iwQpCxy7CeuG.D/O6jsO', 'superadmin', NULL, NULL),
-(2, 'alumni', '$2y$10$k0YK.E3sFRBDjusiJ3CuiuqT1PJ93gK6aHR//3g0U88I0KM0vd45G', 'alumni', NULL, NULL),
-(3, 'kaprog', '$2y$10$KNvomBXnCVvphNyhwcfa4e03JlFS6wpHdb.ZziJt7q29ydlHMoGBS', 'kaprog', NULL, NULL);
+(1, 'superadmin', '$2y$10$gYrwunpcD0VKMv1x8i8G7ef0GC/stfx/jhAa3ZUoFWi1HjP420TYS', 'superadmin', NULL, NULL),
+(2, 'alumni', '$2y$10$efIKFIqvJiJyZaXdzzId9uwBhTym4IfR6LUITQpfUeEvMRGRacReq', 'alumni', NULL, NULL),
+(3, 'kaprog', '$2y$10$FRBqe8OgzwMLd2tTjm/OpOTHDGF2cwgoMECVBp7wxlvBin.amQ5dK', 'kaprog', NULL, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `talumni`
+-- Struktur dari tabel `talumni`
 --
 
 CREATE TABLE `talumni` (
   `id_alumni` int(11) NOT NULL,
   `id_akun` int(11) NOT NULL,
   `id_kelas` int(11) NOT NULL,
-  `id_angkatan` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_lahir` date NOT NULL,
-  `alamat` text NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `alamat` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `no_telp` int(11) NOT NULL,
-  `sosmed` text NOT NULL,
-  `ijazah` text NOT NULL,
-  `jenkel` enum('Laki-laki','Perempuan') NOT NULL,
+  `sosmed` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ijazah` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jenkel` enum('L','P') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tangkatan`
+--
+
+CREATE TABLE `tangkatan` (
+  `id_angkatan` int(11) NOT NULL,
+  `no_angkatan` int(11) NOT NULL,
+  `tahun_masuk` year(4) NOT NULL,
+  `tahun_keluar` year(4) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tberita`
+--
+
+CREATE TABLE `tberita` (
+  `id_berita` int(11) NOT NULL,
+  `id_jenis_berita` int(11) NOT NULL,
+  `file` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `judul_berita` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tgl_post` date NOT NULL,
+  `kode_berita` int(11) NOT NULL,
+  `ket_berita` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Triggers `talumni`
+-- Dumping data untuk tabel `tberita`
+--
+
+INSERT INTO `tberita` (`id_berita`, `id_jenis_berita`, `file`, `judul_berita`, `tgl_post`, `kode_berita`, `ket_berita`, `created_at`, `updated_at`) VALUES
+(1, 1, 'fb6e0129a9f0ff44bc5d0c0869787bbc.png', 'adhinda', '2023-10-05', 90, 'Adhinda Zahra', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tjenis_berita`
+--
+
+CREATE TABLE `tjenis_berita` (
+  `id_jenis_berita` int(11) NOT NULL,
+  `jenis_berita` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data untuk tabel `tjenis_berita`
+--
+
+INSERT INTO `tjenis_berita` (`id_jenis_berita`, `jenis_berita`, `created_at`, `updated_at`) VALUES
+(1, 'Lowongan Magang PT. YY', NULL, NULL);
+
+--
+-- Trigger `tjenis_berita`
 --
 DELIMITER $$
-CREATE TRIGGER `trgAlumniInsert` AFTER INSERT ON `talumni` FOR EACH ROW BEGIN
-        DECLARE alumni_id INT;
-        DECLARE nama_alumniid VARCHAR(200);
-
-        SELECT nama INTO nama_alumniid FROM talumni WHERE id_alumni = NEW.id_alumni;
-        SELECT id_alumni INTO alumni_id FROM talumni WHERE id_alumni = NEW.id_alumni;
-
-        INSERT INTO logs (logs) VALUES (CONCAT(nama_alumniid, ": Melakukan Penambahan Surat Dengan Nomor ", alumni_id));
-    END
+CREATE TRIGGER `edit_jenis_berita` AFTER UPDATE ON `tjenis_berita` FOR EACH ROW BEGIN INSERT INTO logs_jenis_berita(log) VALUES (concat('jenis_berita ', OLD.jenis_berita, ' ', 'telah diperbarui menjadi jenis_berita ', ' ', NEW.jenis_berita, ' ', 'pada', ' ', NOW())); END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `hapus_jenis_berita` AFTER DELETE ON `tjenis_berita` FOR EACH ROW BEGIN INSERT INTO logs_jenis_berita(log) VALUES (concat('jenis_berita ', OLD.jenis_berita, ' ', 'telah dihapus pada', ' ', NOW())); END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `tambah_jenis_berita` AFTER INSERT ON `tjenis_berita` FOR EACH ROW BEGIN INSERT INTO logs_jenis_berita(log) VALUES (concat('jenis_berita ', NEW.jenis_berita, ' ', 'telah ditambahkan pada', ' ', NOW())); END
 $$
 DELIMITER ;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tangkatan`
---
-
-CREATE TABLE `tangkatan` (
-  `id_angkatan` int(11) NOT NULL,
-  `no_angkatan` int(11) NOT NULL,
-  `tahun_masuk` date NOT NULL,
-  `tahun_keluar` date NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `tangkatan`
---
-
-INSERT INTO `tangkatan` (`id_angkatan`, `no_angkatan`, `tahun_masuk`, `tahun_keluar`, `created_at`, `updated_at`) VALUES
-(1, 25, '2023-10-22', '2023-10-24', NULL, NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tberita`
---
-
-CREATE TABLE `tberita` (
-  `id_berita` int(11) NOT NULL,
-  `id_alumni` int(11) NOT NULL,
-  `id_superadmin` int(11) NOT NULL,
-  `id_jenis_berita` int(11) NOT NULL,
-  `gambar` text NOT NULL,
-  `judul_berita` varchar(255) NOT NULL,
-  `tgl_post` date NOT NULL,
-  `kode_berita` int(11) NOT NULL,
-  `ket_berita` text NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tjenis_berita`
---
-
-CREATE TABLE `tjenis_berita` (
-  `id_jenis_berita` int(11) NOT NULL,
-  `jenis_berita` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `tjurusan`
+-- Struktur dari tabel `tjurusan`
 --
 
 CREATE TABLE `tjurusan` (
   `id_jurusan` int(11) NOT NULL,
-  `nama_jurusan` varchar(255) NOT NULL,
+  `nama_jurusan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `tjurusan`
---
-
-INSERT INTO `tjurusan` (`id_jurusan`, `nama_jurusan`, `created_at`, `updated_at`) VALUES
-(1, 'Rekayasa Perangkat Lunak', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tkaprog`
+-- Struktur dari tabel `tkaprog`
 --
 
 CREATE TABLE `tkaprog` (
   `id_kaprog` int(11) NOT NULL,
   `id_akun` int(11) NOT NULL,
   `id_jurusan` int(11) NOT NULL,
-  `nama_kaprog` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `nama_kaprog` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -288,36 +291,29 @@ CREATE TABLE `tkaprog` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tkelas`
+-- Struktur dari tabel `tkelas`
 --
 
 CREATE TABLE `tkelas` (
   `id_kelas` int(11) NOT NULL,
   `id_jurusan` int(11) NOT NULL,
   `id_angkatan` int(11) NOT NULL,
-  `nama_kelas` varchar(255) NOT NULL,
+  `nama_kelas` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `tkelas`
---
-
-INSERT INTO `tkelas` (`id_kelas`, `id_jurusan`, `id_angkatan`, `nama_kelas`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, '12 rpl b', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tkerja`
+-- Struktur dari tabel `tkerja`
 --
 
 CREATE TABLE `tkerja` (
   `id_kerja` int(11) NOT NULL,
   `id_alumni` int(11) NOT NULL,
-  `instasi` text NOT NULL,
-  `jabatan` text NOT NULL,
+  `instasi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jabatan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -325,14 +321,14 @@ CREATE TABLE `tkerja` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tkuliah`
+-- Struktur dari tabel `tkuliah`
 --
 
 CREATE TABLE `tkuliah` (
   `id_kuliah` int(11) NOT NULL,
   `id_alumni` int(11) NOT NULL,
-  `nama_lembaga` text NOT NULL,
-  `jurusan_kuliah` text NOT NULL,
+  `nama_lembaga` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jurusan_kuliah` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -340,16 +336,16 @@ CREATE TABLE `tkuliah` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tsuperadmin`
+-- Struktur dari tabel `tsuperadmin`
 --
 
 CREATE TABLE `tsuperadmin` (
   `id_superadmin` int(11) NOT NULL,
   `id_akun` int(11) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `password` text NOT NULL,
-  `nama` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nama` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -357,14 +353,14 @@ CREATE TABLE `tsuperadmin` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `twirausaha`
+-- Struktur dari tabel `twirausaha`
 --
 
 CREATE TABLE `twirausaha` (
   `id_wirausaha` int(11) NOT NULL,
   `id_alumni` int(11) NOT NULL,
-  `nama_usaha` text NOT NULL,
-  `bidang` text NOT NULL,
+  `nama_usaha` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `bidang` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -372,16 +368,16 @@ CREATE TABLE `twirausaha` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -389,55 +385,55 @@ CREATE TABLE `users` (
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `v_alumni_kelas`
--- (See below for the actual view)
+-- Stand-in struktur untuk tampilan `v_jenis_berita`
+-- (Lihat di bawah untuk tampilan aktual)
 --
-CREATE TABLE `v_alumni_kelas` (
-`id_alumni` int(11)
-,`nama` varchar(255)
-,`nama_kelas` varchar(255)
+CREATE TABLE `v_jenis_berita` (
+`id_berita` int(11)
+,`judul_berita` varchar(255)
+,`jenis_berita` varchar(255)
 );
 
 -- --------------------------------------------------------
 
 --
--- Structure for view `v_alumni_kelas`
+-- Struktur untuk view `v_jenis_berita`
 --
-DROP TABLE IF EXISTS `v_alumni_kelas`;
+DROP TABLE IF EXISTS `v_jenis_berita`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_alumni_kelas`  AS SELECT `talumni`.`id_alumni` AS `id_alumni`, `talumni`.`nama` AS `nama`, `tkelas`.`nama_kelas` AS `nama_kelas` FROM (`talumni` join `tkelas` on(`tkelas`.`id_kelas` = `tkelas`.`id_kelas`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `v_jenis_berita`  AS SELECT `tberita`.`id_berita` AS `id_berita`, `tberita`.`judul_berita` AS `judul_berita`, `tjenis_berita`.`jenis_berita` AS `jenis_berita` FROM (`tberita` join `tjenis_berita` on(`tberita`.`id_berita` = `tjenis_berita`.`id_jenis_berita`))  ;
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `failed_jobs`
+-- Indeks untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `logs`
+-- Indeks untuk tabel `logs_jenis_berita`
 --
-ALTER TABLE `logs`
-  ADD PRIMARY KEY (`id_log`);
+ALTER TABLE `logs_jenis_berita`
+  ADD PRIMARY KEY (`id_logs`);
 
 --
--- Indexes for table `migrations`
+-- Indeks untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `password_reset_tokens`
+-- Indeks untuk tabel `password_reset_tokens`
 --
 ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`email`);
 
 --
--- Indexes for table `personal_access_tokens`
+-- Indeks untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   ADD PRIMARY KEY (`id`),
@@ -445,49 +441,46 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `takun`
+-- Indeks untuk tabel `takun`
 --
 ALTER TABLE `takun`
   ADD PRIMARY KEY (`id_akun`);
 
 --
--- Indexes for table `talumni`
+-- Indeks untuk tabel `talumni`
 --
 ALTER TABLE `talumni`
   ADD PRIMARY KEY (`id_alumni`),
   ADD KEY `talumni_id_akun_foreign` (`id_akun`),
-  ADD KEY `talumni_id_kelas_foreign` (`id_kelas`),
-  ADD KEY `talumni_id_angkatan_foreign` (`id_angkatan`);
+  ADD KEY `talumni_id_kelas_foreign` (`id_kelas`);
 
 --
--- Indexes for table `tangkatan`
+-- Indeks untuk tabel `tangkatan`
 --
 ALTER TABLE `tangkatan`
   ADD PRIMARY KEY (`id_angkatan`);
 
 --
--- Indexes for table `tberita`
+-- Indeks untuk tabel `tberita`
 --
 ALTER TABLE `tberita`
   ADD PRIMARY KEY (`id_berita`),
-  ADD KEY `tberita_id_alumni_foreign` (`id_alumni`),
-  ADD KEY `tberita_id_superadmin_foreign` (`id_superadmin`),
   ADD KEY `tberita_id_jenis_berita_foreign` (`id_jenis_berita`);
 
 --
--- Indexes for table `tjenis_berita`
+-- Indeks untuk tabel `tjenis_berita`
 --
 ALTER TABLE `tjenis_berita`
   ADD PRIMARY KEY (`id_jenis_berita`);
 
 --
--- Indexes for table `tjurusan`
+-- Indeks untuk tabel `tjurusan`
 --
 ALTER TABLE `tjurusan`
   ADD PRIMARY KEY (`id_jurusan`);
 
 --
--- Indexes for table `tkaprog`
+-- Indeks untuk tabel `tkaprog`
 --
 ALTER TABLE `tkaprog`
   ADD PRIMARY KEY (`id_kaprog`),
@@ -495,7 +488,7 @@ ALTER TABLE `tkaprog`
   ADD KEY `tkaprog_id_jurusan_foreign` (`id_jurusan`);
 
 --
--- Indexes for table `tkelas`
+-- Indeks untuk tabel `tkelas`
 --
 ALTER TABLE `tkelas`
   ADD PRIMARY KEY (`id_kelas`),
@@ -503,200 +496,197 @@ ALTER TABLE `tkelas`
   ADD KEY `tkelas_id_angkatan_foreign` (`id_angkatan`);
 
 --
--- Indexes for table `tkerja`
+-- Indeks untuk tabel `tkerja`
 --
 ALTER TABLE `tkerja`
   ADD PRIMARY KEY (`id_kerja`),
   ADD KEY `tkerja_id_alumni_foreign` (`id_alumni`);
 
 --
--- Indexes for table `tkuliah`
+-- Indeks untuk tabel `tkuliah`
 --
 ALTER TABLE `tkuliah`
   ADD PRIMARY KEY (`id_kuliah`),
   ADD KEY `tkuliah_id_alumni_foreign` (`id_alumni`);
 
 --
--- Indexes for table `tsuperadmin`
+-- Indeks untuk tabel `tsuperadmin`
 --
 ALTER TABLE `tsuperadmin`
   ADD PRIMARY KEY (`id_superadmin`),
   ADD KEY `tsuperadmin_id_akun_foreign` (`id_akun`);
 
 --
--- Indexes for table `twirausaha`
+-- Indeks untuk tabel `twirausaha`
 --
 ALTER TABLE `twirausaha`
   ADD PRIMARY KEY (`id_wirausaha`),
   ADD KEY `twirausaha_id_alumni_foreign` (`id_alumni`);
 
 --
--- Indexes for table `users`
+-- Indeks untuk tabel `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `failed_jobs`
+-- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `logs`
+-- AUTO_INCREMENT untuk tabel `logs_jenis_berita`
 --
-ALTER TABLE `logs`
-  MODIFY `id_log` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `logs_jenis_berita`
+  MODIFY `id_logs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `migrations`
+-- AUTO_INCREMENT untuk tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `personal_access_tokens`
+-- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
 ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `takun`
+-- AUTO_INCREMENT untuk tabel `takun`
 --
 ALTER TABLE `takun`
   MODIFY `id_akun` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `talumni`
+-- AUTO_INCREMENT untuk tabel `talumni`
 --
 ALTER TABLE `talumni`
-  MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_alumni` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tangkatan`
+-- AUTO_INCREMENT untuk tabel `tangkatan`
 --
 ALTER TABLE `tangkatan`
-  MODIFY `id_angkatan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_angkatan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tberita`
+-- AUTO_INCREMENT untuk tabel `tberita`
 --
 ALTER TABLE `tberita`
-  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tjenis_berita`
+-- AUTO_INCREMENT untuk tabel `tjenis_berita`
 --
 ALTER TABLE `tjenis_berita`
-  MODIFY `id_jenis_berita` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_jenis_berita` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `tjurusan`
+-- AUTO_INCREMENT untuk tabel `tjurusan`
 --
 ALTER TABLE `tjurusan`
-  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_jurusan` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tkaprog`
+-- AUTO_INCREMENT untuk tabel `tkaprog`
 --
 ALTER TABLE `tkaprog`
   MODIFY `id_kaprog` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tkelas`
+-- AUTO_INCREMENT untuk tabel `tkelas`
 --
 ALTER TABLE `tkelas`
-  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kelas` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tkerja`
+-- AUTO_INCREMENT untuk tabel `tkerja`
 --
 ALTER TABLE `tkerja`
   MODIFY `id_kerja` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tkuliah`
+-- AUTO_INCREMENT untuk tabel `tkuliah`
 --
 ALTER TABLE `tkuliah`
   MODIFY `id_kuliah` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tsuperadmin`
+-- AUTO_INCREMENT untuk tabel `tsuperadmin`
 --
 ALTER TABLE `tsuperadmin`
   MODIFY `id_superadmin` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `twirausaha`
+-- AUTO_INCREMENT untuk tabel `twirausaha`
 --
 ALTER TABLE `twirausaha`
   MODIFY `id_wirausaha` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `talumni`
+-- Ketidakleluasaan untuk tabel `talumni`
 --
 ALTER TABLE `talumni`
   ADD CONSTRAINT `talumni_id_akun_foreign` FOREIGN KEY (`id_akun`) REFERENCES `takun` (`id_akun`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `talumni_id_angkatan_foreign` FOREIGN KEY (`id_angkatan`) REFERENCES `tangkatan` (`id_angkatan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `talumni_id_kelas_foreign` FOREIGN KEY (`id_kelas`) REFERENCES `tkelas` (`id_kelas`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tberita`
+-- Ketidakleluasaan untuk tabel `tberita`
 --
 ALTER TABLE `tberita`
-  ADD CONSTRAINT `tberita_id_alumni_foreign` FOREIGN KEY (`id_alumni`) REFERENCES `talumni` (`id_alumni`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tberita_id_jenis_berita_foreign` FOREIGN KEY (`id_jenis_berita`) REFERENCES `tjenis_berita` (`id_jenis_berita`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `tberita_id_superadmin_foreign` FOREIGN KEY (`id_superadmin`) REFERENCES `tsuperadmin` (`id_superadmin`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `tberita_id_jenis_berita_foreign` FOREIGN KEY (`id_jenis_berita`) REFERENCES `tjenis_berita` (`id_jenis_berita`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tkaprog`
+-- Ketidakleluasaan untuk tabel `tkaprog`
 --
 ALTER TABLE `tkaprog`
   ADD CONSTRAINT `tkaprog_id_akun_foreign` FOREIGN KEY (`id_akun`) REFERENCES `takun` (`id_akun`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tkaprog_id_jurusan_foreign` FOREIGN KEY (`id_jurusan`) REFERENCES `tjurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tkelas`
+-- Ketidakleluasaan untuk tabel `tkelas`
 --
 ALTER TABLE `tkelas`
   ADD CONSTRAINT `tkelas_id_angkatan_foreign` FOREIGN KEY (`id_angkatan`) REFERENCES `tangkatan` (`id_angkatan`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tkelas_id_jurusan_foreign` FOREIGN KEY (`id_jurusan`) REFERENCES `tjurusan` (`id_jurusan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tkerja`
+-- Ketidakleluasaan untuk tabel `tkerja`
 --
 ALTER TABLE `tkerja`
   ADD CONSTRAINT `tkerja_id_alumni_foreign` FOREIGN KEY (`id_alumni`) REFERENCES `talumni` (`id_alumni`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tkuliah`
+-- Ketidakleluasaan untuk tabel `tkuliah`
 --
 ALTER TABLE `tkuliah`
   ADD CONSTRAINT `tkuliah_id_alumni_foreign` FOREIGN KEY (`id_alumni`) REFERENCES `talumni` (`id_alumni`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tsuperadmin`
+-- Ketidakleluasaan untuk tabel `tsuperadmin`
 --
 ALTER TABLE `tsuperadmin`
   ADD CONSTRAINT `tsuperadmin_id_akun_foreign` FOREIGN KEY (`id_akun`) REFERENCES `takun` (`id_akun`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `twirausaha`
+-- Ketidakleluasaan untuk tabel `twirausaha`
 --
 ALTER TABLE `twirausaha`
   ADD CONSTRAINT `twirausaha_id_alumni_foreign` FOREIGN KEY (`id_alumni`) REFERENCES `talumni` (`id_alumni`) ON DELETE CASCADE ON UPDATE CASCADE;

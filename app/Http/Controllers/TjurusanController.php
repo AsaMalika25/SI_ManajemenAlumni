@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\tjurusan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class TjurusanController extends Controller

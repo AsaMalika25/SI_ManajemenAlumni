@@ -1,7 +1,7 @@
 @extends('layout.layouts')
 @section('content')
-<div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA BERITA</b></h1>
+<div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center; z-index: -10;">
+        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA JENIS BERITA</b></h1>
         <br>
        
           <div class="tab-content" id="pills-tabContent">   
@@ -10,7 +10,7 @@
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table DataTable">
+                      <table class="table DataTable" >
                         <!-- head tabel -->
                         <thead>
                           <tr>
@@ -20,7 +20,7 @@
                           </tr>
                         </thead>
                         <!-- end head tabel -->
-          
+                        <h3 class="card-title"> Jumlah : {{ $jumlahJenisBerita ?? 0 }}</h3><br><br>
                         <!-- body tabel -->
                         <tbody>
                           <tr></tr>

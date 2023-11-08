@@ -14,6 +14,8 @@
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7/dist/sweetalert2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" rel="stylesheet">
 
     <style>
         body{
@@ -23,7 +25,7 @@
     </style> 
 </head>
 <body>
-<nav class="main-menu"> 
+<nav class="main-menu" > 
             <div>
                 <a class="logo" href="">
                 </a> 
@@ -59,14 +61,29 @@
                 <i class="fa fa-user fa-lg"></i>
                 <span class="nav-text">Kelola Akun</span>
                 </a>
-            </li>   
+            </li>
+            
+            <li>                                 
+                <a href="">
+                <i class="fa fa-align-left fa-lg"></i>
+                <span class="nav-text">LOG</span>
+                </a>
+            </li>
+
            @endif
                
             <!-- <ul class="logout"> -->
             <li>
-                <a href="">
+                <a href="berita">
                 <i class="fa fa-lightbulb-o fa-lg"></i>
                 <span class="nav-text">Kelola Berita</span> 
+                 </a>
+            </li>  
+
+            <li>
+                <a href="jenis_berita">
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+                <span class="nav-text">Kelola Jenis Berita</span> 
                  </a>
             </li>  
 
@@ -78,9 +95,11 @@
             </li>  
 
             </ul>
-        </nav>
-        @yield('content')
+</nav>
 
+<div class="container">
+    @yield('content')
+</div>
 
 
 </body>
