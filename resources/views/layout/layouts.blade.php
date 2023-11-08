@@ -23,7 +23,7 @@
     </style> 
 </head>
 <body>
-<nav class="main-menu"> 
+<nav class="main-menu" > 
             <div>
                 <a class="logo" href="">
                 </a> 
@@ -64,9 +64,16 @@
                
             <!-- <ul class="logout"> -->
             <li>
-                <a href="">
+                <a href="berita">
                 <i class="fa fa-lightbulb-o fa-lg"></i>
                 <span class="nav-text">Kelola Berita</span> 
+                 </a>
+            </li>  
+
+            <li>
+                <a href="jenis_berita">
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+                <span class="nav-text">Kelola Jenis Berita</span> 
                  </a>
             </li>  
 

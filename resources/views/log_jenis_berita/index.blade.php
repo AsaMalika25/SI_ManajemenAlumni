@@ -1,7 +1,7 @@
 @extends('layout.layouts')
 @section('content')
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA BERITA</b></h1>
+        <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LOG ACTIVITY</b></h1>
         <br>
        
           <div class="tab-content" id="pills-tabContent">   
@@ -14,7 +14,7 @@
                         <!-- head tabel -->
                         <thead>
                           <tr>
-                          <th class="font-table" scope="col">Log Activity</th>
+                          <th class="font-table" scope="col">Log</th>
                             <!-- <th class="font-table" scope="col" colspan="2">Aksi</th> -->
                           </tr>
                         </thead>

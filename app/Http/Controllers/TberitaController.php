@@ -37,7 +37,8 @@ class TberitaController extends Controller
      */
     public function store(Request $request, tjenis_berita $tjenis_berita, tberita $tberita )
     {
-        //validasi data
+        /*array untuk mem-validasi data, apakah data sudah sesuai atau belum,
+        kemudian data tersebut akan dikirim dan diolah lebih lanjut*/
         $data = $request->validate([
             'id_jenis_berita' => ['required'],
             'judul_berita' => ['required'],

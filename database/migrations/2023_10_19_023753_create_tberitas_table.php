@@ -25,8 +25,12 @@ return new class extends Migration
             // $table->foreign('id_superadmin')->references('id_superadmin')->on('tsuperadmin')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_jenis_berita')->references('id_jenis_berita')->on('tjenis_berita')->onDelete('cascade')->onUpdate('cascade');
 
+            
             $table->timestamps();
         });
+        DB::unprepared('CREATE TRIGGER tambah_berita AFTER INSERT ON tberita FOR EACH ROW BEGIN INSERT INTO logs_berita(log) VALUES(concat(\'Judul berita \', NEW.judul_berita, \' \', \'telah ditambahkan pada\', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER edit_berita AFTER UPDATE ON tberita FOR EACH ROW BEGIN INSERT INTO logs_berita(log) VALUES (concat(\'Judul berita \', OLD.judul_berita, \' \', \'telah diperbarui menjadi berita dengan judul \', \' \', NEW.judul_berita, \' \', \'pada\', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER hapus_berita AFTER DELETE ON tberita FOR EACH ROW BEGIN INSERT INTO logs_berita(log) VALUES (concat(\'Judul berita \', OLD.judul_berita, \' \', \'telah dihapus pada\', \' \', NOW())); END;');
     }
 
     /**

@@ -5,7 +5,7 @@
         <br>
           <div class="tab-content" id="pills-tabContent">   
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="card" style="width: 160.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; ">
+                <div class="card" style="width: 160.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; z-index: -1;">
                     <div class="card-body">  
           
                       <!-- tabel -->
@@ -73,7 +73,7 @@
                   </svg>
                 TAMBAH
                 </a>
-                <a class="btn btn-primary" href="#" role="button">LOG</a>
+                <a class="btn btn-primary" href="jenis_berita" role="button">Jenis Berita</a>
               </div>
             </div>
           </div>

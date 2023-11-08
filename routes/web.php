@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LogsBeritaController;
 use App\Http\Controllers\LogsWirausahaController;
 use App\Http\Controllers\TakunController;
 use App\Http\Controllers\TalumniController;
@@ -47,6 +48,7 @@ Route::get('jenis_berita/edit/{id}', [TjenisBeritaController::class, 'edit']);
 Route::post('jenis_berita/edit/simpan', [TjenisBeritaController::class, 'update']);
 Route::delete('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy']);
 Route::get('log_jenis_berita', [LogsJenisBeritaController::class, 'index']);
+Route::get('log_berita', [LogsBeritaController::class, 'index']);
 
 
 
