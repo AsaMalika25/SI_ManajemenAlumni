@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\talumni;
 use App\Models\twirausaha;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class TwirausahaController extends Controller
@@ -13,22 +15,31 @@ class TwirausahaController extends Controller
      */
       public function index(twirausaha $tusaha)
     {
-        //
+  
+        //store function
+        $totalwirausaha = DB::select('SELECT wirausaha() AS totalwirausaha')[0]->totalwirausaha;
         $data = [
-            'tusaha'=> $tusaha->all()
+            'tusaha'=> $tusaha->all(),
+            'jumlahwirausaha'=>$totalwirausaha
         ];
-        return view('wirausaha.index',$data);
-        
+        return view('wirausaha.index', $data);
 
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(talumni $talumni)
     {
-        //
-        return view('wirausaha.tambah');
+        // $data = $talumni
+        //     ->join('twirausaha', 'talumni.id_alumni', '=', 'twirausaha.id_alumni')
+        //     ->first();
+
+        $data = [
+            'alumni'=>$talumni->all()
+        ];
+        // dd($usaha);
+        return view('wirausaha.tambah',$data);
 
     }
 
@@ -37,16 +48,20 @@ class TwirausahaController extends Controller
      */
     public function store(Request $request, twirausaha $tusaha)
     {
-        //validasi data
+        $id_alumni = $request->input('id_alumnni'); 
+
+        /*array untuk memvalidasi data yang diterima dari permintaan.
+         Validasi memastikan bahwa nama_usaha, bidang, id_alumni, dan gambar_usaha harus di isi*/
         $data = $request->validate([
-            'nama_usaha' => ['required'],
+            'nama_usaha' => ['required'],  
             'bidang' => ['required'],
+            'id_alumni' => ['required'],
             'gambar_usaha' => ['required'],
         ]);
-
+   
         if($data)
         {
-            if($request->hasFile('gambar_usaha'))
+            if($request->hasFile('gambar_usaha')) 
             {
                 $foto_gambar_usaha = $request->file('gambar_usaha');
                 $foto_nama = md5($foto_gambar_usaha->getClientOriginalName() . time()) . '.' . $foto_gambar_usaha->getClientOriginalExtension();

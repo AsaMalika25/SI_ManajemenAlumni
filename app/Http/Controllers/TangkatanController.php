@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\tangkatan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class TangkatanController extends Controller
 {
@@ -36,14 +38,25 @@ class TangkatanController extends Controller
             'tahun_masuk' => ['required'],
             'tahun_keluar' => ['required'],
         ]);
-        
-        if ($data) {
+        if(DB::statement("CALL Createangkatan(?,?,?)", [$data['no_angkatan'],$data['tahun_masuk'],$data['tahun_keluar']])):
             // Simpan jika data terisi semua
-            $tangkatan->create($data);
-            return redirect('angkatan')->with('success', 'Data jenis surat baru berhasil ditambah');
-        }else {
-            return redirect()->back();
-        }
+        //    $tangkatan->create($data);
+                return redirect('angkatan')->with('succes','data berhasil ditambah');
+            else:
+            // Kembali ke form tambah data
+                return back()->with('error','Data gagal ditambahkan');
+            endif;
+        //  DB::beginTransaction();
+        // try {
+        //     $angkatanId = $angkatan->create($data)->id_angkatan;
+        //     DB::statement("CALL Create  ngkatan(?, ?, ?)", [$angkatanId, $data['username'], $data['password']]);
+        //     DB::commit();
+        //     notify()->success('Data angkatan telah ditambah', 'Success');
+        //     return redirect('angkatan');
+        // } catch (Exception $e) {
+        //     DB::rollback();
+        //     return back()->with('error', 'Data angkatan gagal ditambahkan');
+        // }
 
     }
 
@@ -85,6 +98,7 @@ class TangkatanController extends Controller
             'tahun_masuk' => $request->input('tahun_masuk'),
             'tahun_keluar' => $request->input('tahun_keluar'),
         ];
+        
 
         if ($update_angkatan) {
         tangkatan::where('id_angkatan', $id)->update($update_angkatan);

@@ -12,6 +12,7 @@
                       <!-- tabel -->
                       <table class="table">
                         <!-- head tabel -->
+                        <h3 class="card-title"> Jumlah : {{ $jumlahwirausaha ?? 0 }}</h3><br><br>
                         <thead>
                           <tr>
                           <th class="font-table" scope="col">Id</th>

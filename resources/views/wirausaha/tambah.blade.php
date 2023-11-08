@@ -30,6 +30,15 @@
               <label for="bidang" class="form-label font-form">Bidang Usaha</label>
               <input type="text" class="form-control" id="bidangUsaha" placeholder="Bidang usaha" name="bidang" style="border-radius:  1.8635607321131447vh;" required>
             </div>
+            <div class="mb-3" >
+            <label for="alumni" class="form-label font-form">Alumni</label>
+              <select class="form-control" name='id_alumni'>
+                <option selected hidden> Pilih Alumni</option>
+                @foreach($alumni as $t)
+                <option value="{{$t->id_alumni}}">{{$t->nama}}</option>
+                @endforeach
+              </select>
+            </div>
             <div class="form-group mt-2">
                 <label>File</label>
                 <input type="file" class="form-control" name="gambar_usaha">

@@ -18,9 +18,11 @@ class TakunController extends Controller
     {
         //
         return view('Auth.login');
-        
-        
+    }
 
+    public function create()
+    {
+        return view('data_akun.tambah');
     }
 
     public function list(takun $takun)

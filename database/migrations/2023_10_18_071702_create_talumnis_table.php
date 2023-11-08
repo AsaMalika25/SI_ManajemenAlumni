@@ -9,13 +9,13 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up(): void  
     {
         Schema::create('talumni', function (Blueprint $table) {
             $table->integer('id_alumni',true);
-            $table->integer('id_akun',false)->nullable(false);
-            $table->integer('id_kelas',false)->nullable(false);
-            $table->integer('id_angkatan',false)->nullable(false);
+            $table->integer('id_akun')->index('id_akun')->nullable(false);
+            $table->integer('id_kelas')->index('id_kelas')->nullable(false);
+            $table->integer('id_angkatan')->index('id_angkatan')->nullable(false);
             $table->string('nama')->nullable(false);
             $table->date('tgl_lahir')->nullable(false);
             $table->text('alamat')->nullable(false);
@@ -25,9 +25,9 @@ return new class extends Migration
             $table->text('ijazah');
             $table->enum('jenkel',['Laki-laki','Perempuan'])->nullable(false);
 
-            $table->foreign('id_akun')->references('id_akun')->on('takun')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_kelas')->references('id_kelas')->on('tkelas')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_angkatan')->references('id_angkatan')->on('tangkatan')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_akun')->on('takun')->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_kelas')->on('tkelas')->references('id_kelas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_angkatan')->on('tangkatan')->references('id_angkatan')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
