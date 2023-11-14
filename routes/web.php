@@ -35,6 +35,7 @@ Route::post('proses-register', [TakunController::class,'prosesregister']);
 Route::group(['middleware' => ['AdminOnly']], function () {
 
 Route::get('alumni', [TalumniController::class, 'index']);
+Route::get('alumni/export', [TalumniController::class, 'export']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
 Route::post('alumni/simpan', [TalumniController::class, 'store']);
 Route::get('alumni/edit/{id}', [TalumniController::class, 'edit']);

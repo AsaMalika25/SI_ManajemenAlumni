@@ -11,7 +11,6 @@ class tkelas extends Model
 
     protected $table= 'tkelas' ;
     protected $fillable= ['id_jurusan','id_angkatan','nama_kelas'] ;
-
     protected $primaryKey= 'id_kelas';
     public $timestamps= false ;
 
