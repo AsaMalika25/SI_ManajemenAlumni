@@ -7,11 +7,11 @@
     <ul class="nav nav-pills mb-3 d-flex justify-content-center" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home"
-                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Kuliah</button>
+                type="button" role="tab" aria-controls="pills-home" aria-selected="true">Bekerja</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile"
-                type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Kerja</button>
+                type="button" role="tab" aria-controls="pills-profile" aria-selected="true">Kuliah</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
@@ -78,7 +78,7 @@
                 </div>
             </div>
             <div style="margin-left: 5rem;">
-                <a class="btn btn-primary" href="#" role="button">
+                <a class="btn btn-primary" href="{{url('alumni/export')}}" role="button">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                         class="bi bi-download" viewBox="0 0 16 16">
                         <path
