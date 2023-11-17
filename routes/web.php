@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogsBeritaController;
 use App\Http\Controllers\LogsWirausahaController;
 use App\Http\Controllers\TakunController;
@@ -13,7 +14,7 @@ use App\Http\Controllers\TangkatanController;
 use App\Http\Controllers\TjurusanController;
 use App\Http\Controllers\TkelasController;
 use Illuminate\Support\Facades\Route;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,8 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::post('kelas/hapus', [TkelasController::class, 'destroy']);
     Route::get('kelas/edit/{id}', [TkelasController::class, 'edit']);
     Route::post('kelas/update/{id}', [TkelasController::class, 'update']);
+
+    Route::get('dashboard', [DashboardController::class, 'index']);
 });
 
 
