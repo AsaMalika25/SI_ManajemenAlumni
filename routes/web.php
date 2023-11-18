@@ -5,6 +5,7 @@ use App\Http\Controllers\LogsWirausahaController;
 use App\Http\Controllers\TakunController;
 use App\Http\Controllers\TalumniController;
 use App\Http\Controllers\TkuliahController;
+use App\Http\Controllers\TkerjaController;
 use App\Http\Controllers\LogsJenisBeritaController;
 use App\Http\Controllers\TjenisBeritaController;
 use App\Http\Controllers\TberitaController;
@@ -66,6 +67,13 @@ Route::post('kuliah/simpan', [TkuliahController::class, 'store']);
 Route::get('kuliah/edit/{id}', [TkuliahController::class, 'edit']);
 Route::post('kuliah/edit/simpan', [TkuliahController::class, 'update']);
 Route::post('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
+
+Route::get('kerja', [TkerjaController::class, 'index']);
+Route::get('kerja/tambah', [TkerjaController::class, 'create']);
+Route::post('kerja/simpan', [TkerjaController::class, 'store']);
+Route::get('kerja/edit/{id}', [TkerjaController::class, 'edit']);
+Route::post('kerja/edit/simpan', [TkerjaController::class, 'update']);
+Route::post('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
 
 
 Route::get('list_akun', [TakunController::class, 'list']);

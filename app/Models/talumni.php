@@ -15,6 +15,16 @@ class talumni extends Model
     protected $primaryKey= 'id_alumni';
     public $timestamps= false ;
 
+    public function kuliah()
+    {
+        return $this->hasMany(tkuliah::class, 'id_kuliah');
+    }
+
+    public function kerja()
+    {
+        return $this->hasMany(tkerja::class, 'id_kerja');
+    }
+
     public function kelas()
     {
         return $this->belongsTo(tkelas::class);
