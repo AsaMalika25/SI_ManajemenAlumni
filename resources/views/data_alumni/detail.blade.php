@@ -11,7 +11,7 @@
                 <main>
                 <div class="box-detail">
                 <div class="box-txt d-flex">
-                    <div class="col-2" >
+                    <div class="col-4" >
                       @if($alumni->ijazah)
                           <img src="{{ url('foto') . '/' . $alumni->ijazah }} "
                               style="max-width: 100%; height:50%;" />

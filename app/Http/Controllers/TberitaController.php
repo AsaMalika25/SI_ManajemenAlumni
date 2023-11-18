@@ -79,7 +79,7 @@ class TberitaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(tberita $tberita, Request $request, tjenis_berita $tjenis_berita)
+    public function edit(tberita $tberita, Request $request, tjenis_berita $tjenis_berita, )
     {
         $data = [
             'tberita' => tberita::where('id_berita', $request->id)->first(),

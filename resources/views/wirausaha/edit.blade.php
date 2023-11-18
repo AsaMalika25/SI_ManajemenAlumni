@@ -33,8 +33,7 @@
           </form>
           <!-- end form tambah -->
         </div>
-      </div>
-        <!-- end konten utama -->
-      </div> 
+    </div>
+        <!-- end konten utama --> 
       <!-- end one page -->  
 @endsection

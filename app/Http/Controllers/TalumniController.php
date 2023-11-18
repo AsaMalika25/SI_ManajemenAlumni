@@ -9,6 +9,11 @@ use App\Models\tangkatan;
 use App\Models\tkelas;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
+use App\Exports\AlumniExport;
+use App\Exports\KelasExport;
+use App\Exports\AngkatanExport;
+use App\Exports\JurusanExport;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 
@@ -34,6 +39,10 @@ class TalumniController extends Controller
         return view('data_alumni.index',$data);
     }
 
+    public function export() 
+    {
+        return Excel::download(new AlumniExport, 'alumni_data.xlsx');
+    }
     /**
      * Show the form for creating a new resource.
      */
