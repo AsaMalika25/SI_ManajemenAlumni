@@ -29,7 +29,7 @@ class TalumniController extends Controller
 
         $data =[ 
               
-            'alumni' => DB::table('views_alumni')->orderBy('id_alumni', 'desc')->get(),
+            'alumni' => DB::table('views_alumni')->get(),
 
             'jumlah_alumni' => $total_alumni,
         ];

@@ -13,4 +13,16 @@ class tkuliah extends Model
 
     protected $primaryKey= 'id_kuliah';
     public $timestamps= false ;
+
+    public function kuliah()
+    {
+        return $this->belongsTo(talumni::class);
+    }
+    public function getKuliahiAttribute()
+    {
+        return talumni::find($this->attributes['id_alumni'])->nama;
+    }
+    public function alumni(){
+        return $this->belongsTo(talumni::class, 't_alumni');
+    }
 }

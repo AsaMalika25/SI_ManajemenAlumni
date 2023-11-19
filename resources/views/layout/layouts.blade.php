@@ -53,7 +53,7 @@
                 
            @if (Auth::user()->role == 'superadmin')
             <li>                                 
-                <a href="">
+                <a href="list_akun">
                 <i class="fa fa-user fa-lg"></i>
                 <span class="nav-text">Kelola Akun</span>
                 </a>

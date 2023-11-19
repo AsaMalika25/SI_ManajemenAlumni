@@ -312,7 +312,7 @@ CREATE TABLE `tkelas` (
 CREATE TABLE `tkerja` (
   `id_kerja` int(11) NOT NULL,
   `id_alumni` int(11) NOT NULL,
-  `instasi` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `instansi` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `jabatan` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
