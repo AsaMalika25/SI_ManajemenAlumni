@@ -11,8 +11,8 @@
                         <img src="img/pict-gedung.jpg" class="" style="width: 8rem; height: 8rem; border-radius: 60%;"><br>
                     </div>
                     <div style="text-align: center; padding: 0%; margin: 3%;">
-                        <p>Adhinda Zahra</p>
-                        <!-- <p>adhindaaazh@gmail.com</p> -->
+                        <p style="margin-bottom: 0px;">Adhinda Zahra</p>
+                        <p style="margin-top: 0px; margin-bottom: 0px;">adhindaaazh@gmail.com</p>
                     </div>
                     
                     <div class="justify-content-center d-flex mt-5">
