@@ -6,7 +6,7 @@
        
           <div class="tab-content" id="pills-tabContent">   
            
-                <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh; z-index: -1;">
+                <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
                     <div class="card-body">  
           
                       <!-- tabel -->

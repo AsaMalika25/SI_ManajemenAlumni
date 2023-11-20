@@ -10,7 +10,7 @@
                 <div class="card-body">  
       
                   <!-- tabel -->
-                  <table class="table Datatable">
+                  <table class="table DataTable">
                     <!-- head tabel -->
                     <thead>
                       <tr>
@@ -35,8 +35,9 @@
                             <td>{{$r->nama_kaprog}}</td>
                             <td>{{$r->email}}</td>
                             <td>
+                            <!-- <btn class="btnHapus" idKaprog="{{ $r->id_kaprog }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn> -->
                                 <a href="{{url('kaprog/edit/' .$r->id_kaprog)}}" class="btn btn-success">Edit</a>
-                                <btn class="btn btn-danger btnHapus" idKaprog="id_kaprog">HAPUS
+                                <btn class="btnHapus btn btn-danger" idKaprog="{{ $r->id_kaprog }}">HAPUS</btn>
                             </td>
                                 
                         </tr>
@@ -67,29 +68,29 @@
 
 
   <script type="module">
-    $('.Datatable tbody').on('click', '.btnHapus', function(a) {
+    $('.DataTable tbody').on('click','.btnHapus',function(a){
         a.preventDefault();
-        let idJngkatan = $(this).closest('.btnHapus').attr('idKaprog');
+        let idKaprog = $(this).closest('.btnHapus').attr('idKaprog');
         swal.fire({
-            title: "Apakah anda ingin menghapus data ini?",
+            title : "Apakah anda ingin menghapus data ini?",
             showCancelButton: true,
             confirmButtonText: 'Setuju',
             cancelButtonText: `Batal`,
             confirmButtonColor: 'red'
 
-        }).then((result) => {
-            if (result.isConfirmed) {
+        }).then((result)=>{
+            if(result.isConfirmed){
                 //Ajax Delete
                 $.ajax({
-                    type: 'post',
-                    url: 'kaprog/hapus'+idKaprog,
+                    type: 'DELETE',
+                    url: "kaprog/hapus/"+idKaprog,
                     data: {
-                        id_kaprog: idKaprog,
-                        _token: "{{ csrf_token() }}"
+                        id_kaprog : idKaprog,
+                        _token : "{{csrf_token()}}"
                     },
-                    success: function(data) {
-                        if (data.success) {
-                            swal.fire('Berhasil di hapus!', '', 'success').then(function() {
+                    success : function(data){
+                        if(data.success){
+                            swal.fire('Berhasil di hapus!', '', 'success').then(function(){
                                 //Refresh Halaman
                                 location.reload();
                             });
@@ -99,9 +100,8 @@
             }
         });
     });
-
     $(document).ready(function() {
-            $('.Datatable').DataTable();
-        });
+        $('.DataTable').DataTable();
+    });
 </script>
 @endsection
