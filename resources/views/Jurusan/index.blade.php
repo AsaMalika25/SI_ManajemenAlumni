@@ -14,7 +14,7 @@
                     <!-- head tabel -->
                     <thead>
                       <tr>
-                        <th class="font-table">Nama_jurusan</th>
+                        <th class="font-table">Nama Jurusan</th>
                         <th class="font-table">Aksi</th>
                       </tr>
                     </thead>
@@ -28,7 +28,7 @@
                             <td>{{$item->nama_jurusan}}</td>
                             <td>
                                 <a href="{{url('jurusan/edit/' .$item->id_jurusan)}}" class="btn btn-success">Edit</a>
-                                <btn class="btn btn-danger btnHapus" idJurusan="">HAPUS
+                                <btn class="btn btn-danger btnHapus" idJurusan="{{$item->id_jurusan}}">HAPUS
                             </td>
                                 
                         </tr>
@@ -61,7 +61,7 @@
   <script type="module">
     $('.Datatable tbody').on('click', '.btnHapus', function(a) {
         a.preventDefault();
-        let idJngkatan = $(this).closest('.btnHapus').attr('idJurusan');
+        let idJurusan = $(this).closest('.btnHapus').attr('idJurusan');
         swal.fire({
             title: "Apakah anda ingin menghapus data ini?",
             showCancelButton: true,
@@ -73,8 +73,8 @@
             if (result.isConfirmed) {
                 //Ajax Delete
                 $.ajax({
-                    type: 'post',
-                    url: 'jurusan/hapus',
+                    type: 'DELETE',
+                    url: 'jurusan/hapus/'+idJurusan,
                     data: {
                         id_jurusan: idJurusan,
                         _token: "{{ csrf_token() }}"

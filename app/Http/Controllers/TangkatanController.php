@@ -123,24 +123,15 @@ class TangkatanController extends Controller
     public function destroy(tangkatan $tangkatan, Request $request)
     {
         $id_angkatan = $request->input('id_angkatan');
+        $data = tangkatan::find($id_angkatan);
 
-        // Hapus 
-        $aksi = $tangkatan->where('id_angkatan', $id_angkatan)->delete();
-
-        if ($aksi) {
-            // Pesan Berhasil
-            $pesan = [
-                'success' => true,
-                'pesan'   => 'Data jenis surat berhasil dihapus'
-            ];
-        } else {
-            // Pesan Gagal
-            $pesan = [
-                'success' => false,
-                'pesan'   => 'Data gagal dihapus'
-            ];
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
         }
-
-        return response()->json($pesan);
+        
+        if ($data) {
+            $data->delete();
+            return response()->json(['success' => true]);
+        }
     }
 }

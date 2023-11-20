@@ -84,8 +84,8 @@
             if (result.isConfirmed) {
                 //Ajax Delete
                 $.ajax({
-                    type: 'post',
-                    url: 'angkatan/hapus',
+                    type: 'DELETE',
+                    url: 'angkatan/hapus/'+idAngkatan,
                     data: {
                         id_angkatan: idAngkatan,
                         _token: "{{ csrf_token() }}"
