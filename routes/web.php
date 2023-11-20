@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LogsBeritaController;
 use App\Http\Controllers\LogsWirausahaController;
 use App\Http\Controllers\TakunController;
 use App\Http\Controllers\TalumniController;
 use App\Http\Controllers\TkuliahController;
+use App\Http\Controllers\TkerjaController;
 use App\Http\Controllers\LogsJenisBeritaController;
 use App\Http\Controllers\TjenisBeritaController;
 use App\Http\Controllers\TberitaController;
@@ -13,7 +15,7 @@ use App\Http\Controllers\TangkatanController;
 use App\Http\Controllers\TjurusanController;
 use App\Http\Controllers\TkelasController;
 use Illuminate\Support\Facades\Route;
-
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,6 +70,13 @@ Route::get('kuliah/edit/{id}', [TkuliahController::class, 'edit']);
 Route::post('kuliah/edit/simpan', [TkuliahController::class, 'update']);
 Route::post('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
 
+Route::get('kerja', [TkerjaController::class, 'index']);
+Route::get('kerja/tambah', [TkerjaController::class, 'create']);
+Route::post('kerja/simpan', [TkerjaController::class, 'store']);
+Route::get('kerja/edit/{id}', [TkerjaController::class, 'edit']);
+Route::post('kerja/edit/simpan', [TkerjaController::class, 'update']);
+Route::post('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
+
 
 Route::get('list_akun', [TakunController::class, 'list']);
 Route::get('tambah_akun', [TakunController::class, 'create']);
@@ -104,6 +113,8 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::post('kelas/hapus', [TkelasController::class, 'destroy']);
     Route::get('kelas/edit/{id}', [TkelasController::class, 'edit']);
     Route::post('kelas/update/{id}', [TkelasController::class, 'update']);
+
+    Route::get('dashboard', [DashboardController::class, 'index']);
 });
 
 

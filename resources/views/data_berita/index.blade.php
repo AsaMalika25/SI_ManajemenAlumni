@@ -5,11 +5,11 @@
         <br>
           <div class="tab-content" id="pills-tabContent">   
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                <div class="card" style="width: 160.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; z-index: -1;">
+                <div class="card" style="width: 100%;">
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table DataTable">
+                      <table class="table DataTable ">
                         <!-- head tabel -->
                         <thead>
                           <tr>
@@ -36,18 +36,18 @@
                             <td>{{$r->ket_berita}}</td>
                             <td>
                               @if ($r->file)
-                                <img src="{{url('foto') . '/' . $r->file}}" value="{{$r->file}}" style="max-width: 250px; height:auto;" />
+                                <img src="{{url('foto') . '/' . $r->file}}" value="{{$r->file}}" style="max-width: 100px; height:100px;" />
                               @endif
                             </td>
                             <td>
-                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
+                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 20px;height:20px;"></a>
                               <!-- <form action="{{url('berita/hapus/'. $r->id_berita)}}" idBerita="{{$r->id_berita}}" method="post" onsubmit="return confirm('apakah ingin menghapus data ini ?')">
                               @csrf
                                 <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
                               </form> -->
 
-                              <btn class="btnHapus" idBerita="{{ $r->id_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></btn>
-                              <a href="berita/edit/{{$r->id_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                              <btn class="btnHapus" idBerita="{{ $r->id_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 20px;height:20px;"></btn>
+                              <a href="berita/edit/{{$r->id_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 20px;height:20px;"></a>
                             </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                             <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
