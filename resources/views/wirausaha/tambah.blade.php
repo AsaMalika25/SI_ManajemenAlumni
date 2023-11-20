@@ -23,15 +23,15 @@
           <!-- end text judul -->
           <form action="tambah_wirausaha/simpan" method="post" enctype="multipart/form-data">
             <div class="mb-3" >
-              <label for="nama_usaha" class="form-label font-form">Nama Usaha</label>
+              <label for="nama_usaha" class="form-label font-form"  style="color: white;">Nama Usaha</label>
               <input type="text" class="form-control" id="namaUsaha" placeholder="Nama usaha" name="nama_usaha" style="border-radius:  1.8635607321131447vh;" required>
             </div>
             <div class="mb-3" >
-              <label for="bidang" class="form-label font-form">Bidang Usaha</label>
+              <label for="bidang" class="form-label font-form" style="color: white;">Bidang Usaha</label>
               <input type="text" class="form-control" id="bidangUsaha" placeholder="Bidang usaha" name="bidang" style="border-radius:  1.8635607321131447vh;" required>
             </div>
             <div class="mb-3" >
-            <label for="alumni" class="form-label font-form">Alumni</label>
+            <label for="alumni" class="form-label font-form" style="color: white;">Alumni</label>
               <select class="form-control" name='id_alumni'>
                 <option selected hidden> Pilih Alumni</option>
                 @foreach($alumni as $t)
@@ -40,7 +40,7 @@
               </select>
             </div>
             <div class="form-group mt-2">
-                <label>File</label>
+                <label style="color: white;">File</label>
                 <input type="file" class="form-control" name="gambar_usaha">
                 </div>
                  @csrf
