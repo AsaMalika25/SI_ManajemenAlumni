@@ -6,11 +6,11 @@
        
           <div class="tab-content" id="pills-tabContent">   
            
-                <div class="card" style="width: 130; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh; z-index: -1 " >
+                <div class="card" style="width: 130; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;" >
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table">
+                      <table class="table DataTable">
                         <!-- head tabel -->
                         <thead>
                           <tr>
@@ -18,7 +18,7 @@
                             <th class="font-table" scope="col">Username</th>
                             <th class="font-table" scope="col">Password</th>
                             <th class="font-table" scope="col">Role</th>
-                            <th class="font-table" scope="col" colspan="2">Aksi</th>
+                            <th class="font-table" scope="col">Aksi</th>
                           </tr>
                         </thead>
                         <!-- end head tabel -->
@@ -33,12 +33,8 @@
                             <td>{{$r->password}}</td>
                             <td>{{$r->role}}</td>
                             <td>
-                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <form action="{{url('list_akun/hapus/'. $r->id_akun)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
-                                <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
-                                @csrf
-                              </form>
-                              
+                            
+                              <btn class="btnHapus" idAkun="{{ $r->id_akun }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn>
                               <a href="list_akun/edit/{{$r->id_akun}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
                             <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
@@ -72,6 +68,42 @@
           </div>
         <!-- end konten utama -->
       </div> 
+      <script type="module">
+    $('.DataTable tbody').on('click','.btnHapus',function(a){
+        a.preventDefault();
+        let idAkun = $(this).closest('.btnHapus').attr('idAkun');
+        swal.fire({
+            title : "Apakah anda ingin menghapus data ini?",
+            showCancelButton: true,
+            confirmButtonText: 'Setuju',
+            cancelButtonText: `Batal`,
+            confirmButtonColor: 'red'
 
+        }).then((result)=>{
+            if(result.isConfirmed){
+                //Ajax Delete
+                $.ajax({
+                    type: 'DELETE',
+                    url: "list_akun/hapus/"+idAkun,
+                    data: {
+                        id_akun : idAkun,
+                        _token : "{{csrf_token()}}"
+                    },
+                    success : function(data){
+                        if(data.success){
+                            swal.fire('Berhasil di hapus!', '', 'success').then(function(){
+                                //Refresh Halaman
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.DataTable').DataTable();
+    });
+</script>
 @endsection
 

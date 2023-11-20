@@ -182,35 +182,17 @@ class TakunController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        //
+        $id = $request->input('id_akun');
+        $data = takun::find($id);
+
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
+        }
         
-// $id_akun = $request->input('id_akun');
-
-
-// Hapus
-$aksi = takun::where('id_akun', $id)->first();
-
-
-if ($aksi) {
-    $aksi->delete();
-    // Pesan Berhasil
-    // $pesan = [
-    //     'success' => true,
-    //     'pesan'   => 'Data akun berhasil dihapus'
-    // ];
-    return redirect("list_akun")->with('success','data berhasill ditambah');
-} else {
-    // Pesan Gagal
-    // $pesan = [
-    //     'success' => false,
-    //     'pesan'   => 'Data gagal dihapus'
-    // ];
-    return redirect()->back();
-}
-
-
-// return response()->json($pesan);
-}
-
+        if ($data) {
+            $data->delete();
+            return response()->json(['success' => true]);
+        }
     }
+}
 

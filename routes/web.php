@@ -68,14 +68,14 @@ Route::get('kuliah/tambah', [TkuliahController::class, 'create']);
 Route::post('kuliah/simpan', [TkuliahController::class, 'store']);
 Route::get('kuliah/edit/{id}', [TkuliahController::class, 'edit']);
 Route::post('kuliah/edit/simpan', [TkuliahController::class, 'update']);
-Route::post('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
+Route::delete('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
 
 Route::get('kerja', [TkerjaController::class, 'index']);
 Route::get('kerja/tambah', [TkerjaController::class, 'create']);
 Route::post('kerja/simpan', [TkerjaController::class, 'store']);
 Route::get('kerja/edit/{id}', [TkerjaController::class, 'edit']);
 Route::post('kerja/edit/simpan', [TkerjaController::class, 'update']);
-Route::post('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
+Route::delete('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
 
 
 Route::get('list_akun', [TakunController::class, 'list']);
@@ -83,14 +83,14 @@ Route::get('tambah_akun', [TakunController::class, 'create']);
 Route::post('tambah_akun/tambah', [TakunController::class, 'store']);
 Route::get('list_akun/edit/{id}', [TakunController::class, 'edit']);
 Route::post('list_akun/edit/simpan', [TakunController::class, 'store']);
-Route::post('list_akun/hapus/{id}', [TakunController::class, 'destroy']);
+Route::delete('list_akun/hapus/{id}', [TakunController::class, 'destroy']);
 
 Route::get('wirausaha', [TwirausahaController::class, 'index']);
 Route::get('tambah_wirausaha', [TwirausahaController::class, 'create']);
 Route::post('tambah_wirausaha/simpan', [TwirausahaController::class, 'store']);
 Route::get('wirausaha/edit/{id}', [TwirausahaController::class, 'edit']);
 Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'update']);
-Route::post('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
+Route::delete('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
 Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
 
     Route::get('angkatan', [TangkatanController::class, 'index']);

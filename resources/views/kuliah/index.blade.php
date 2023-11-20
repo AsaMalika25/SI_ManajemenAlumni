@@ -10,7 +10,7 @@
       <div class="card-body">
 
         <!-- tabel -->
-        <table class="table">
+        <table class="table DataTable">
           <!-- head tabel -->
           <h3 class="card-title"> Jumlah : {{ $jumlahkuliah ?? 0 }}</h3><br><br>
           <thead>
@@ -19,7 +19,7 @@
               <th class="font-table" scope="col">alumni</th>
               <th class="font-table" scope="col">Nama Lembaga</th>
               <th class="font-table" scope="col">Jurusan Kuliah</th>
-              <th class="font-table" scope="col" colspan="2">Aksi</th>
+              <th class="font-table" scope="col">Aksi</th>
             </tr>
           </thead>
           <!-- end head tabel -->
@@ -27,23 +27,20 @@
           <!-- body tabel -->
           <tbody>
             @foreach($alumni as $r)
-
             <tr>
               <td>{{ $r->id_kuliah }}</td>
               <td>{{ $r->nama }}</td>
               <td>{{ $r->nama_lembaga }}</td>
               <td>{{ $r->jurusan_kuliah }}</td>
               <td>
-                <form action="{{url('kuliah/hapus/'. $r->id_kuliah)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
+                <!-- <form action="{{url('kuliah/hapus/'. $r->id_kuliah)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
                   <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
                   @csrf
-                </form>
-
+                </form> -->
+                <btn class="btnHapus" idKuliah="{{ $r->id_kuliah }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn>
                 <a href="kuliah/edit/{{$r->id_kuliah}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
               </td>
             </tr>
-
-
             @endforeach
           </tbody>
           <!-- end body tabel -->
@@ -76,7 +73,7 @@
 <script type="module">
   $('.DataTable tbody').on('click', '.btnHapus', function(a) {
     a.preventDefault();
-    let idJenisBerita = $(this).closest('.btnHapus').attr('idJenisBerita');
+    let idKuliah = $(this).closest('.btnHapus').attr('idKuliah');
     swal.fire({
       title: "Apakah anda ingin menghapus data ini?",
       showCancelButton: true,
@@ -89,9 +86,9 @@
         //Ajax Delete
         $.ajax({
           type: 'DELETE',
-          url: "kuliah/hapus/" + idJenisBerita,
+          url: "kuliah/hapus/" + idKuliah,
           data: {
-            id_JenisBerita: idJenisBerita,
+            id_kuliah: idKuliah,
             _token: "{{csrf_token()}}"
           },
           success: function(data) {
