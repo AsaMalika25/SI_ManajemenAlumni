@@ -13,6 +13,7 @@ use App\Http\Controllers\TberitaController;
 use App\Http\Controllers\TwirausahaController;
 use App\Http\Controllers\TangkatanController;
 use App\Http\Controllers\TjurusanController;
+use App\Http\Controllers\TkaprogController;
 use App\Http\Controllers\TkelasController;
 use App\Http\Controllers\AlumniController;
 use Illuminate\Support\Facades\Route;
@@ -122,7 +123,14 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::get('kelas/edit/{id}', [TkelasController::class, 'edit']);
     Route::post('kelas/update/{id}', [TkelasController::class, 'update']);
 
-    Route::get('konfirm-berita', [konfirm_beritaController::class, 'index']);
+    Route::get('dashboard', [DashboardController::class, 'index']);
+
+    Route::get('kaprog', [TkaprogController::class, 'index']);
+    Route::get('kaprog/tambah', [TkaprogController::class, 'create']);
+    Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
+    Route::post('kaprog/hapus', [TkaprogController::class, 'destroy']);
+    Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
+    Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
 });
 
 
