@@ -23,7 +23,8 @@
                                 <th class="font-table" scope="col">Angkatan</th>
                                 <th class="font-table" scope="col">SosMed</th>
                                 <th class="font-table" scope="col">kelas</th>
-                                <th class="font-table" scope="col" colspan="2">Aksi</th>
+                                
+                                
                             </tr>
                         </thead>
                         <!-- end head tabel -->
@@ -38,19 +39,9 @@
                                 <td>{{ $item->no_angkatan }}</td>
                                 <td>{{ $item->sosmed}}</td>
                                 <td>{{ $item->nama_kelas }}</td>
-                                {{-- <td>
-                                    @if($item->ijazah)
-                                        <img src="{{ url('foto') . '/' . $item->ijazah }} "
-                                            style="max-width: 50px; height: auto;" />
-                                    @endif
-                                </td> --}}
+                                
 
-                                <td>
-                                    <a href="{{url('alumni/detail/'. $item->id_alumni)}}"><img src="{{asset('img/gambar-seru.png')}}" alt="" width="30px;" height="30px;"></a>
-                                    <btn class="btn btnHapus" idAlumni="{{ $item->id_alumni }}"><img src="{{asset('img/trash.png')}}" alt="" width="30px;" height="30px;"></btn>
-                                    <a href="{{ url('alumni/edit/'. $item->id_alumni) }}"
-                                        class="btn "><img src="{{asset('img/edit.png')}}" alt="" width="30px;" height="30px;"></a>
-                                </td>
+                                
                                 {{-- <td>{{ $item->username }}</td> --}}
                                 {{-- <td>{{ $item->nama}}</td> --}}
                             </tr>
@@ -60,36 +51,6 @@
                     </table>
                     <!-- end tabel -->
                 </div>
-            </div>
-            <div style="margin-left: 5rem;">
-                <a class="btn btn-primary" href="{{url('alumni/export')}}" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-download" viewBox="0 0 16 16">
-                        <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                        <path
-                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                    </svg>
-                    Export 
-                </a>
-                <a class="btn btn-primary" href="{{url('alumni/cetak_pdf')}}" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-download" viewBox="0 0 16 16">
-                        <path
-                            d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-                        <path
-                            d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-                    </svg>
-                    CETAK
-                </a>
-                <a class="btn btn-primary" href="{{ url('alumni/tambah') }}" role="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                        class="bi bi-plus-lg" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-                    </svg>
-                    TAMBAH
-                </a>
             </div>
         </div>
     </div>

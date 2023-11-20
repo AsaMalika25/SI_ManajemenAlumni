@@ -6,6 +6,7 @@ use App\Models\talumni;
 use App\Models\tjenis_berita;
 use App\Models\tberita;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
 class TberitaController extends Controller
@@ -71,9 +72,19 @@ class TberitaController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(tberita $tberita)
+    public function show(tberita $tberita, tjenis_berita $tjenis_berita, Request $request)
     {
-        //
+        // $data = [
+        //     'tberita' => DB::table('views_alumni')->where('id_alumni', $id)->first(),
+        // ];
+        // return view('data_alumni.detail',$data);
+        $data = [
+            'tberita' => tberita::where('id_berita', $request->id)->first(),
+            'tjenis_berita' => $tjenis_berita->all()
+        ];
+
+        // dd($data);
+        return view('data_berita.detail', $data);
     }
 
     /**

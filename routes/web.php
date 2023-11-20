@@ -13,7 +13,9 @@ use App\Http\Controllers\TberitaController;
 use App\Http\Controllers\TwirausahaController;
 use App\Http\Controllers\TangkatanController;
 use App\Http\Controllers\TjurusanController;
+use App\Http\Controllers\TkaprogController;
 use App\Http\Controllers\TkelasController;
+use App\Http\Controllers\AlumniController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -34,10 +36,16 @@ Route::get('register', [TakunController::class,'register']);
 Route::get('register', [TakunController::class,'register']);
 Route::post('proses-register', [TakunController::class,'prosesregister']);
 
+
+
 Route::group(['middleware' => ['AdminOnly']], function () {
 
+ Route::get('dashboard', [DashboardController::class, 'index']);
+
 Route::get('alumni', [TalumniController::class, 'index']);
+Route::get('data-alumni', [AlumniController::class, 'index']);
 Route::get('alumni/export', [TalumniController::class, 'export']);
+Route::get('alumni/cetak_pdf', [TalumniController::class, 'cetak_pdf']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
 Route::post('alumni/simpan', [TalumniController::class, 'store']);
 Route::get('alumni/edit/{id}', [TalumniController::class, 'edit']);
@@ -62,6 +70,7 @@ Route::post('berita/simpan', [TberitaController::class, 'store']);
 Route::get('berita/edit/{id}', [TberitaController::class, 'edit']);
 Route::post('berita/edit/simpan', [TberitaController::class, 'update']);
 Route::delete('berita/hapus/{id}', [TberitaController::class, 'destroy']);
+Route::get('berita/detail/{id}', [TberitaController::class, 'show']);
 
 Route::get('kuliah', [TkuliahController::class, 'index']);
 Route::get('kuliah/tambah', [TkuliahController::class, 'create']);
@@ -115,6 +124,13 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::post('kelas/update/{id}', [TkelasController::class, 'update']);
 
     Route::get('dashboard', [DashboardController::class, 'index']);
+
+    Route::get('kaprog', [TkaprogController::class, 'index']);
+    Route::get('kaprog/tambah', [TkaprogController::class, 'create']);
+    Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
+    Route::post('kaprog/hapus', [TkaprogController::class, 'destroy']);
+    Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
+    Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
 });
 
 

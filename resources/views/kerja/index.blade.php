@@ -15,7 +15,7 @@
           <h3 class="card-title"> Jumlah : {{ $jumlahkerja ?? 0 }}</h3><br><br>
           <thead>
             <tr>
-              <th class="font-table" scope="col">id_kerja</th>
+              <th class="font-table" scope="col">id kerja</th>
               <th class="font-table" scope="col">alumni</th>
               <th class="font-table" scope="col">instansi</th>
               <th class="font-table" scope="col">jabatan</th>

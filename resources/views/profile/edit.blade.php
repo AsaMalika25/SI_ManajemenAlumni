@@ -14,17 +14,17 @@
           <!-- form tambah -->
           <form action="simpan" method="post" enctype="multipart/form-data"> 
             <div class="mb-3" >
-              <input type="hidden" class="form-control" name="" value="{{$->}}"/>
+              <input type="hidden" class="form-control" name="" value=""/>
               <label for="nama_Lengkap" class="form-label font-form">Nama Lengkap</label>
-              <input type="text" class="form-control" id="namaLengkap" placeholder="Nama Lengkap" name="nama_Lengkap" style="border-radius:  1.8635607321131447vh;"  value="{{$->nama_Lengkap}}"required>
+              <input type="text" class="form-control" id="namaLengkap" placeholder="Nama Lengkap" name="nama_Lengkap" style="border-radius:  1.8635607321131447vh;"  value=""required>
             </div>
             <div class="mb-3" >
               <label for="bidang" class="form-label font-form">Tempat, tanggal Lahir</label>
-              <input type="date" class="form-control" id="bidangLengkap" placeholder="Bidang Lengkap" name="ttl" style="border-radius:  1.8635607321131447vh;"  value="{{$->ttl}}"required>
+              <input type="date" class="form-control" id="bidangLengkap" placeholder="Bidang Lengkap" name="ttl" style="border-radius:  1.8635607321131447vh;"  value=""required>
             </div>
             <div class="form-group mt-2">
                 <label>Alamat</label>
-                <input type="text" class="form-control" name="gambar_Lengkap" value="{{$->alamat}}">  
+                <input type="text" class="form-control" name="gambar_Lengkap" value="">  
             <br>
             @csrf
             </div>
