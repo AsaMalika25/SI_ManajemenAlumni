@@ -123,7 +123,8 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
     Route::post('kaprog/hapus', [TkaprogController::class, 'destroy']);
     Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
-    Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
+    Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
+    // Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
 });
 
 

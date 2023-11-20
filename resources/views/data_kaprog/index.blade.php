@@ -35,8 +35,8 @@
                             <td>{{$r->nama_kaprog}}</td>
                             <td>{{$r->email}}</td>
                             <td>
-                                <a href="{{url('kaprog/edit/')}}" class="btn btn-success">Edit</a>
-                                <btn class="btn btn-danger btnHapus" idKaprog="">HAPUS
+                                <a href="{{url('kaprog/edit/' .$r->id_kaprog)}}" class="btn btn-success">Edit</a>
+                                <btn class="btn btn-danger btnHapus" idKaprog="id_kaprog">HAPUS
                             </td>
                                 
                         </tr>
@@ -82,7 +82,7 @@
                 //Ajax Delete
                 $.ajax({
                     type: 'post',
-                    url: 'kaprog/hapus',
+                    url: 'kaprog/hapus'+idKaprog,
                     data: {
                         id_kaprog: idKaprog,
                         _token: "{{ csrf_token() }}"
