@@ -102,7 +102,7 @@ class TalumniController extends Controller
         $data = [
             'alumni' => DB::table('views_alumni')->where('id_berita', $id)->first(),
         ];
-        return view('data_berita.detail',$data);
+        return view('data_alumni.detail',$data);
     }
 
     /**
