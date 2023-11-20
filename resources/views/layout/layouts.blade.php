@@ -34,30 +34,43 @@
             <div class="scrollbar" id="style-1">
             <ul>
             <li>                                   
-                <a href="">
                 <img src="{{asset('img/3966983-removebg-preview.png')}}" class="justify-content-center" style="max-height: 40px;">
                 <span class="justify-content-center ms-4">Welcome to SIMA!</span>
-                </a>
                 </li>  
             <li>                                   
                 <a href="">
                 <i class="fa fa-home fa-lg"></i>
                 <span class="nav-text">Dashboard</span>
                 </a>
-            </li> 
-            @if (Auth::user()->role == 'superadmin' && Auth::user()->role == 'kaprog')
-                <li>                                 
-                    <a href="">
-                    <i class="fa fa-align-left fa-lg"></i>
-                    <span class="nav-text">Kelola Alumni</span>
-                    </a>
-                </li> 
-            @endif
+            </li>
+
+            <li>                                 
+                <a href="{{url('alumni')}}">
+                <i class="fa fa-graduation-cap fa-lg"></i>
+                <span class="nav-text">Kelola Alumni</span>
+                </a>
+            </li>
+             
+            
                 
                 
            @if (Auth::user()->role == 'superadmin')
+
+           <li>
+                <a href="{{url('berita')}}">
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+                <span class="nav-text">Kelola Berita</span> 
+                </a>
+            </li>
+        
+            <li>
+                <a href="{{url('jenis-berita')}}">
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+                <span class="nav-text">Kelola Jenis Berita</span> 
+                </a>
+            </li>
             <li>                                 
-                <a href="">
+                <a href="{{url('list_akun')}}">
                 <i class="fa fa-user fa-lg"></i>
                 <span class="nav-text">Kelola Akun</span>
                 </a>
@@ -73,19 +86,31 @@
            @endif
                
             <!-- <ul class="logout"> -->
-            <li>
-                <a href="berita">
-                <i class="fa fa-lightbulb-o fa-lg"></i>
-                <span class="nav-text">Kelola Berita</span> 
-                 </a>
-            </li>  
-
-            <li>
-                <a href="jenis_berita">
-                <i class="fa fa-lightbulb-o fa-lg"></i>
-                <span class="nav-text">Kelola Jenis Berita</span> 
-                 </a>
-            </li>  
+            @if (Auth::user()->role == 'kaprog')
+                    <li>
+                        <a href="{{url('berita')}}">
+                        <i class="fa fa-lightbulb-o fa-lg"></i>
+                        <span class="nav-text">Kelola Berita</span> 
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a href="{{url('jenis_berita')}}">
+                        <i class="fa fa-lightbulb-o fa-lg"></i>
+                        <span class="nav-text">Kelola Jenis Berita</span> 
+                        </a>
+                    </li>
+            @endif
+              
+            @if (Auth::user()->role == 'alumni')
+                <li>
+                    <a href="">
+                    <i class="fa fa-lightbulb-o fa-lg"></i>
+                    <span class="nav-text">Berita</span> 
+                    </a>
+                </li>
+            @endif
+            
 
             <li>
                 <a href="{{url('logout')}}">
