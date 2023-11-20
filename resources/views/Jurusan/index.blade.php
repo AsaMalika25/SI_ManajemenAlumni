@@ -27,7 +27,7 @@
                         <tr>
                             <td>{{$item->nama_jurusan}}</td>
                             <td>
-                                <a href="{{url('jurusan/edit/')}}" class="btn btn-success">Edit</a>
+                                <a href="{{url('jurusan/edit/' .$item->id_jurusan)}}" class="btn btn-success">Edit</a>
                                 <btn class="btn btn-danger btnHapus" idJurusan="">HAPUS
                             </td>
                                 

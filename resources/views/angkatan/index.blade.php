@@ -17,7 +17,7 @@
                         <th class="font-table" scope="col">No_angkatan</th>
                         <th class="font-table" scope="col">tahun masuk</th>
                         <th class="font-table" scope="col">tahun keluar</th>
-                        <th class="font-table" scope="col" colspan="2">Aksi</th>
+                        <th class="font-table" scope="col">Aksi</th>
                       </tr>
                     </thead>
                     <!-- end head tabel -->

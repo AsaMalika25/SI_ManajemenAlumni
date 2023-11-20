@@ -14,10 +14,11 @@
           </div>
             <!-- text judul   -->
             <!-- form tambah -->
-        <form action="simpan" method="post">
+        <form action="simpan" method="POST">
             
                 <!-- foreign key -->
                   <label style="color: black;">Id Akun</label>
+                  <input type="hidden" class="form-control"  name="id_kaprog" aria-label="First name" value="{{$tkaprog->id_kaprog}}"><br>
                   <select name="id_akun" required class="form-control">
                         @foreach($takun as $u)
                           <option value="{{$u->id_akun}}">{{$u->username}}</option>
@@ -35,11 +36,11 @@
                 
                 
                   <label style="color: black;">Nama Kaprog</label>
-                  <input type="text" class="form-control"  name="nama_kaprog" aria-label="First name"><br>
+                  <input type="text" class="form-control"  name="nama_kaprog" aria-label="First name" value="{{$tkaprog->nama_kaprog}}"><br>
                 
                 
                   <label style="color: black;">Email</label>
-                  <input type="text" class="form-control" name="email" aria-label="First name"><br>
+                  <input type="teext" class="form-control" name="email" aria-label="First name" value="{{$tkaprog->email}}"><br>
                   <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 1rem;">Submit</button>
                   </div>
               </div>

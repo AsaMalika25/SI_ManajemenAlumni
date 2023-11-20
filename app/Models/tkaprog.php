@@ -13,5 +13,5 @@ class tkaprog extends Model
     protected $fillable= ['id_akun','id_jurusan', 'nama_kaprog', 'email'] ;
     protected $primaryKey= ['id_kaprog'];
     public $timestamps= false ;
-
+    public $incrementing = false ;
 }

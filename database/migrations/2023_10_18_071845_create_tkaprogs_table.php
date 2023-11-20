@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('nama_kaprog')->nullable(false);
             $table->string('email')->nullable(false);
 
-            $table->foreign('id_akun')->references('id_akun')->on('takun')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('id_jurusan')->references('id_jurusan')->on('tjurusan')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_akun')->on('takun')->references('id_akun')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_jurusan')->on('tjurusan')->references('id_jurusan')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

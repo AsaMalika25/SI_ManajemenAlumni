@@ -105,32 +105,33 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::get('angkatan', [TangkatanController::class, 'index']);
     Route::get('angkatan/tambah', [TangkatanController::class, 'create']);
     Route::post('angkatan/simpan', [TangkatanController::class, 'store']);
-    Route::post('angkatan/hapus', [TangkatanController::class, 'destroy']);
+    Route::delete('angkatan/hapus/{id}', [TangkatanController::class, 'destroy']);
     Route::get('angkatan/edit/{id}', [TangkatanController::class, 'edit']);
-    Route::post('angkatan/update/{id}', [TangkatanController::class, 'update']);
+    Route::post('angkatan/edit/simpan', [TangkatanController::class, 'update']);
 
     Route::get('jurusan', [TjurusanController::class, 'index']);
     Route::get('jurusan/tambah', [TjurusanController::class, 'create']);
     Route::post('jurusan/simpan', [TjurusanController::class, 'store']);
-    Route::post('jurusan/hapus', [TjurusanController::class, 'destroy']);
+    Route::delete('jurusan/hapus/{id}', [TjurusanController::class, 'destroy']);
     Route::get('jurusan/edit/{id}', [TjurusanController::class, 'edit']);
-    Route::post('jurusan/update/{id}', [TjurusanController::class, 'update']);
+    Route::post('jurusan/edit/simpan', [TjurusanController::class, 'update']);
 
     Route::get('kelas', [TkelasController::class, 'index']);
     Route::get('kelas/tambah', [TkelasController::class, 'create']);
     Route::post('kelas/simpan', [TkelasController::class, 'store']);
-    Route::post('kelas/hapus', [TkelasController::class, 'destroy']);
+    Route::delete('kelas/hapus/{id}', [TkelasController::class, 'destroy']);
     Route::get('kelas/edit/{id}', [TkelasController::class, 'edit']);
-    Route::post('kelas/update/{id}', [TkelasController::class, 'update']);
+    Route::post('kelas/edit/simpan', [TkelasController::class, 'update']);
 
     Route::get('dashboard', [DashboardController::class, 'index']);
 
     Route::get('kaprog', [TkaprogController::class, 'index']);
     Route::get('kaprog/tambah', [TkaprogController::class, 'create']);
     Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
-    Route::post('kaprog/hapus', [TkaprogController::class, 'destroy']);
+    Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
     Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
-    Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
+    Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
+    // Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
 });
 
 
