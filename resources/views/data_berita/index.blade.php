@@ -19,7 +19,7 @@
                             <th class="font-table" scope="col">Jenis Berita</th>
                             <th class="font-table" scope="col">Keterangan</th>
                             <th class="font-table" scope="col">Gambar Berita</th>
-                            <th class="font-table" scope="col" colspan="2">Aksi</th>
+                            <th class="font-table" scope="col">Aksi</th>
                           </tr>
                         </thead>
                         <!-- end head tabel -->
@@ -40,17 +40,10 @@
                               @endif
                             </td>
                             <td>
-                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 20px;height:20px;"></a>
-                              <!-- <form action="{{url('berita/hapus/'. $r->id_berita)}}" idBerita="{{$r->id_berita}}" method="post" onsubmit="return confirm('apakah ingin menghapus data ini ?')">
-                              @csrf
-                                <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
-                              </form> -->
-
+                              <a href="berita/detail/{{ $r->id_berita }}"><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 20px;height:20px;"></a>
                               <btn class="btnHapus" idBerita="{{ $r->id_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 20px;height:20px;"></btn>
                               <a href="berita/edit/{{$r->id_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 20px;height:20px;"></a>
                             </td>
-                            <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
-                            <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                           </tr>
                           @endforeach
                         </tbody>

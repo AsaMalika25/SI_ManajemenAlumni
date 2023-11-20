@@ -17,7 +17,7 @@ class TkuliahController extends Controller
         $data = [
             'alumni' => DB::table('tkuliah')
             ->join('talumni', 'tkuliah.id_alumni', '=', 'talumni.id_alumni')
-            ->select('talumni.nama', 'tkuliah.*  ')->get(),
+            ->select('talumni.nama', 'tkuliah.*')->get(),
         ];
         // dd($data);
 
