@@ -139,34 +139,37 @@ class TwirausahaController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        //
-        
-        // $id_wirausaha = $request->input('id_wirausaha');
+        //  // Hapus
+        // $aksi = twirausaha::where('id_wirausaha', $id)->first();
 
+        // if ($aksi) {
+        //     $aksi->delete();
+        //     // Pesan Berhasil
+        //     // $pesan = [
+        //     //     'success' => true,
+        //     //     'pesan'   => 'Data akun berhasil dihapus'
+        //     // ];
+        //     return redirect("wirausaha")->with('success','data berhasill dihapus');
+        // } else {
+        //     // Pesan Gagal
+        //     // $pesan = [
+        //     //     'success' => false,
+        //     //     'pesan'   => 'Data gagal dihapus'
+        //     // ];
+        //     return redirect()->back();
+        // }
 
-        // Hapus
-        $aksi = twirausaha::where('id_wirausaha', $id)->first();
+        $id = $request->input('id_wirausaha');
+        $data = twirausaha::find($id);
 
-
-        if ($aksi) {
-            $aksi->delete();
-            // Pesan Berhasil
-            // $pesan = [
-            //     'success' => true,
-            //     'pesan'   => 'Data akun berhasil dihapus'
-            // ];
-            return redirect("wirausaha")->with('success','data berhasill dihapus');
-        } else {
-            // Pesan Gagal
-            // $pesan = [
-            //     'success' => false,
-            //     'pesan'   => 'Data gagal dihapus'
-            // ];
-            return redirect()->back();
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
         }
 
+        $filePath = public_path('foto') . '/' . $data->file;
 
-        // return response()->json($pesan);
+            $data->delete();
+            return response()->json(['success' => true]);
         }
 
     }

@@ -37,11 +37,11 @@
                             
                             <td>
                               <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <form action="{{url('wirausaha/hapus/'. $r->id_wirausaha)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
+                              <!-- <form action="{{url('wirausaha/hapus/'. $r->id_wirausaha)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
                                 <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
                                 @csrf
-                              </form>
-                              
+                              </form> -->
+                              <btn class="btnHapus" idWirausaha="{{ $r->id_wirausaha }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 20px;height:20px;"></btn>
                               <a href="wirausaha/edit/{{$r->id_wirausaha}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
                           </tr>
@@ -72,7 +72,43 @@
             </div>
           </div>
         <!-- end konten utama -->
-      </div> 
+      </div>
+      <script type="module">
+    $('.DataTable tbody').on('click','.btnHapus',function(a){
+        a.preventDefault();
+        let idWirausaha = $(this).closest('.btnHapus').attr('idWirausaha');
+        swal.fire({
+            title : "Apakah anda ingin menghapus data ini?",
+            showCancelButton: true,
+            confirmButtonText: 'Setuju',
+            cancelButtonText: `Batal`,
+            confirmButtonColor: 'red'
 
-@endsection
+        }).then((result)=>{
+            if(result.isConfirmed){
+                //Ajax Delete
+                $.ajax({
+                    type: 'DELETE',
+                    url: "wirausaha/hapus/"+idWirausaha,
+                    data: {
+                        id_wirausaha : idWirausaha,
+                        _token : "{{csrf_token()}}"
+                    },
+                    success : function(data){
+                        if(data.success){
+                            swal.fire('Berhasil di hapus!', '', 'success').then(function(){
+                                //Refresh Halaman
+                                location.reload();
+                            });
+                        }
+                    }
+                });
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.DataTable').DataTable();
+    });
+</script>
+@endsection 
 
