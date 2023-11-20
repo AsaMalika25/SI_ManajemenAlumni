@@ -14,6 +14,7 @@ use App\Http\Controllers\TwirausahaController;
 use App\Http\Controllers\TangkatanController;
 use App\Http\Controllers\TjurusanController;
 use App\Http\Controllers\TkelasController;
+use App\Http\Controllers\AlumniController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -34,10 +35,16 @@ Route::get('register', [TakunController::class,'register']);
 Route::get('register', [TakunController::class,'register']);
 Route::post('proses-register', [TakunController::class,'prosesregister']);
 
+
+
 Route::group(['middleware' => ['AdminOnly']], function () {
 
+ Route::get('dashboard', [DashboardController::class, 'index']);
+
 Route::get('alumni', [TalumniController::class, 'index']);
+Route::get('data-alumni', [AlumniController::class, 'index']);
 Route::get('alumni/export', [TalumniController::class, 'export']);
+Route::get('alumni/cetak_pdf', [TalumniController::class, 'cetak_pdf']);
 Route::get('alumni/tambah', [TalumniController::class, 'create']);
 Route::post('alumni/simpan', [TalumniController::class, 'store']);
 Route::get('alumni/edit/{id}', [TalumniController::class, 'edit']);
@@ -114,7 +121,7 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::get('kelas/edit/{id}', [TkelasController::class, 'edit']);
     Route::post('kelas/update/{id}', [TkelasController::class, 'update']);
 
-    Route::get('dashboard', [DashboardController::class, 'index']);
+    Route::get('konfirm-berita', [konfirm_beritaController::class, 'index']);
 });
 
 

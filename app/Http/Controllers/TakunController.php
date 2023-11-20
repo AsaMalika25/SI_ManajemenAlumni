@@ -52,7 +52,7 @@ class TakunController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-                    return redirect('alumni')->with('success', 'you are logged');
+                    return redirect('dashboard')->with('success', 'you are logged');
                 }else {
                     return redirect()->back()->withErrors('The username and password entered are incorrect');
                 }

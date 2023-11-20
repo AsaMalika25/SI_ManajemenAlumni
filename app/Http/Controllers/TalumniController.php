@@ -14,6 +14,7 @@ use App\Exports\KelasExport;
 use App\Exports\AngkatanExport;
 use App\Exports\JurusanExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 
@@ -42,6 +43,16 @@ class TalumniController extends Controller
     public function export() 
     {
         return Excel::download(new AlumniExport, 'alumni_data.xlsx');
+    }
+
+    public function cetak_pdf()
+    {
+        $data = [
+            'alumni' =>DB::table('views_alumni')->get()
+        ]; 
+ 
+    	$pdf = Pdf::loadview('data_alumni.alumni_pdf', $data);
+    	return $pdf->download('data_alumni.pdf');
     }
     /**
      * Show the form for creating a new resource.
