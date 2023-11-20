@@ -10,7 +10,7 @@
       <div class="card-body">
 
         <!-- tabel -->
-        <table class="table">
+        <table class="table DataTable">
           <!-- head tabel -->
           <h3 class="card-title"> Jumlah : {{ $jumlahkerja ?? 0 }}</h3><br><br>
           <thead>
@@ -34,11 +34,11 @@
               <td>{{ $r->instansi }}</td>
               <td>{{ $r->jabatan }}</td>
               <td>
-                <form action="{{url('kerja/hapus/'. $r->id_kerja)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
+                <!-- <form action="{{url('kerja/hapus/'. $r->id_kerja)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
                   <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
                   @csrf
-                </form>
-
+                </form> -->
+                <btn class="btnHapus" idKerja="{{ $r->id_kerja }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn>
                 <a href="kerja/edit/{{$r->id_kerja}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
               </td>
             </tr>
@@ -76,7 +76,7 @@
 <script type="module">
   $('.DataTable tbody').on('click', '.btnHapus', function(a) {
     a.preventDefault();
-    let idJenisBerita = $(this).closest('.btnHapus').attr('idJenisBerita');
+    let idKerja = $(this).closest('.btnHapus').attr('idKerja');
     swal.fire({
       title: "Apakah anda ingin menghapus data ini?",
       showCancelButton: true,
@@ -89,9 +89,9 @@
         //Ajax Delete
         $.ajax({
           type: 'DELETE',
-          url: "kerja/hapus/" + idJenisBerita,
+          url: "kerja/hapus/" + idKerja,
           data: {
-            id_JenisBerita: idJenisBerita,
+            id_kerja: idKerja,
             _token: "{{csrf_token()}}"
           },
           success: function(data) {

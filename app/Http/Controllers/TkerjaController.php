@@ -121,36 +121,18 @@ class TkerjaController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        //
+        $id_kerja = $request->input('id_kerja');
+        $data = tkerja::find($id_kerja);
+
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
+        }
         
-        // $id_kerja = $request->input('id_kerja');
-
-
-        // Hapus
-        $aksi = tkerja::where('id_kerja', $id)->first();
-
-
-        if ($aksi) {
-            $aksi->delete();
-            // Pesan Berhasil
-            // $pesan = [
-            //     'success' => true,
-            //     'pesan'   => 'Data akun berhasil dihapus'
-            // ];
-            return redirect("kerja")->with('success','data berhasill dihapus');
-        } else {
-            // Pesan Gagal
-            // $pesan = [
-            //     'success' => false,
-            //     'pesan'   => 'Data gagal dihapus'
-            // ];
-            return redirect()->back();
+        if ($data) {
+            $data->delete();
+            return response()->json(['success' => true]);
         }
-
-
-        // return response()->json($pesan);
         }
-
     }
 
 
