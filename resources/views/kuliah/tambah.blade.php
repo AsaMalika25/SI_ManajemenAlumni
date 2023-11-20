@@ -23,7 +23,7 @@
           <!-- end text judul -->
           <form action="simpan" method="post" enctype="multipart/form-data">
               <div class="mb-3" >
-                <label for="id_alumni" class="form-label font-form">id_alumni</label>
+                <label for="id_alumni" class="form-label font-form"  style="color: white;">alumni</label>
                 <select name="id_alumni" id="id_alumni" class="form-control">
                     @foreach($alumni as $a)
                     <option value="{{$a->id_alumni}}">{{$a->nama}}</option>
@@ -31,11 +31,11 @@
                 </select>
               </div>
             <div class="mb-3" >
-              <label for="nama_lembaga" class="form-label font-form">Nama Lembaga</label>
+              <label for="nama_lembaga" class="form-label font-form" style="color: white;">Nama Lembaga</label>
               <input type="text" class="form-control" id="namaLembaga" placeholder="Nama Lembaga" name="nama_lembaga" style="border-radius:  1.8635607321131447vh;" required>
             </div>
             <div class="mb-3" >
-              <label for="jurusan_kuliah" class="form-label font-form">Jurusan Kuliah</label>
+              <label for="jurusan_kuliah" class="form-label font-form"  style="color: white;">Jurusan Kuliah</label>
               <input type="text" class="form-control" id="jurusan_kuliah" placeholder="Jurusan Kuliah" name="jurusan_kuliah" style="border-radius:  1.8635607321131447vh;" required>
             </div>
            

@@ -12,12 +12,12 @@ class TkuliahController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(tkuliah $tkuliah, talumni $talumni )
+    public function index(tkuliah $tkuliah, talumni $talumni)
     {
         $data = [
             'alumni' => DB::table('tkuliah')
             ->join('talumni', 'tkuliah.id_alumni', '=', 'talumni.id_alumni')
-            ->select('talumni.nama', 'tkuliah.*  ')->get(),
+            ->select('talumni.nama', 'tkuliah.*')->get(),
         ];
         // dd($data);
 

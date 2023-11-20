@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-
+use App\Models\takun;
 use App\Models\talumni;
 use App\Models\tkerja;
 use App\Models\tkuliah;

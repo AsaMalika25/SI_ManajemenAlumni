@@ -69,6 +69,7 @@ Route::post('berita/simpan', [TberitaController::class, 'store']);
 Route::get('berita/edit/{id}', [TberitaController::class, 'edit']);
 Route::post('berita/edit/simpan', [TberitaController::class, 'update']);
 Route::delete('berita/hapus/{id}', [TberitaController::class, 'destroy']);
+Route::get('berita/detail/{id}', [TberitaController::class, 'show']);
 
 Route::get('kuliah', [TkuliahController::class, 'index']);
 Route::get('kuliah/tambah', [TkuliahController::class, 'create']);

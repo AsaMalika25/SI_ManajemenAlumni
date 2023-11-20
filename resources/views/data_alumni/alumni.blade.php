@@ -23,7 +23,7 @@
                                 <th class="font-table" scope="col">Angkatan</th>
                                 <th class="font-table" scope="col">SosMed</th>
                                 <th class="font-table" scope="col">kelas</th>
-                                <th class="font-table" scope="col">Ijazah</th>
+                                
                                 
                             </tr>
                         </thead>
@@ -39,12 +39,7 @@
                                 <td>{{ $item->no_angkatan }}</td>
                                 <td>{{ $item->sosmed}}</td>
                                 <td>{{ $item->nama_kelas }}</td>
-                                <td>
-                                    @if($item->ijazah)
-                                        <img src="{{ url('foto') . '/' . $item->ijazah }} "
-                                            style="max-width: 50px; height: auto;" />
-                                    @endif
-                                </td>
+                                
 
                                 
                                 {{-- <td>{{ $item->username }}</td> --}}

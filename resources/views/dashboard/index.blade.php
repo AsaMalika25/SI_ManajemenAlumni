@@ -5,7 +5,7 @@
             <h1 style="color: white;">Dashboard</h1>
         </div>
         <div class="d-flex">
-            <h3 style="color: white; margin-right: 1%;">Welcome, </h3><h3 style="color: rgb(60, 60, 138);"> SuperAdmin!</h3>
+            <h3 style="color: white; margin-right: 1%;">Welcome, </h3><h3 style="color: rgb(60, 60, 138);"></h3>
         </div>
     </div>
     <div class="container">

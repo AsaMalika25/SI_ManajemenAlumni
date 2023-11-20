@@ -111,7 +111,7 @@ class TalumniController extends Controller
     public function show(talumni $talumni, $id)
     {
         $data = [
-            'alumni' => DB::table('views_alumni')->where('id_alumni', $id)->first(),
+            'alumni' => DB::table('views_alumni')->first(),
         ];
         return view('data_alumni.detail',$data);
     }
