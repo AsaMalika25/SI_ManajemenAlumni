@@ -2,42 +2,38 @@
 @section('content')
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
         <div class="header">
-            <h1 style="color: #fff;"><b>Berita</b></h1>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-2">
+                <h1 style="color: #fff; text-center"><b>Berita</b></h1>
+              </div>
+
+              <div class="col-md-5">
+                <a href="{{url('berita-alumni/tambah')}}" class="btn btn-primary">Tambah Berita</a>
+              </div>
+            </div>
+              
+          </div>
+            
         </div>
         
         <div class="d-flex">
-          <div class="card" style="width: 18rem; margin-right: 10px;">
-            <img src="img/3966983-removebg-preview.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
+
+          @foreach ($tberita as $item)
+            <div class="card" style="width: 18rem; margin-right: 10px;">
+              @if($item->file)
+                <img src="{{ url('foto') . '/' . $item->file }}" class="card-img-top" alt="...">              
+              @endif
+              <div class="card-body">
+                <h5 class="card-title">{{$item->judul_berita}}</h5>
+                <p class="card-text">{{$item->ket_berita}}</p>
+                <p class="card-text">{{$item->kode_berita}}</p>
+                <p class="card-text">{{$item->tgl_post}}</p>
+                <a href="{{url('berita-alumni/cetak_pdf')}}" class="btn btn-primary">cetak</a>
+              </div>
             </div>
-          </div>
-          <div class="card" style="width: 18rem; margin-right: 10px;">
-            <img src="img/3966983-removebg-preview.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem; margin-right: 10px;">
-            <img src="img/3966983-removebg-preview.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="img/3966983-removebg-preview.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-          </div>
-        </div>
+          @endforeach
+          
+          
     </div>
 @endsection

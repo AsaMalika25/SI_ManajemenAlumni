@@ -7,6 +7,7 @@ use App\Models\tjenis_berita;
 use App\Models\tberita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
 
 class TberitaController extends Controller
@@ -21,6 +22,21 @@ class TberitaController extends Controller
         ];
         return view('data_berita.index', $data);
     }
+    public function Berita(tberita $tberita)
+    {
+        $data = [
+            'tberita' => $tberita->all()
+        ];
+        return view('berita.index', $data);
+    }
+    public function cetak_Berita(tberita $tberita)
+    {
+        $data = [
+            'tberita' => $tberita->all()
+        ];
+        $pdf = Pdf::loadview('berita.Berita_pdf', $data);
+    	return $pdf->download('Berita.pdf');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -31,6 +47,13 @@ class TberitaController extends Controller
             'tjenis_berita' => $tjenis_berita->all(),
         ];
         return view('data_berita.tambah', $data);
+    }
+    public function create_berita(tjenis_berita $tjenis_berita)
+    {
+        $data = [
+            'tjenis_berita' => $tjenis_berita->all(),
+        ];
+        return view('berita.tambah', $data);
     }
 
     /**
@@ -59,9 +82,41 @@ class TberitaController extends Controller
             $data['file'] = $foto_nama;
         }
 
-            if(tberita::create($data))
+            if($tberita->create($data))
             {
-                return redirect('/berita')->with('success', 'Berita Berhasil di tambah');
+                return redirect('berita')->with('success', 'Berita Berhasil di tambah');
+            }else
+            {
+                return back()->with('error','Data berita gagal di update');
+            }
+        }
+    }
+    public function store_berita(Request $request, tjenis_berita $tjenis_berita, tberita $tberita )
+    {
+        /*array untuk mem-validasi data, apakah data sudah sesuai atau belum,
+        kemudian data tersebut akan dikirim dan diolah lebih lanjut*/
+        $data = $request->validate([
+            'id_jenis_berita' => ['required'],
+            'judul_berita' => ['required'],
+            'tgl_post' => ['required'],
+            'kode_berita' => ['required'],
+            'ket_berita' => ['required'],
+            'file' => ['required'], 
+        ]);
+
+        if($data)
+        {
+        if($request->hasFile('file') && $request->file('file')->isValid())
+        {
+            $foto_file = $request->file('file');
+            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_file->move(public_path('foto'), $foto_nama);
+            $data['file'] = $foto_nama;
+        }
+
+            if($tberita->create($data))
+            {
+                return redirect('berita-alumni')->with('success', 'Berita Berhasil di tambah');
             }else
             {
                 return back()->with('error','Data berita gagal di update');

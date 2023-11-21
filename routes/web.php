@@ -16,6 +16,7 @@ use App\Http\Controllers\TjurusanController;
 use App\Http\Controllers\TkaprogController;
 use App\Http\Controllers\TkelasController;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\logController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -42,6 +43,9 @@ Route::group(['middleware' => ['AdminOnly']], function () {
 
  Route::get('dashboard', [DashboardController::class, 'index']);
 
+ Route::get('log', [logController::class, 'index']);
+ Route::post('log/hapus', [logController::class, 'destroy']);
+
 Route::get('alumni', [TalumniController::class, 'index']);
 Route::get('data-alumni', [AlumniController::class, 'index']);
 Route::get('alumni/export', [TalumniController::class, 'export']);
@@ -65,8 +69,12 @@ Route::get('log_berita', [LogsBeritaController::class, 'index']);
 
 
 Route::get('berita', [TberitaController::class, 'index']);
+Route::get('berita-alumni', [TberitaController::class, 'Berita']);
+Route::get('berita-alumni/cetak_pdf', [TberitaController::class, 'cetak_Berita']);
 Route::get('berita/tambah', [TberitaController::class, 'create']);
+Route::get('berita-alumni/tambah', [TberitaController::class, 'create_berita']);
 Route::post('berita/simpan', [TberitaController::class, 'store']);
+Route::post('berita-alumni/simpan', [TberitaController::class, 'store_berita']);
 Route::get('berita/edit/{id}', [TberitaController::class, 'edit']);
 Route::post('berita/edit/simpan', [TberitaController::class, 'update']);
 Route::delete('berita/hapus/{id}', [TberitaController::class, 'destroy']);

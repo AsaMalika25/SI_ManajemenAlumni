@@ -79,7 +79,7 @@
             </li>
             
             <li>                                 
-                <a href="">
+                <a href="{{url('log')}}">
                 <i class="fa fa-align-left fa-lg"></i>
                 <span class="nav-text">LOG</span>
                 </a>
@@ -118,7 +118,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{url('berita-alumni')}}">
                     <i class="fa fa-lightbulb-o fa-lg"></i>
                     <span class="nav-text">Berita</span> 
                     </a>

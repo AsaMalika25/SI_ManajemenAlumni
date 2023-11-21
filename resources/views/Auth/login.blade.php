@@ -57,11 +57,6 @@
                             <div class="col-md-4" style="margin-left: 9rem;">
                                 <button type="submit" class="btn btn-success">LOGIN</button>
                             </div>
-                            <div class="row">
-                                <div class="col-md-4" style="margin-left: 9rem;">
-                                    <a href="{{url('register')}}">You have any account ?</a>
-                                </div>
-                            </div>
                             
                             <p>
                         </div>
