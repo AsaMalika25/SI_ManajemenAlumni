@@ -58,9 +58,9 @@ class TkerjaController extends Controller
    
         if($data)
         {
-            if(tkerja::create($data))
+            if($tkerja->create($data))
             {
-                return redirect('/kerja')->with('success', 'Data Berhasil di Update');
+                return redirect('kerja')->with('success', 'Data Berhasil di Update');
             }else
             {
                 return back()->with('error','Data  gagal di update');
