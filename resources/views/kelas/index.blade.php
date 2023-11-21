@@ -6,8 +6,7 @@
     <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST kelas</b></h1>
     <br>
 
-    <div class="card"
-        style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
+    <div class="card" style="min-width:123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
         
         <div class="card-header">
             <span>Jumlah nama_kelas : {{$jumlahKelas}}</span>
@@ -40,12 +39,12 @@
                             @endforeach
                             <td>
                                 <a href="{{ url('kelas/edit/'. $item->id_kelas) }}" class="btn btn-success">Edit</a>
-                                <btn class="btn btn-danger btnHapus" idAngkatan="">HAPUS
+                                <btn class="btn btn-danger btnHapus" idKelas="{{$item->id_kelas}}">HAPUS
                             </td>
                     </tr>
                     @endforeach
                 </tbody>
-                {{-- <td>{{$item->nama_kelas }}</td> --}}
+                <!-- {{-- <td>{{$item->nama_kelas }}</td> --}}
                 {{-- @foreach ($data as $item)
                         <tr>
                             <td>{{ $item->nama_kelas }}</td>
@@ -57,7 +56,7 @@
                 </td>
 
                 </tr>
-                @endforeach--}}
+                @endforeach--}} -->
 
                 <!-- end body tabel -->
             </table>
@@ -85,7 +84,7 @@
 <script type="module">
     $('.Datatable tbody').on('click', '.btnHapus', function(a) {
         a.preventDefault();
-        let idAngkatan = $(this).closest('.btnHapus').attr('idAngkatan');
+        let idKelas = $(this).closest('.btnHapus').attr('idKelas');
         swal.fire({
             title: "Apakah anda ingin menghapus data ini?",
             showCancelButton: true,
@@ -97,10 +96,10 @@
             if (result.isConfirmed) {
                 //Ajax Delete
                 $.ajax({
-                    type: 'post',
-                    url: 'angkatan/hapus',
+                    type: 'DELETE',
+                    url: 'kelas/hapus/' + idKelas,
                     data: {
-                        id_angkatan: idAngkatan,
+                        id_kelas: idKelas,
                         _token: "{{ csrf_token() }}"
                     },
                     success: function(data) {

@@ -120,34 +120,34 @@ class TkuliahController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        //
-        
-        // $id_kuliah = $request->input('id_kuliah');
+        // $aksi = tkuliah::where('id_kuliah', $id)->first();
+        // if ($aksi) {
+        //     $aksi->delete();
+        //     // Pesan Berhasil
+        //     // $pesan = [
+        //     //     'success' => true,
+        //     //     'pesan'   => 'Data akun berhasil dihapus'
+        //     // ];
+        //     return redirect("kuliah")->with('success','data berhasill dihapus');
+        // } else {
+        //     // Pesan Gagal
+        //     // $pesan = [
+        //     //     'success' => false,
+        //     //     'pesan'   => 'Data gagal dihapus'
+        //     // ];
+        //     return redirect()->back();
+        // }
+        $id_kuliah = $request->input('id_kuliah');
+        $data = tkuliah::find($id_kuliah);
 
-
-        // Hapus
-        $aksi = tkuliah::where('id_kuliah', $id)->first();
-
-
-        if ($aksi) {
-            $aksi->delete();
-            // Pesan Berhasil
-            // $pesan = [
-            //     'success' => true,
-            //     'pesan'   => 'Data akun berhasil dihapus'
-            // ];
-            return redirect("kuliah")->with('success','data berhasill dihapus');
-        } else {
-            // Pesan Gagal
-            // $pesan = [
-            //     'success' => false,
-            //     'pesan'   => 'Data gagal dihapus'
-            // ];
-            return redirect()->back();
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
         }
-
-
-        // return response()->json($pesan);
+        
+        if ($data) {
+            $data->delete();
+            return response()->json(['success' => true]);
+        }
         }
 
     }

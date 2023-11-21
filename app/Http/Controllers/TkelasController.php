@@ -110,7 +110,7 @@ class TkelasController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, tkelas $tkelas)
     {
         
         $data = $request->validate([
@@ -119,22 +119,33 @@ class TkelasController extends Controller
             'id_angkatan' => ['required'],
         ]);
 
-        if ($data) {
-            
-            tkelas::where('id_kelas',$id)->update($data);
-
-            return redirect()->to('kelas')->with('success','your update data');
-            
-        }else {
-            return redirect()->back();
+        if($request->input('id_kelas') !== null ){
+            //Proses Update
+            $dataUpdate = tkelas::where('id_kelas',$request->input('id_kelas'))
+            ->update($data);
+        if($dataUpdate){
+            return redirect('/kelas')->with('success', 'kelas Berhasil di Update');
+        }else{
+        return back()->with('error','Data kelas gagal di update');
+        }
         }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(tkelas $tkelas)
+    public function destroy(tkelas $tkelas, Request $request)
     {
-        //
+        $id_kelas = $request->input('id_kelas');
+        $data = tkelas::find($id_kelas);
+
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
+        }
+        
+        if ($data) {
+            $data->delete();
+            return response()->json(['success' => true]);
+        }
     }
 }

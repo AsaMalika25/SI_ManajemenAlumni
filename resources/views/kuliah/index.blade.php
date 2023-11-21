@@ -10,7 +10,7 @@
       <div class="card-body">
 
         <!-- tabel -->
-        <table class="table">
+        <table class="table DataTable">
           <!-- head tabel -->
           <h3 class="card-title"> Jumlah : {{ $jumlahkuliah ?? 0 }}</h3><br><br>
           <thead>
@@ -19,7 +19,7 @@
               <th class="font-table" scope="col">alumni</th>
               <th class="font-table" scope="col">Nama Lembaga</th>
               <th class="font-table" scope="col">Jurusan Kuliah</th>
-              <th class="font-table" scope="col" colspan="2">Aksi</th>
+              <th class="font-table" scope="col">Aksi</th>
             </tr>
           </thead>
           <!-- end head tabel -->
@@ -27,23 +27,20 @@
           <!-- body tabel -->
           <tbody>
             @foreach($alumni as $r)
-
             <tr>
               <td>{{ $r->id_kuliah }}</td>
               <td>{{ $r->nama }}</td>
               <td>{{ $r->nama_lembaga }}</td>
               <td>{{ $r->jurusan_kuliah }}</td>
               <td>
-                <form action="{{url('kuliah/hapus/'. $r->id_kuliah)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
+                <!-- <form action="{{url('kuliah/hapus/'. $r->id_kuliah)}}" method="post" onsubmit="return confirm('apakah anda ingin menghapus data?')">
                   <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
                   @csrf
-                </form>
-
+                </form> -->
+                <btn class="btnHapus" idKuliah="{{ $r->id_kuliah }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn>
                 <a href="kuliah/edit/{{$r->id_kuliah}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
               </td>
             </tr>
-
-
             @endforeach
           </tbody>
           <!-- end body tabel -->
@@ -52,20 +49,12 @@
       </div>
     </div>
     <div style="margin-left: 5rem;">
-      <a class="btn btn-primary" href="edit/{id}" role="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-download" viewBox="0 0 16 16">
-          <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
-          <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
-        </svg>
-        CETAK
-      </a>
       <a class="btn btn-primary" href="kuliah/tambah" role="button">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
         </svg>
         TAMBAH
       </a>
-      <a class="btn btn-primary" href="/logs_kuliah" role="button">LOG</a>
     </div>
   </div>
 </div>
@@ -76,7 +65,7 @@
 <script type="module">
   $('.DataTable tbody').on('click', '.btnHapus', function(a) {
     a.preventDefault();
-    let idJenisBerita = $(this).closest('.btnHapus').attr('idJenisBerita');
+    let idKuliah = $(this).closest('.btnHapus').attr('idKuliah');
     swal.fire({
       title: "Apakah anda ingin menghapus data ini?",
       showCancelButton: true,
@@ -89,9 +78,9 @@
         //Ajax Delete
         $.ajax({
           type: 'DELETE',
-          url: "kuliah/hapus/" + idJenisBerita,
+          url: "kuliah/hapus/" + idKuliah,
           data: {
-            id_JenisBerita: idJenisBerita,
+            id_kuliah: idKuliah,
             _token: "{{csrf_token()}}"
           },
           success: function(data) {

@@ -85,54 +85,53 @@ class TangkatanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, tangkatan $tangkatan)
     {
-        $request->validate([
+        $data = $request->validate([
             'no_angkatan' => 'required',
             'tahun_masuk' => 'required',
             'tahun_keluar' => 'required',
         ]);
 
-        $update_angkatan = [
-            'no_angkatan' => $request->input('no_angkatan'),
-            'tahun_masuk' => $request->input('tahun_masuk'),
-            'tahun_keluar' => $request->input('tahun_keluar'),
-        ];
-        
-
-        if ($update_angkatan) {
-        tangkatan::where('id_angkatan', $id)->update($update_angkatan);
-
-        return redirect()->to('angkatan')->with('success','berhasil menambahkan data');
-
-        }else {
-            return redirect()->back();
+        if($request->input('id_angkatan') !== null ){
+            //Proses Update
+            $dataUpdate = tangkatan::where('id_angkatan',$request->input('id_angkatan'))
+            ->update($data);
+        if($dataUpdate){
+            return redirect('/angkatan')->with('success', 'angkatan Berhasil di Update');
+        }else{
+        return back()->with('error','Data angkatan gagal di update');
         }
-    }
+
+        // $update_angkatan = [
+        //     'no_angkatan' => $request->input('no_angkatan'),
+        //     'tahun_masuk' => $request->input('tahun_masuk'),
+        //     'tahun_keluar' => $request->input('tahun_keluar'),
+        // ];
+        // if ($data) {
+        // tangkatan::where('id_angkatan', $id)->update($data);
+
+        // return redirect()->to('angkatan')->with('success','berhasil menambahkan data');
+
+        // }else {
+        //     return redirect()->back();
+        // }
+    }}
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(tangkatan $tangkatan, Request $request)
     {
         $id_angkatan = $request->input('id_angkatan');
+        $data = tangkatan::find($id_angkatan);
 
-        // Hapus 
-        $aksi = $tangkatan->where('id_angkatan', $id_angkatan)->delete();
-
-        if ($aksi) {
-            // Pesan Berhasil
-            $pesan = [
-                'success' => true,
-                'pesan'   => 'Data jenis surat berhasil dihapus'
-            ];
-        } else {
-            // Pesan Gagal
-            $pesan = [
-                'success' => false,
-                'pesan'   => 'Data gagal dihapus'
-            ];
+        if (!$data) {
+            return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
         }
-
-        return response()->json($pesan);
+        
+        if ($data) {
+            $data->delete();
+            return response()->json(['success' => true]);
+        }
     }
 }

@@ -139,26 +139,6 @@ class TwirausahaController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        //  // Hapus
-        // $aksi = twirausaha::where('id_wirausaha', $id)->first();
-
-        // if ($aksi) {
-        //     $aksi->delete();
-        //     // Pesan Berhasil
-        //     // $pesan = [
-        //     //     'success' => true,
-        //     //     'pesan'   => 'Data akun berhasil dihapus'
-        //     // ];
-        //     return redirect("wirausaha")->with('success','data berhasill dihapus');
-        // } else {
-        //     // Pesan Gagal
-        //     // $pesan = [
-        //     //     'success' => false,
-        //     //     'pesan'   => 'Data gagal dihapus'
-        //     // ];
-        //     return redirect()->back();
-        // }
-
         $id = $request->input('id_wirausaha');
         $data = twirausaha::find($id);
 

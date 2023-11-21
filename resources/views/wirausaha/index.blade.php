@@ -10,7 +10,7 @@
                     <div class="card-body">  
           
                       <!-- tabel -->
-                      <table class="table">
+                      <table class="table DataTable ">
                         <!-- head tabel -->
                         <h3 class="card-title"> Jumlah : {{ $jumlahwirausaha ?? 0 }}</h3><br><br>
                         <thead>
@@ -41,7 +41,7 @@
                                 <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
                                 @csrf
                               </form> -->
-                              <btn class="btnHapus" idWirausaha="{{ $r->id_wirausaha }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 20px;height:20px;"></btn>
+                              <btn class="btnHapus" idWirausaha="{{ $r->id_wirausaha }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn>
                               <a href="wirausaha/edit/{{$r->id_wirausaha}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
                             </td>
                           </tr>
