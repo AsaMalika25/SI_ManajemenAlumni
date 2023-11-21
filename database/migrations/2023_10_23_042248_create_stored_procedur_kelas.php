@@ -38,8 +38,6 @@ return new class extends Migration
         
         IF pesan_error != '00000' THEN ROLLBACK TO satu;
         END IF;
-        
-       
     
         -- Dapatkan ID kelas yang baru disisipkan
         SET new_id_kelas = LAST_INSERT_ID();
@@ -50,7 +48,6 @@ return new class extends Migration
 
         END IF;
         END
-        
         
         ");
     }
