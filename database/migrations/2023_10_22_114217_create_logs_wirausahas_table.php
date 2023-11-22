@@ -18,13 +18,6 @@ return new class extends Migration
             $table->timestamps(false);
         });
 
-        DB::unprepared('CREATE TRIGGER tambah_wirausaha AFTER INSERT ON twirausaha FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
-        (\'wirausaha \', NEW.nama_usaha, \' \', \'telah ditambahkan pada \', \' \', NOW())); END;');
-        DB::unprepared('CREATE TRIGGER edit_wirausaha AFTER UPDATE ON twirausaha FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
-        (\'wirausaha \', OLD.nama_usaha, \' \', \'telah diperbarui pada \', \' \', NOW())); END;');
-        DB::unprepared('CREATE TRIGGER hapus_wirausaha AFTER DELETE ON twirausaha FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
-        (\'wirausaha \', OLD.nama_usaha, \' \', \'telah dihapus pada \', \' \', NOW())); END;');
-
     }
 
     /**
