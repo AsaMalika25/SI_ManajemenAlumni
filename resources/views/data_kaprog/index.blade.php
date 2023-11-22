@@ -14,7 +14,7 @@
             <thead>
               <tr>
                 <th class="font-table">Id</th>
-                <th class="font-table">Id akun</th>
+                <th class="font-table">Username Akun</th>
                 <th class="font-table">Jurusan</th>
                 <th class="font-table">Nama</th>
                 <th class="font-table">Email</th>
@@ -29,8 +29,8 @@
               @foreach ($kaprog as $r)
               <tr>
                 <td>{{$r->id_kaprog}}</td>
-                <td>{{$r->id_akun}}</td>
-                <td>{{$r->id_jurusan }}</td>
+                <td>{{$r->username}}</td>
+                <td>{{$r->nama_jurusan }}</td>
                 <td>{{$r->nama_kaprog}}</td>
                 <td>{{$r->email}}</td>
                 <td>
