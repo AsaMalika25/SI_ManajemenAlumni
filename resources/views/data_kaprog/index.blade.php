@@ -31,7 +31,7 @@
                         <tr>
                             <td>{{$r->id_kaprog}}</td>
                             <td>{{$r->id_akun}}</td>
-                            <td>{{$r->id_jurusan}}</td>
+                            <td>{{$r->id_jurusan  }}</td>
                             <td>{{$r->nama_kaprog}}</td>
                             <td>{{$r->email}}</td>
                             <td>

@@ -16,6 +16,6 @@ class tjurusan extends Model
 
     public function jurusan(){
         
-        return $this->hasMany(tkelas::class, 'id_akun');
+        return $this->hasMany(tkelas::class, 'id_jurusan');
     }
 }

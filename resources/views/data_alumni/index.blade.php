@@ -6,8 +6,7 @@
     <br>
     <div class="tab-content" id="pills-tabContent">
         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-            <div class="card"
-                style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
+            <div class="card"style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
                 <div class="card-header">
                     <span>jumlah Alumni : {{$jumlah_alumni}}</span>
                 </div>
@@ -23,7 +22,7 @@
                                 <th class="font-table" scope="col">Angkatan</th>
                                 <th class="font-table" scope="col">SosMed</th>
                                 <th class="font-table" scope="col">kelas</th>
-                                <th class="font-table" scope="col" colspan="2">Aksi</th>
+                                <th class="font-table" scope="col">Aksi</th>
                             </tr>
                         </thead>
                         <!-- end head tabel -->
