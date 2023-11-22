@@ -20,7 +20,7 @@
     </style> 
 </head>
 <body>
-<nav class="main-menu" style="z-index:9; height: 1000px;" > 
+<nav class="main-menu" style="z-index:9; height: 108%;" > 
             <div>
                 <a class="logo" href="">
                 </a> 
@@ -74,6 +74,13 @@
                 <a href="{{url('berita')}}">
                 <i class="fa fa-lightbulb-o fa-lg"></i>
                 <span class="nav-text">Kelola Berita</span> 
+                </a>
+            </li>
+
+            <li>
+                <a href="{{url('jenis_berita')}}">
+                <i class="fa fa-lightbulb-o fa-lg"></i>
+                <span class="nav-text">Kelola Jenis Berita</span> 
                 </a>
             </li>
             
@@ -160,12 +167,6 @@
                         </a>
                     </li>
                     
-                    <li>
-                        <a href="{{url('jenis_berita')}}">
-                        <i class="fa fa-lightbulb-o fa-lg"></i>
-                        <span class="nav-text">Kelola Jenis Berita</span> 
-                        </a>
-                    </li>
             @endif
               
             @if (Auth::user()->role == 'alumni')

@@ -18,7 +18,7 @@
               <input type="text" class="form-control" id="inputNama" placeholder="Your Username" name="username" style="border-radius:  1.8635607321131447vh;" required>
             </div>
             <div class="form-group mb-3">
-              <label>Password :</label>
+              <label>Password</label>
               <input type="password" class="form-control font-form" placeholder="Your Password" name="password" name="nama" style="border-radius:  1.8635607321131447vh;"/>
             </div>
             <div class="form-group">

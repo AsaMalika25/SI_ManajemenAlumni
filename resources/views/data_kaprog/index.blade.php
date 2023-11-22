@@ -1,12 +1,11 @@
 @extends('layout.layouts')
 @section('content')
-
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
   <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA KAPROG</b></h1>
   <br>
   <div class="justify-content-center d-flex">
     <div class="tab-content justify-content-center" style="max-width: max-content;">
-      <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 3vh;">
+      <div class="card" style="width: 110%; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 3vh;">
         <div class="card-body">
           <!-- tabel -->
           <table class="table DataTable">
