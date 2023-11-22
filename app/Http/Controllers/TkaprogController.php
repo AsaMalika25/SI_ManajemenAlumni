@@ -6,6 +6,7 @@ use App\Models\tkaprog;
 use App\Models\takun;
 use App\Models\tjurusan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TkaprogController extends Controller
 {
@@ -14,8 +15,8 @@ class TkaprogController extends Controller
      */
     public function index(tkaprog $kaprog)
     {
-        $data = [
-            'kaprog' => $kaprog->all()
+        $data = [   
+            'kaprog' => DB::table('views_kaprog')->get(),
         ];
         return view('data_kaprog.index', $data);
     }
