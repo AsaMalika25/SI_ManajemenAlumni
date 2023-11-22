@@ -12,18 +12,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::unprepared('DROP VIEW IF EXISTS views_alumni');
+        DB::unprepared('DROP VIEW IF EXISTS views_kelas');
         DB::unprepared('
-        CREATE VIEW views_alumni AS
+        CREATE VIEW views_kelas AS
         SELECT
-            a.*,
-            k.nama_kelas,
-            t.no_angkatan,
-            ak.username
-        FROM talumni a
-        LEFT JOIN tkelas k ON a.id_kelas = k.id_kelas
-        LEFT JOIN tangkatan t ON a.id_angkatan = t.id_angkatan
-        LEFT JOIN takun ak ON a.id_akun = ak.id_akun
+            k.*,
+            j.nama_jurusan,
+            t.no_angkatan
+        FROM tkelas k
+        LEFT JOIN tjurusan j ON k.id_jurusan = j.id_jurusan
+        LEFT JOIN tangkatan t ON k.id_angkatan = t.id_angkatan
         ');
     }
 
@@ -32,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('views_alumni');
+        Schema::dropIfExists('views_kelas');
     }
 };

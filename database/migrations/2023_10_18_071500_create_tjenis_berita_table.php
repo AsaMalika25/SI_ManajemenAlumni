@@ -19,9 +19,9 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::unprepared('CREATE TRIGGER tambah_jenis_berita AFTER INSERT ON tjenis_berita FOR EACH ROW BEGIN INSERT INTO logs_jenis_berita(log) VALUES(concat(\'jenis_berita \', NEW.jenis_berita, \' \', \'telah ditambahkan pada\', \' \', NOW())); END;');
-        DB::unprepared('CREATE TRIGGER edit_jenis_berita AFTER UPDATE ON tjenis_berita FOR EACH ROW BEGIN INSERT INTO logs_jenis_berita(log) VALUES (concat(\'jenis_berita \', OLD.jenis_berita, \' \', \'telah diperbarui menjadi jenis_berita \', \' \', NEW.jenis_berita, \' \', \'pada\', \' \', NOW())); END;');
-        DB::unprepared('CREATE TRIGGER hapus_jenis_berita AFTER DELETE ON tjenis_berita FOR EACH ROW BEGIN INSERT INTO logs_jenis_berita(log) VALUES (concat(\'jenis_berita \', OLD.jenis_berita, \' \', \'telah dihapus pada\', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER tambah_jenis_berita AFTER INSERT ON tjenis_berita FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES(concat(\'jenis_berita \', NEW.jenis_berita, \' \', \'telah ditambahkan pada\', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER edit_jenis_berita AFTER UPDATE ON tjenis_berita FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat(\'jenis_berita \', OLD.jenis_berita, \' \', \'telah diperbarui menjadi jenis_berita \', \' \', NEW.jenis_berita, \' \', \'pada\', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER hapus_jenis_berita AFTER DELETE ON tjenis_berita FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat(\'jenis_berita \', OLD.jenis_berita, \' \', \'telah dihapus pada\', \' \', NOW())); END;');
        
         DB::unprepared('DROP FUNCTION IF EXISTS jenisBerita');
         DB::unprepared('

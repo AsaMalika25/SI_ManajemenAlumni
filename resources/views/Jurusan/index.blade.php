@@ -23,20 +23,19 @@
                     <!-- body tabel -->
                     <tbody>
                      
-                     @foreach ($jurusan as $item)
                         <tr>
+                        @foreach ($jurusan as $item)
                             <td>{{$item->nama_jurusan}}</td>
                             <td>
                                 <a href="{{url('jurusan/edit/' .$item->id_jurusan)}}" class="btn btn-success">Edit</a>
                                 <btn class="btn btn-danger btnHapus" idJurusan="{{$item->id_jurusan}}">HAPUS
                             </td>
-                                
                         </tr>
-                        
+                        @endforeach
                         <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                         <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                     </tbody>  
-                     @endforeach
+                    
                       
                     <!-- end body tabel -->
                   </table>

@@ -1,42 +1,36 @@
 @extends('layout.layouts')
 @section('content')
 
-<div class="container mt-5 align-item-center"
-    style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-    <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST kelas</b></h1>
-    <br>
-
-    <div class="card" style="min-width:123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
-        
+<div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>List Kelas</b></h1>
+    <div class="card" style="min-width:123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 10.311270125223613vh;">
         <div class="card-header">
-            <span>Jumlah nama_kelas : {{$jumlahKelas}}</span>
+            <span>Jumlah Data Kelas : {{$jumlahKelas}}</span>
         </div>
         <div class="card-body">
-
             <!-- tabel -->
-            <table class="table Datatable">
+            <table class="table DataTable">
                 <!-- head tabel -->
                 <thead>
                     <tr>
-                        <th class="font-table">Nama kelas</th>
-                        <th class="font-table">no angkatan</th>
-                        <th class="font-table">nama jurusan</th>
+                        <th class="font-table">Kelas</th>
+                        <th class="font-table">Angkatan</th>
+                        <th class="font-table">Jurusan</th>
                         <th class="font-table">Aksi</th>
                     </tr>
                 </thead>
                 <!-- end head tabel -->
-
                 <!-- body tabel -->
                 <tbody>
                     @foreach($kelas as $item)
                     <tr>
                             <td>{{ $item->nama_kelas }}</td>
-                            @foreach($angkatan as $item)
-                                <td>{{ $item->no_angkatan }}</td>
-                            @endforeach
-                            @foreach($jurusan as $item)
-                                <td>{{ $item->nama_jurusan }}</td>
-                            @endforeach
+    
+                            <td>{{ $item->no_angkatan }}</td>
+                    
+                            <td>{{ $item->nama_jurusan }}</td>
+                          
+                            
                             <td>
                                 <a href="{{ url('kelas/edit/'. $item->id_kelas) }}" class="btn btn-success">Edit</a>
                                 <btn class="btn btn-danger btnHapus" idKelas="{{$item->id_kelas}}">HAPUS
@@ -44,21 +38,6 @@
                     </tr>
                     @endforeach
                 </tbody>
-                <!-- {{-- <td>{{$item->nama_kelas }}</td> --}}
-                {{-- @foreach ($data as $item)
-                        <tr>
-                            <td>{{ $item->nama_kelas }}</td>
-                <td>{{ $item->nama_jurusan }}</td>
-                <td>{{ $item->no_angkatan }}</td>
-                <td>
-                    <a href="{{ url('angkatan/edit/') }}" class="btn btn-success">Edit</a>
-                    <btn class="btn btn-danger btnHapus" idAngkatan="">HAPUS
-                </td>
-
-                </tr>
-                @endforeach--}} -->
-
-                <!-- end body tabel -->
             </table>
             <!-- end tabel -->
         </div>
@@ -82,7 +61,7 @@
 
 
 <script type="module">
-    $('.Datatable tbody').on('click', '.btnHapus', function(a) {
+    $('.DataTable tbody').on('click', '.btnHapus', function(a) {
         a.preventDefault();
         let idKelas = $(this).closest('.btnHapus').attr('idKelas');
         swal.fire({
@@ -116,7 +95,7 @@
     });
 
     $(document).ready(function() {
-            $('.Datatable').DataTable();
+            $('.DataTable').DataTable();
         });
 </script>
 @endsection

@@ -14,9 +14,9 @@
                     <!-- head tabel -->
                     <thead>
                       <tr>
-                        <th class="font-table" scope="col">No_angkatan</th>
-                        <th class="font-table" scope="col">tahun masuk</th>
-                        <th class="font-table" scope="col">tahun keluar</th>
+                        <th class="font-table" scope="col">Angkatan</th>
+                        <th class="font-table" scope="col">Tahun Masuk</th>
+                        <th class="font-table" scope="col">Tahun Keluar</th>
                         <th class="font-table" scope="col">Aksi</th>
                       </tr>
                     </thead>
@@ -36,11 +36,11 @@
                             </td>
                                 
                         </tr>
-                        
+                        @endforeach
                         <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
                         <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
                     </tbody>  
-                     @endforeach
+                     
                       
                     <!-- end body tabel -->
                   </table>
