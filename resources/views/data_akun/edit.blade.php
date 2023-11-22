@@ -2,7 +2,7 @@
 @section('content')   
     <!-- konten utama -->
     <!-- div one page -->
-    <div class="card" style="width: 85.86762075134168vh; margin:auto; border-radius: 2.862254025044723vh; margin-top: 7rem; margin-bottom: 14.311270125223613vh;">
+    <div class="card" style="width: 85.86762075134168vh; margin:auto; border-radius: 2.862254025044723vh; margin-top: 7rem; ">
         <div class="card-body">
           <!-- text judul   -->
           <div class="text-center">
@@ -37,6 +37,7 @@
             </div>
             <br>
             @csrf
+            <a href="/list_akun" class="btn btn-warning" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Kembali</a>
             <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Submit</button>
           </form>
           <!-- end form tambah -->
