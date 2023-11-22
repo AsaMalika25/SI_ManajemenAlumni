@@ -102,6 +102,14 @@ class TwirausahaController extends Controller
         }   
     }
 
+    public function detail(twirausaha $tusaha, Request $request, $id)
+    {
+        $data = [
+            'tusaha'=> $tusaha->where('id_wirausaha', $id)->first(),
+        ];
+        return view('wirausaha.detail',$data);
+    }
+
     /**
      * Update the specified resource in storage.
      */
