@@ -17,6 +17,7 @@ use App\Http\Controllers\TkaprogController;
 use App\Http\Controllers\TkelasController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\logController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -101,6 +102,8 @@ Route::post('tambah_akun/tambah', [TakunController::class, 'store']);
 Route::get('list_akun/edit/{id}', [TakunController::class, 'edit']);
 Route::post('list_akun/edit/simpan', [TakunController::class, 'store']);
 Route::delete('list_akun/hapus/{id}', [TakunController::class, 'destroy']);
+Route::get('list_akun/cetak_pdf', [TakunController::class, 'cetak_pdf']);
+
 
 Route::get('wirausaha', [TwirausahaController::class, 'index']);
 Route::get('tambah_wirausaha', [TwirausahaController::class, 'create']);
@@ -109,6 +112,8 @@ Route::get('wirausaha/edit/{id}', [TwirausahaController::class, 'edit']);
 Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'update']);
 Route::delete('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
 Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
+Route::get('wirausaha/detail/{id}', [TwirausahaController::class, 'detail']);
+
 
     Route::get('angkatan', [TangkatanController::class, 'index']);
     Route::get('angkatan/tambah', [TangkatanController::class, 'create']);
@@ -139,6 +144,8 @@ Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
     Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
     Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
     Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
+
+    Route::get('profil', [ProfilController::class, 'index']);
     // Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
 });
 
