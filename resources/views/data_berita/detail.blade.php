@@ -36,7 +36,11 @@
                         </div>
                         <div class="" style="width: 30%; margin-top: 3%;">
                             <h6 class="text-info" style="color: #4378ff;"><b>Keterangan Berita</b></h6>
-                            <p class="text-detail text-dark">{{$tberita->ket_berita}}</p>
+                            <!-- <div class="trix-content">
+                                {!! $tberita->ket_berita !!}
+                            </div> -->
+
+                            <p>{{!! $tberita->ket_berita !!}}</p>
                         </div>
                     </div>
                 </div>

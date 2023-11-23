@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class TberitaController extends Controller
 {
@@ -61,8 +62,7 @@ class TberitaController extends Controller
      */
     public function store(Request $request, tjenis_berita $tjenis_berita, tberita $tberita )
     {
-        /*array untuk mem-validasi data, apakah data sudah sesuai atau belum,
-        kemudian data tersebut akan dikirim dan diolah lebih lanjut*/
+
         $data = $request->validate([
             'id_jenis_berita' => ['required'],
             'judul_berita' => ['required'],
@@ -72,6 +72,8 @@ class TberitaController extends Controller
             'file' => ['required'], 
         ]);
 
+        $data['ket_berita'] = Str::limit(strip_tags($data['ket_berita']), 200);
+        
         if($data)
         {
         if($request->hasFile('file') && $request->file('file')->isValid())
