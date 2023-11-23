@@ -12,9 +12,6 @@
     trix-toolbar [data-trix-button-group="file-tools"]{
       display: none;
     }
-    /* trix-toolbar [data-trix-button-group-block-tools="icon-decrease-nesting-level"]{
-      display: none;
-    } */
   </style>
 </head>
 <div class="container" style="margin-top: 3rem;">

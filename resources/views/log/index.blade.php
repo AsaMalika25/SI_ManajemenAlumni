@@ -8,7 +8,7 @@
             <div class="card">
                 <div class="card-header">
                     <span class="h1">
-                        Data Alumni
+                        Log Activity
                     </span>
                 </div>
                 <div class="card-body">

@@ -44,15 +44,7 @@ Route::get('dashboard', [DashboardController::class, 'index']);
 Route::get('log', [logController::class, 'index']);
 Route::post('log/hapus', [logController::class, 'destroy']);
 
-Route::get('alumni', [TalumniController::class, 'index']);
-Route::get('alumni/export', [TalumniController::class, 'export']);
-Route::get('alumni/cetak_pdf', [TalumniController::class, 'cetak_pdf']);
-Route::get('alumni/tambah', [TalumniController::class, 'create']);
-Route::post('alumni/simpan', [TalumniController::class, 'store']);
-Route::get('alumni/edit/{id}', [TalumniController::class, 'edit']);
-Route::post('alumni/update/{id}', [TalumniController::class, 'update']);
-Route::post('alumni/hapus', [TalumniController::class, 'destroy']);
-Route::get('alumni/detail/{id}', [TalumniController::class, 'show']);
+
 
 
 
@@ -62,6 +54,16 @@ Route::get('alumni/detail/{id}', [TalumniController::class, 'show']);
 Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['AdminOnly:superadmin,kaprog'])->group(function () {
+
+        Route::get('alumni', [TalumniController::class, 'index']);
+        Route::get('alumni/export', [TalumniController::class, 'export']);
+        Route::get('alumni/cetak_pdf', [TalumniController::class, 'cetak_pdf']);
+        Route::get('alumni/tambah', [TalumniController::class, 'create']);
+        Route::post('alumni/simpan', [TalumniController::class, 'store']);
+        Route::get('alumni/edit/{id}', [TalumniController::class, 'edit']);
+        Route::post('alumni/update/{id}', [TalumniController::class, 'update']);
+        Route::post('alumni/hapus', [TalumniController::class, 'destroy']);
+        Route::get('alumni/detail/{id}', [TalumniController::class, 'show']);
 
         Route::get('berita', [TberitaController::class, 'index']);
         Route::get('berita/tambah', [TberitaController::class, 'create']);
@@ -99,34 +101,6 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy']);
             Route::get('log_jenis_berita', [LogsJenisBeritaController::class, 'index']);
             Route::get('log_berita', [LogsBeritaController::class, 'index']);
-
-
-
-Route::get('berita', [TberitaController::class, 'index']);
-Route::get('berita-alumni', [TberitaController::class, 'Berita']);
-Route::get('berita-alumni/cetak_pdf', [TberitaController::class, 'cetak_Berita']);
-Route::get('berita/tambah', [TberitaController::class, 'create']);
-Route::get('berita-alumni/tambah', [TberitaController::class, 'create_berita']);
-Route::post('berita/simpan', [TberitaController::class, 'store']);
-Route::post('berita-alumni/simpan', [TberitaController::class, 'store_berita']);
-Route::get('berita/edit/{id}', [TberitaController::class, 'edit']);
-Route::post('berita/edit/simpan', [TberitaController::class, 'update']);
-Route::delete('berita/hapus/{id}', [TberitaController::class, 'destroy']);
-Route::get('berita/detail/{id}', [TberitaController::class, 'show']);
-
-Route::get('kuliah', [TkuliahController::class, 'index']);
-Route::get('kuliah/tambah', [TkuliahController::class, 'create']);
-Route::post('kuliah/simpan', [TkuliahController::class, 'store']);
-Route::get('kuliah/edit/{id}', [TkuliahController::class, 'edit']);
-Route::post('kuliah/edit/simpan', [TkuliahController::class, 'update']);
-Route::delete('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
-
-Route::get('kerja', [TkerjaController::class, 'index']);
-Route::get('kerja/tambah', [TkerjaController::class, 'create']);
-Route::post('kerja/simpan', [TkerjaController::class, 'store']);
-Route::get('kerja/edit/{id}', [TkerjaController::class, 'edit']);
-Route::post('kerja/edit/simpan', [TkerjaController::class, 'update']);
-Route::delete('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
 
 
             Route::get('angkatan', [TangkatanController::class, 'index']);
@@ -178,13 +152,13 @@ Route::delete('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
         
         Route::middleware(['AdminOnly:kaprog'])->group(function () {
 
-    Route::get('kaprog', [TkaprogController::class, 'index']);
-    Route::get('kaprog/tambah', [TkaprogController::class, 'create']);
-    Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
-    Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
-    Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
-    Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
-});
+            Route::get('kaprog', [TkaprogController::class, 'index']);
+            Route::get('kaprog/tambah', [TkaprogController::class, 'create']);
+            Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
+            Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
+            Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
+            Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
+        });
 
 
 // Route::prefix('dashboard')->middleware('OnlyAdmin')->group(function(){
