@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Faker\Factory as Faker;
 use Illuminate\Support\Facades\Hash;
 
 class JenisBeritaSeeder extends Seeder
@@ -14,12 +15,11 @@ class JenisBeritaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('tjenis_berita')->insert([
-            'jenis_berita' => 'Lowongan Pekerjaan',
-       ]);
-
-       DB::table('tjenis_berita')->insert([
-        'jenis_berita' => 'Lowongan Magang',
-        ]);
+        $faker = Faker::create();
+        foreach (range(1, 10) as $index) {
+            DB::table('tjenis_berita')->insert([
+                'jenis_berita' => $faker->text(50),
+            ]);
+        }
     }
 }

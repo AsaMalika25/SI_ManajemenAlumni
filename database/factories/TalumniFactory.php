@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\talumni;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

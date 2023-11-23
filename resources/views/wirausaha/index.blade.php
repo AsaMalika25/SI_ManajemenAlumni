@@ -3,62 +3,59 @@
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
   <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA WIRAUSAHA</b></h1>
   <br>
+  <div class="justify-content-center d-flex">
+    <div class="tab-content justify-content-center" style="max-width: max-content;">
+      <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 3vh;">
+        <div class="card-body">
 
-  <div class="tab-content" id="pills-tabContent">
+          <!-- tabel -->
+          <table class="table DataTable">
+            <!-- head tabel -->
+            <h3 class="card-title"> Jumlah : {{ $jumlahwirausaha ?? 0 }}</h3>
+            <thead>
+              <tr>
+                <th class="font-table" scope="col">Id</th>
+                <th class="font-table" scope="col">Alumni</th>
+                <th class="font-table" scope="col">Nama Usaha</th>
+                <th class="font-table" scope="col">Bidang Usaha</th>
+                <th class="font-table" scope="col">Aksi</th>
+              </tr>
+            </thead>
+            <!-- end head tabel -->
 
-    <div class="card" style="width: 123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
-      <div class="card-body">
+            <!-- body tabel -->
+            <tbody>
+              @foreach($tusaha as $r)
+              <tr>
+                <th scope="row">{{$r->id_wirausaha}}</th>
+                <td>{{$r->nama}}</td>
+                <td>{{$r->nama_usaha}}</td>
+                <td>{{$r->bidang}}</td>
+                <!-- <td><img src="{{$r->gambar_usaha}}" alt=""><{{$r->gambar_usaha}}></td> -->
 
-        <!-- tabel -->
-        <table class="table DataTable">
-          <!-- head tabel -->
-          <h3 class="card-title"> Jumlah : {{ $jumlahwirausaha ?? 0 }}</h3>
-          <thead>
-            <tr>
-              <th class="font-table" scope="col">Id</th>
-              <th class="font-table" scope="col">Alumni</th>
-              <th class="font-table" scope="col">Nama Usaha</th>
-              <th class="font-table" scope="col">Bidang Usaha</th>
-              <th class="font-table" scope="col">Aksi</th>
-            </tr>
-          </thead>
-          <!-- end head tabel -->
-
-          <!-- body tabel -->
-          <tbody>
-            @foreach($tusaha as $r)
-            <tr>
-              <th scope="row">{{$r->id_wirausaha}}</th>
-              <td>{{$r->nama}}</td>
-              <td>{{$r->nama_usaha}}</td>
-              <td>{{$r->bidang}}</td>
-              <td><img src="{{$r->gambar_usaha}}" alt=""><{{$r->gambar_usaha}}></td>
-
-              <td>
-                <a href="{{url('wirausaha/detail/'. $r->id_wirausaha)}}"><img src="{{asset('img/gambar-seru.png')}}" alt="" width="30px;" height="30px;"></a>
-                <btn class="btnHapus" idWirausaha="{{ $r->id_wirausaha }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn>
-                <a href="wirausaha/edit/{{$r->id_wirausaha}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
-              </td>
-            </tr>
-            @endforeach
-          </tbody>
-          <!-- end body tabel -->
-        </table>
-        <!-- end tabel -->
+                <td>
+                  <a href="{{url('wirausaha/detail/'. $r->id_wirausaha)}}"><img src="{{asset('img/gambar-seru.png')}}" alt="" width="30px;" height="30px;"></a>
+                  <btn class="btnHapus" idWirausaha="{{ $r->id_wirausaha }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 25px;height:25px;"></btn>
+                  <a href="wirausaha/edit/{{$r->id_wirausaha}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+            <!-- end body tabel -->
+          </table>
+          <!-- end tabel -->
+        </div>
+      </div>
+      <div>
+        <a class="btn btn-primary" href="tambah_wirausaha" role="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+          </svg>
+          TAMBAH
+        </a>
       </div>
     </div>
-    <div style="margin-left: 5rem;">
-      <a class="btn btn-primary" href="tambah_wirausaha" role="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-        </svg>
-        TAMBAH
-      </a>
-    </div>
   </div>
-</div>
-</div>
-<!-- end konten utama -->
 </div>
 
 <script type="module">

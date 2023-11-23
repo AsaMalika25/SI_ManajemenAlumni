@@ -24,7 +24,7 @@ return new class extends Migration
         SELECT nama INTO nama_alumniid FROM talumni WHERE id_alumni = NEW.id_alumni;
         SELECT id_alumni INTO alumni_id FROM talumni WHERE id_alumni = NEW.id_alumni;
 
-        INSERT INTO logs (logs) VALUES (CONCAT(nama_alumniid, ": Melakukan Penambahan Surat Dengan Nomor ", alumni_id));
+        INSERT INTO logs (logs) VALUES (CONCAT(nama_alumniid, ": Melakukan Penambahan data alumni Dengan Nomor ", alumni_id));
     END'
         );
     }

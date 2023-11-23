@@ -1,13 +1,10 @@
 @extends('layout.layouts')
-@section('content')           
-    <!-- konten utama -->
-    <!-- div one page -->
-    <div class="card" style="width: 85.86762075134168vh; margin:auto; border-radius: 2.862254025044723vh; margin-top: 2rem; margin-bottom: 14.311270125223613vh;">
+@section('content') 
+<div class="card" style="width: 85.86762075134168vh; margin:auto; border-radius: 2.862254025044723vh; margin-top: 8%;">
         <div class="card-body">
-          <!-- text judul   -->
+          <!-- text judul  -->
           <div class="text-center">
-            <h1 class="h4 text-gray-900 mb-4 font-nav">Form Edit Angkatan</h1>
-            <br>
+            <h1 class="h4 text-gray-900 mb-4 font-nav"><b>Form Edit Angkatan</b></h1>
           </div>
           <!-- end text judul -->
     
@@ -27,13 +24,11 @@
               <label for="inputJurusan" class="form-label font-form">tahun_keluar</label>
               <input type="date" class="form-control" id="inputJurusan" name="tahun_keluar" style="border-radius:  1.8635607321131447vh;" required value="{{$edit_angkatan->tahun_keluar}}">
             </div>
-  
+
+            <a href="/angkatan" class="btn btn-warning" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Kembali</a>
             <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Submit</button>
           </form>
           <!-- end form tambah -->
         </div>
-      </div>
-        <!-- end konten utama -->
-      </div> 
-      <!-- end one page -->  
+    </div>
 @endsection

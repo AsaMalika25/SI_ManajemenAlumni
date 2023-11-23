@@ -1,40 +1,22 @@
 @extends('layout.layouts')
 @section('content')  
-    <!-- konten utama -->
-    <!-- div one page -->
-
-          <!-- form tambah -->
-          <div class="container" style="margin-top: 3rem;">
-            <!-- text judul   -->
-            <!-- form tambah -->
-        <form action="simpan" method="post">
-          <div class="text-center">
-            <h1 class="h4 text-gray-900 font-nav" style="color: white"><b>Form Tambah</b></h1>
-            <br>
-          </div>
-          <!-- end text judul -->
-            <div class="row">
-                <!-- <div class="col"> 
-                  <label style="color: #fff;">Id_jenis_berita</label>
-                  <input type="text" class="form-control" placeholder="" aria-label="First name" name="id_jenis_berita">
-                </div> -->
-                <!-- foreign key -->
-                <div class="col"> 
-                    <label style="color: #fff;">jenis_berita</label>
-                    <input type="text" class="form-control"  aria-label="First name" name="jenis_berita">
-                  </div>
-            </div>
-                <div class="col"> 
-                    <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 1rem;">Simpan</button>
-                  </div>
-              </div>
-              @csrf
-        </form>  
+<div class="card" style="width: 85.86762075134168vh; margin:auto; border-radius: 2.862254025044723vh; margin-top: 2rem; margin-top: 15%;">
+  <div class="card-body">
+    <div class="text-center">
+      <h1 class="h4 text-gray-900 mb-4 font-nav"><b>Form Tambah Jenis Berita</b></h1>
+      <br>
     </div>
-          <!-- end form tambah -->
-        </div>
+    <form action="simpan" method="post">
+      @csrf
+      <div class="mb-3">
+        <label for="inputNama" class="form-label font-form">Jenis Berita</label>
+        <input type="text" class="form-control" id="inputNama" name="jenis_berita" style="border-radius:  1.8635607321131447vh;" required>
       </div>
-        <!-- end konten utama -->
-      </div> 
-      <!-- end one page -->  
+
+      <a href="/jenis_berita" class="btn btn-warning" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Kembali</a>
+      <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Submit</button>
+    </form>
+    <!-- end form tambah -->
+  </div>
+</div>
 @endsection
