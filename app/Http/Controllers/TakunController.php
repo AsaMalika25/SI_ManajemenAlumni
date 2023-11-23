@@ -63,10 +63,23 @@ class TakunController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
-                    return redirect('dashboard')->with('success', 'you are logged');
-                }else {
-                    return redirect()->back()->withErrors('The username and password entered are incorrect');
+
+                if (Auth::user()->role == 'superadmin') {
+
+                    return redirect('dashboard');
+
+                }elseif (Auth::user()->role == 'alumni') {
+
+                    return redirect('data-alumni');
+
+                }elseif (Auth::user()->role == 'kaprog') {
+
+                    return redirect('kaprog');
                 }
+                    
+        }else {
+            return redirect()->back()->withErrors('The username and password entered are incorrect');
+        }
                 
     }
 

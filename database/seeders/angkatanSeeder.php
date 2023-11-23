@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Faker\Factory as Faker;
 
 class angkatanSeeder extends Seeder
 {
@@ -14,16 +15,18 @@ class angkatanSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('tangkatan')->insert([
-            'no_angkatan' => '1',
-            'tahun_masuk' => '2003-12-7',
-            'tahun_keluar' => '2005-12-7',
-       ]);
+        $faker = Faker::create();
+        $angkatan = [];
 
-       DB::table('tangkatan')->insert([
-            'no_angkatan' => '2',
-            'tahun_masuk' => '2003-12-4',
-            'tahun_keluar' => '2003-12-14',
-       ]);
+        for ($i = 1; $i <= 15; $i++) {
+            $angkatan[] = [
+                'id_angkatan' => $i,
+                'no_angkatan' => $faker->numberBetween(1,50),
+                'tahun_masuk' => $faker->date(),
+                'tahun_keluar' => $faker->date(),
+            ];
+        }
+
+        DB::table('tangkatan')->insert($angkatan);
     }
 }

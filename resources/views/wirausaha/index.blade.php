@@ -15,6 +15,7 @@
             <thead>
               <tr>
                 <th class="font-table" scope="col">Id</th>
+                <th class="font-table" scope="col">Alumni</th>
                 <th class="font-table" scope="col">Nama Usaha</th>
                 <th class="font-table" scope="col">Bidang Usaha</th>
                 <th class="font-table" scope="col">Aksi</th>
@@ -27,6 +28,7 @@
               @foreach($tusaha as $r)
               <tr>
                 <th scope="row">{{$r->id_wirausaha}}</th>
+                <td>{{$r->nama}}</td>
                 <td>{{$r->nama_usaha}}</td>
                 <td>{{$r->bidang}}</td>
                 <!-- <td><img src="{{$r->gambar_usaha}}" alt=""><{{$r->gambar_usaha}}></td> -->

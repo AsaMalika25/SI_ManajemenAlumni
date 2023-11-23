@@ -34,14 +34,15 @@
                 <span class="justify-content-center"><b>Welcome to SIMA!</b></span>
                 
             </li>  
+
+            
+           @if (Auth::user()->role == 'superadmin')
             <li>                                   
                 <a href="{{url('dashboard')}}">
                 <i class="fa fa-home fa-lg"></i>
                 <span class="nav-text">Dashboard</span>
                 </a>
             </li>
-            
-           @if (Auth::user()->role == 'superadmin')
             <li>                                 
                 <a href="{{url('alumni')}}"  style="height: 30px;">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16" style="margin-left: 24%; ">
@@ -154,6 +155,12 @@
                
             <!-- <ul class="logout"> -->
             @if (Auth::user()->role == 'kaprog')
+                <li>                                   
+                    <a href="{{url('dashboard')}}">
+                    <i class="fa fa-home fa-lg"></i>
+                    <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
                 <li>                                 
                     <a href="{{url('alumni')}}">
                     <i class="fa fa-graduation-cap fa-lg"></i>
@@ -167,9 +174,21 @@
                         </a>
                     </li>
                     
+                    <li>
+                        <a href="{{url('jenis_berita')}}">
+                        <i class="fa fa-lightbulb-o fa-lg"></i>
+                        <span class="nav-text">Kelola Jenis Berita</span> 
+                        </a>
+                    </li>
             @endif
               
             @if (Auth::user()->role == 'alumni')
+                <li>                                   
+                    <a href="{{url('dashboard')}}">
+                    <i class="fa fa-home fa-lg"></i>
+                    <span class="nav-text">Dashboard</span>
+                    </a>
+                </li>
                 <li>                                 
                     <a href="{{url('data-alumni')}}">
                     <i class="fa fa-graduation-cap fa-lg"></i>
@@ -180,33 +199,6 @@
                     <a href="{{url('berita-alumni')}}">
                     <i class="fa fa-lightbulb-o fa-lg"></i>
                     <span class="nav-text">Berita</span> 
-                    </a>
-                </li>
-                <li>                                 
-                    <a href="{{url('angkatan')}}" style="height: 30px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" widht="20" height="20" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16" style="margin-left: 24%;">
-                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z"/>
-                    </svg>
-                    <span class="nav-text">Kelola Angkatan</span>
-                    </a>
-                </li>
-    
-                <li>                                 
-                    <a href="{{url('kelas')}}" style="height: 30px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" widht="20" height="20" fill="currentColor" class="bi bi-bank2" viewBox="0 0 16 16" style="margin-left: 24%;">
-                    <path d="M8.277.084a.5.5 0 0 0-.554 0l-7.5 5A.5.5 0 0 0 .5 6h1.875v7H1.5a.5.5 0 0 0 0 1h13a.5.5 0 1 0 0-1h-.875V6H15.5a.5.5 0 0 0 .277-.916l-7.5-5zM12.375 6v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zm-2.5 0v7h-1.25V6h1.25zM8 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM.5 15a.5.5 0 0 0 0 1h15a.5.5 0 1 0 0-1H.5z"/>
-                    </svg>
-                    <span class="nav-text">Kelola Kelas</span>
-                    </a>
-                </li>
-    
-                <li>                                 
-                    <a href="{{url('jurusan')}}" style="height: 30px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" widht="20" height="20" fill="currentColor" class="bi bi-clipboard-data-fill" viewBox="0 0 16 16" style="margin-left: 24%;">
-                    <path d="M6.5 0A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3Zm3 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3Z"/>
-                    <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1A2.5 2.5 0 0 1 9.5 5h-3A2.5 2.5 0 0 1 4 2.5v-1ZM10 8a1 1 0 1 1 2 0v5a1 1 0 1 1-2 0V8Zm-6 4a1 1 0 1 1 2 0v1a1 1 0 1 1-2 0v-1Zm4-3a1 1 0 0 1 1 1v3a1 1 0 1 1-2 0v-3a1 1 0 0 1 1-1Z"/>
-                    </svg>
-                    <span class="nav-text">Kelola Jurusan</span>
                     </a>
                 </li>
             @endif
