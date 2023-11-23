@@ -42,11 +42,10 @@
                                 style="max-width: 50px; height: auto;" />
                                 @endif
                                 </td> --}}
-
                                 <td>
                                     <a href="{{url('alumni/detail/'. $item->id_alumni)}}"><img src="{{asset('img/gambar-seru.png')}}" alt="" width="30px;" height="30px;"></a>
                                     <btn class="btn btnHapus" idAlumni="{{ $item->id_alumni }}"><img src="{{asset('img/trash.png')}}" alt="" width="30px;" height="30px;"></btn>
-                                    <a href="{{ url('alumni/edit/'. $item->id_alumni) }}" class="btn "><img src="{{asset('img/edit.png')}}" alt="" width="30px;" height="30px;"></a>
+                                    <a href="{{ url('alumni/edit/'. $item->id_alumni) }}" class="btn" style="padding-left:0px;"><img src="{{asset('img/edit.png')}}" alt="" width="30px;" height="30px;"></a>
                                 </td>
                             </tr>
                             @endforeach

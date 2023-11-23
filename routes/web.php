@@ -170,6 +170,7 @@ Route::delete('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
             Route::get('wirausaha/edit/{id}', [TwirausahaController::class, 'edit']);
             Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'update']);
             Route::delete('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
+            Route::get('wirausaha/detail/{id}', [TwirausahaController::class, 'detail']);
             Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
 
         });
@@ -183,7 +184,6 @@ Route::delete('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
     Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
     Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
     Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
-    // Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
 });
 
 

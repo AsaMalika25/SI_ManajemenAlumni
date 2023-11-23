@@ -1,7 +1,5 @@
 @extends('layout.layouts')
 @section('content')
-<!-- konten utama -->
-<!-- div one page -->
 <style>
     .input-with-icon {
         background-image: url('/img/user.png');

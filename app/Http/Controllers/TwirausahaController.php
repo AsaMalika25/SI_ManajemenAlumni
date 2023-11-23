@@ -94,12 +94,13 @@ class TwirausahaController extends Controller
     public function edit(twirausaha $tusaha, Request $request, string $id)
     {
         // 
-        $tusaha = twirausaha::where('id_wirausaha',$id)->first();
-
-        if ($tusaha){
-
-            return view('wirausaha.edit')->with(['twirausaha' => $tusaha]);
-        }   
+        // $tusaha = twirausaha::where('id_wirausaha',$id)->first();
+        $data = [
+            'tusaha' => DB::table('views_wirausaha')
+            ->where('id_wirausaha', $id)
+            ->first(),
+        ];
+        return view('wirausaha.edit',$data);
     }
 
     public function detail(twirausaha $tusaha, Request $request, $id)

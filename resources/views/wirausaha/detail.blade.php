@@ -1,6 +1,6 @@
 @extends('layout.layouts')
 @section('content')
-<div class="container align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center; margin-top: 10%;">
+<div class="container align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center; margin-top: 5%;">
     <div class="text-center">
         <h2 class="text-white"><b>Detail Data Usaha</b></h2>
     </div>
@@ -22,14 +22,14 @@
                             </button>
                         </div>
 
-                        <div class="col-7" style="width: 25%; margin-left: 50px; margin-top: 3%;">
+                        <div class="col-7" style="width: 30%; margin-left: 50px; margin-top: 5%;">
                             <h6 class="text-info" style="color: #4378ff;"><b>ID Usaha</b></h6>
                             <p class="text-detail text-dark">{{$tusaha->id_wirausaha}}</p>
-                        <h6 class="text-info" style="color: #4378ff;"><b>Alumni</b></h6>
+                            <h6 class="text-info" style="color: #4378ff;"><b>Alumni</b></h6>
                             <p class="text-detail text-dark">{{$tusaha->nama}}</p>
-                        <h6 class="text-info" style="color: #4378ff;"><b>NAMA USAHA</b></h6>
+                            <h6 class="text-info" style="color: #4378ff;"><b>Nama Usaha</b></h6>
                             <p class="text-detail text-dark">{{$tusaha->nama_usaha}}</p>
-                            <h6 class="text-info " style="color: #4378ff;"><b>BIDANG USAHA</b></h6>
+                            <h6 class="text-info " style="color: #4378ff;"><b>Bidang Usaha</b></h6>
                             <p class="text-detail text-dark">{{$tusaha->bidang}}</p>
                         </div>
                     </div>
