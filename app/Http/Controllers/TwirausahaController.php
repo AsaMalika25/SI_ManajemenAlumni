@@ -19,7 +19,7 @@ class TwirausahaController extends Controller
         //store function
         $totalwirausaha = DB::select('SELECT wirausaha() AS totalwirausaha')[0]->totalwirausaha;
         $data = [
-            'tusaha'=> $tusaha->all(),
+            'tusaha' => DB::table('views_wirausaha')->get(),
             'jumlahwirausaha'=>$totalwirausaha
         ];
         return view('wirausaha.index', $data);
@@ -105,7 +105,10 @@ class TwirausahaController extends Controller
     public function detail(twirausaha $tusaha, Request $request, $id)
     {
         $data = [
-            'tusaha'=> $tusaha->where('id_wirausaha', $id)->first(),
+            // 'tusaha'=> $tusaha->where('id_wirausaha', $id)->first(),
+            'tusaha' => DB::table('views_wirausaha')
+            ->where('id_wirausaha', $id)
+            ->first(),
         ];
         return view('wirausaha.detail',$data);
     }

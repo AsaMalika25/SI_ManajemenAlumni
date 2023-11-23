@@ -27,6 +27,8 @@
                     <div class="col-7" style="width: 25%; margin-left: 50px; margin-top: 3%;" >
                         <h6 class="text-info" style="color: #4378ff;"><b>ID Usaha</b></h6>
                             <p class="text-detail text-dark">{{$tusaha->id_wirausaha}}</p>
+                        <h6 class="text-info" style="color: #4378ff;"><b>Alumni</b></h6>
+                            <p class="text-detail text-dark">{{$tusaha->nama}}</p>
                         <h6 class="text-info" style="color: #4378ff;"><b>NAMA USAHA</b></h6>
                             <p class="text-detail text-dark">{{$tusaha->nama_usaha}}</p>
                         <h6 class="text-info " style="color: #4378ff;"><b>BIDANG USAHA</b></h6>
