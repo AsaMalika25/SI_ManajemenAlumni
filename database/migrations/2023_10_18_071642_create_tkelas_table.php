@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -22,6 +23,12 @@ return new class extends Migration
 
             $table->timestamps();
         });
+        DB::unprepared('CREATE TRIGGER tambah_kelas AFTER INSERT ON tkelas FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Kelas \', NEW.nama_kelas, \' \', \'telah ditambahkan pada \', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER edit_kelas AFTER UPDATE ON tkelas FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Kelas \', OLD.nama_kelas, \' \', \'telah diperbarui pada \', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER hapus_kelas AFTER DELETE ON tkelas FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Kelas \', OLD.nama_kelas, \' \', \'telah dihapus pada \', \' \', NOW())); END;');
 
     }
 

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TakunController extends Controller
 {
@@ -34,6 +35,16 @@ class TakunController extends Controller
         return view('data_akun.index',$data);
         
 
+    }
+
+    public function cetak_pdf()
+    {
+        $data = [
+            'akun' =>takun::all(),
+        ]; 
+ 
+    	$pdf = Pdf::loadview('data_akun.list_akun_pdf', $data);
+    	return $pdf->download('list_akun.pdf');
     }
 
     public function login(Request $request)

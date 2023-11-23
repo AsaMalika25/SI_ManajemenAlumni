@@ -64,7 +64,7 @@ class TjurusanController extends Controller
         $data = [
             'tjurusan' => tjurusan::where('id_jurusan', $request->id)->first(),
         ];
-        return view('Jurusan.edit', $data);
+        return view('jurusan.edit', $data);
     }
 
     /**

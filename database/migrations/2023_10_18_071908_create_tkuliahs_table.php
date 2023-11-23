@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -21,6 +22,12 @@ return new class extends Migration
 
             $table->timestamps();
         });
+        DB::unprepared('CREATE TRIGGER tambah_kuliah AFTER INSERT ON tkuliah FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Data Kuliah \', NEW.nama_lembaga, \' \', \'telah ditambahkan pada \', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER edit_kuliah AFTER UPDATE ON tkuliah FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Data Kuliah \', OLD.nama_lembaga, \' \', \'telah diperbarui pada \', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER hapus_kuliah AFTER DELETE ON tkuliah FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Data Kuliah \', OLD.nama_lembaga, \' \', \'telah dihapus pada \', \' \', NOW())); END;');
     }
 
     /**

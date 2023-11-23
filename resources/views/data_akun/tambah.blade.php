@@ -18,7 +18,7 @@
               <input type="text" class="form-control" id="inputNama" placeholder="Your Username" name="username" style="border-radius:  1.8635607321131447vh;" required>
             </div>
             <div class="form-group mb-3">
-              <label>Password :</label>
+              <label>Password</label>
               <input type="password" class="form-control font-form" placeholder="Your Password" name="password" name="nama" style="border-radius:  1.8635607321131447vh;"/>
             </div>
             <div class="form-group">
@@ -32,6 +32,7 @@
             </div>
                 @csrf
             <div class="col"> 
+              <a href="list_akun" class="btn btn-warning" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  margin-top: 1rem;">Kembali</a>
               <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 1rem;">Simpan</button>
             </div>
           </form>  

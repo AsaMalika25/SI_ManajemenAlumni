@@ -32,6 +32,12 @@ return new class extends Migration
 
             $table->timestamps();
         });
+        DB::unprepared('CREATE TRIGGER tambah_alumni AFTER INSERT ON talumni FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Data alumni \', NEW.nama, \' \', \'telah ditambahkan pada \', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER edit_alumni AFTER UPDATE ON talumni FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Data alumni \', OLD.nama, \' \', \'telah diperbarui pada \', \' \', NOW())); END;');
+        DB::unprepared('CREATE TRIGGER hapus_alumni AFTER DELETE ON talumni FOR EACH ROW BEGIN INSERT INTO logs(logs) VALUES (concat
+        (\'Data alumni \', OLD.nama, \' \', \'telah dihapus pada \', \' \', NOW())); END;');
     }
 
     /**

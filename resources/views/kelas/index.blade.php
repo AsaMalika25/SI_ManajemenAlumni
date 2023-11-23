@@ -1,88 +1,56 @@
 @extends('layout.layouts')
 @section('content')
-
-<div class="container mt-5 align-item-center"
-    style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-    <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST kelas</b></h1>
+<div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST KELAS</b></h1>
     <br>
-
-    <div class="card" style="min-width:123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 14.311270125223613vh;">
-        
-        <div class="card-header">
-            <span>Jumlah nama_kelas : {{$jumlahKelas}}</span>
-        </div>
-        <div class="card-body">
-
-            <!-- tabel -->
-            <table class="table Datatable">
-                <!-- head tabel -->
-                <thead>
-                    <tr>
-                        <th class="font-table">Nama kelas</th>
-                        <th class="font-table">no angkatan</th>
-                        <th class="font-table">nama jurusan</th>
-                        <th class="font-table">Aksi</th>
-                    </tr>
-                </thead>
-                <!-- end head tabel -->
-
-                <!-- body tabel -->
-                <tbody>
-                    @foreach($kelas as $item)
-                    <tr>
-                            <td>{{ $item->nama_kelas }}</td>
-                            @foreach($angkatan as $item)
+    <div class="justify-content-center d-flex">
+        <div class="tab-content justify-content-center" style="max-width: max-content;">
+            <div class="card" style="min-width:123.02284710017575vh; margin:auto; border-radius: 2.862254025044723vh; margin-bottom: 3vh;">
+                <div class="card-header">
+                    <span>Jumlah Data Kelas : {{$jumlahKelas}}</span>
+                </div>
+                <div class="card-body">
+                    <table class="table DataTable">
+                        <thead>
+                            <tr>
+                                <th class="font-table">Kelas</th>
+                                <th class="font-table">Angkatan</th>
+                                <th class="font-table">Jurusan</th>
+                                <th class="font-table">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($kelas as $item)
+                            <tr>
+                                <td>{{ $item->nama_kelas }}</td>
                                 <td>{{ $item->no_angkatan }}</td>
-                            @endforeach
-                            @foreach($jurusan as $item)
                                 <td>{{ $item->nama_jurusan }}</td>
+                                <td>
+                                    <a href="{{ url('kelas/edit/'. $item->id_kelas) }}" class="btn btn-success">Edit</a>
+                                    <btn class="btn btn-danger btnHapus" idKelas="{{$item->id_kelas}}">HAPUS
+                                </td>
+                            </tr>
                             @endforeach
-                            <td>
-                                <a href="{{ url('kelas/edit/'. $item->id_kelas) }}" class="btn btn-success">Edit</a>
-                                <btn class="btn btn-danger btnHapus" idKelas="{{$item->id_kelas}}">HAPUS
-                            </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-                <!-- {{-- <td>{{$item->nama_kelas }}</td> --}}
-                {{-- @foreach ($data as $item)
-                        <tr>
-                            <td>{{ $item->nama_kelas }}</td>
-                <td>{{ $item->nama_jurusan }}</td>
-                <td>{{ $item->no_angkatan }}</td>
-                <td>
-                    <a href="{{ url('angkatan/edit/') }}" class="btn btn-success">Edit</a>
-                    <btn class="btn btn-danger btnHapus" idAngkatan="">HAPUS
-                </td>
-
-                </tr>
-                @endforeach--}} -->
-
-                <!-- end body tabel -->
-            </table>
-            <!-- end tabel -->
+                        </tbody>
+                    </table>
+                    <!-- end tabel -->
+                </div>
+            </div>
+            <a class="btn btn-primary" href="{{ url('kelas/tambah') }}" role="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
+                </svg>
+                TAMBAH
+            </a>
         </div>
     </div>
-
-    <a class="btn btn-primary" href="{{ url('kelas/tambah') }}" role="button">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg"
-            viewBox="0 0 16 16">
-            <path fill-rule="evenodd"
-                d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
-        </svg>
-        TAMBAH
-    </a>
-    
-</div>
-
-</div>
-<!-- end konten utama -->
+    <!-- end konten utama -->
 </div>
 
 
 
 <script type="module">
-    $('.Datatable tbody').on('click', '.btnHapus', function(a) {
+    $('.DataTable tbody').on('click', '.btnHapus', function(a) {
         a.preventDefault();
         let idKelas = $(this).closest('.btnHapus').attr('idKelas');
         swal.fire({
@@ -116,7 +84,7 @@
     });
 
     $(document).ready(function() {
-            $('.Datatable').DataTable();
-        });
+        $('.DataTable').DataTable();
+    });
 </script>
 @endsection

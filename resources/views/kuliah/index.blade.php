@@ -12,7 +12,7 @@
         <!-- tabel -->
         <table class="table DataTable">
           <!-- head tabel -->
-          <h3 class="card-title"> Jumlah : {{ $jumlahkuliah ?? 0 }}</h3><br><br>
+          <h3 class="card-title"> Jumlah : {{ $jumlahkuliah ?? 0 }}</h3>
           <thead>
             <tr>
               <th class="font-table" scope="col">id_kuliah</th>

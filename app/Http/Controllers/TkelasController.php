@@ -14,32 +14,33 @@ class TkelasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(tkelas $tkelas)
+    public function index(tkelas $tkelas, tjurusan $tjurusan)
     {
 
         $totalKelas = DB::select('SELECT CountNamaKelas() AS totalKelas')[0]->totalKelas;
-
-        $data =[
-              
-            'kelas' => DB::table('tkelas')
-            ->orderBy('id_kelas','desc')
-            ->get(),
-
-            'jurusan' => DB::table('tkelas')
-            ->join('tjurusan', 'tkelas.id_kelas', '=', 'tjurusan.id_jurusan')
-            // ->select('tkelas.*', 'tjurusan.nama_jurusan')
-            ->get(),
-
-            'angkatan' => DB::table('tkelas')
-            ->join('tangkatan', 'tkelas.id_kelas', '=', 'tangkatan.id_angkatan')
-            // ->select('tkelas.*', 'tangkatan.no_angkatan')
-            ->get(),
-
-            'jumlahKelas' => $totalKelas
+        $data = [   
+            'kelas' => DB::table('views_kelas')->get(),
+            'jumlahKelas' => $totalKelas,
         ];
 
-        // dd($data);
-        
+        // $data =[
+              
+        //     'kelas' => DB::table('tkelas')
+        //     ->orderBy('id_kelas','desc')
+        //     ->get(),
+
+        //     'jurusan' => DB::table('tkelas')
+        //     ->join('tjurusan', 'tkelas.id_jurusan', '=', 'tjurusan.id_jurusan')
+        //     // ->select('tkelas.*', 'tjurusan.nama_jurusan')
+        //     ->get(),
+
+        //     'angkatan' => DB::table('tkelas')
+        //     ->join('tangkatan', 'tkelas.id_angkatan', '=', 'tangkatan.id_angkatan')
+        //     // ->select('tkelas.*', 'tangkatan.no_angkatan')
+        //     ->get(),
+
+        //     'jumlahKelas' => $totalKelas
+        // ];        
         return view('kelas.index',$data);
     }
 

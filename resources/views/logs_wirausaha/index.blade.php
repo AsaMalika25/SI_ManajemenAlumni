@@ -26,17 +26,7 @@
                           @foreach($logs_wirausaha as $r)
                           <tr>
                             <th scope="row">{{$r->log}}</th>
-                            <!-- <td>
-                              <a href=""><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 30px;"></a>
-                              <form action="{{url('jenis_berita/hapus/'. $r->id_jenis_berita)}}" method="post">
-                              @csrf
-                                <button type="submit"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></button>
-                              </form>
-                              
-                              <a href="jenis_berita/edit/{{$r->id_jenis_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 30px;"></a>
-                            </td> -->
-                            <!-- <td><a href=""><img src="/img/icons8-edit-30.png" alt="gambar error"></a></td> -->
-                            <!-- <td><a href=""><img src="/img/icons8-delete-30.png" alt="gambar error"></a></td> -->
+                          
                           </tr>
                           @endforeach
                         </tbody>

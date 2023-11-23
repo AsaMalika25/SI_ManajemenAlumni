@@ -17,6 +17,7 @@ use App\Http\Controllers\TkaprogController;
 use App\Http\Controllers\TkelasController;
 use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\logController;
+use App\Http\Controllers\ProfilController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -99,6 +100,35 @@ Route::middleware(['auth'])->group(function () {
             Route::get('log_jenis_berita', [LogsJenisBeritaController::class, 'index']);
             Route::get('log_berita', [LogsBeritaController::class, 'index']);
 
+
+
+Route::get('berita', [TberitaController::class, 'index']);
+Route::get('berita-alumni', [TberitaController::class, 'Berita']);
+Route::get('berita-alumni/cetak_pdf', [TberitaController::class, 'cetak_Berita']);
+Route::get('berita/tambah', [TberitaController::class, 'create']);
+Route::get('berita-alumni/tambah', [TberitaController::class, 'create_berita']);
+Route::post('berita/simpan', [TberitaController::class, 'store']);
+Route::post('berita-alumni/simpan', [TberitaController::class, 'store_berita']);
+Route::get('berita/edit/{id}', [TberitaController::class, 'edit']);
+Route::post('berita/edit/simpan', [TberitaController::class, 'update']);
+Route::delete('berita/hapus/{id}', [TberitaController::class, 'destroy']);
+Route::get('berita/detail/{id}', [TberitaController::class, 'show']);
+
+Route::get('kuliah', [TkuliahController::class, 'index']);
+Route::get('kuliah/tambah', [TkuliahController::class, 'create']);
+Route::post('kuliah/simpan', [TkuliahController::class, 'store']);
+Route::get('kuliah/edit/{id}', [TkuliahController::class, 'edit']);
+Route::post('kuliah/edit/simpan', [TkuliahController::class, 'update']);
+Route::delete('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
+
+Route::get('kerja', [TkerjaController::class, 'index']);
+Route::get('kerja/tambah', [TkerjaController::class, 'create']);
+Route::post('kerja/simpan', [TkerjaController::class, 'store']);
+Route::get('kerja/edit/{id}', [TkerjaController::class, 'edit']);
+Route::post('kerja/edit/simpan', [TkerjaController::class, 'update']);
+Route::delete('kerja/hapus/{id}', [TkerjaController::class, 'destroy']);
+
+
             Route::get('angkatan', [TangkatanController::class, 'index']);
             Route::get('angkatan/tambah', [TangkatanController::class, 'create']);
             Route::post('angkatan/simpan', [TangkatanController::class, 'store']);
@@ -147,41 +177,16 @@ Route::middleware(['auth'])->group(function () {
         
         Route::middleware(['AdminOnly:kaprog'])->group(function () {
 
-            Route::get('kaprog', [TkaprogController::class, 'index']);
-            Route::get('kaprog/tambah', [TkaprogController::class, 'create']);
-            Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
-            Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
-            Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
-            Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
-
-        });
-
-
-        
-        
-        
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-
-        
-    
-
-    
+    Route::get('kaprog', [TkaprogController::class, 'index']);
+    Route::get('kaprog/tambah', [TkaprogController::class, 'create']);
+    Route::post('kaprog/simpan', [TkaprogController::class, 'store']);
+    Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
+    Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
+    Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
     // Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
 });
 
 
 // Route::prefix('dashboard')->middleware('OnlyAdmin')->group(function(){
     
-// }
+});

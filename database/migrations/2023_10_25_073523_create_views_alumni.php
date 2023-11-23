@@ -12,6 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
+        DB::unprepared('DROP VIEW IF EXISTS views_alumni');
         DB::unprepared('
         CREATE VIEW views_alumni AS
         SELECT
