@@ -168,16 +168,9 @@
                     </a>
                 </li>
                     <li>
-                        <a href="{{url('berita')}}">
+                        <a href="{{url('berita-alumni')}}">
                         <i class="fa fa-lightbulb-o fa-lg"></i>
-                        <span class="nav-text">Kelola Berita</span> 
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="{{url('jenis_berita')}}">
-                        <i class="fa fa-lightbulb-o fa-lg"></i>
-                        <span class="nav-text">Kelola Jenis Berita</span> 
+                        <span class="nav-text">Berita</span> 
                         </a>
                     </li>
             @endif
