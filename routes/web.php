@@ -56,8 +56,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['AdminOnly:superadmin,kaprog'])->group(function () {
 
-        
-
         Route::get('berita', [TberitaController::class, 'index']);
         Route::get('berita/tambah', [TberitaController::class, 'create']);
         Route::post('berita/simpan', [TberitaController::class, 'store']);
@@ -104,13 +102,6 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('jenis_berita/hapus/{id}', [TjenisBeritaController::class, 'destroy']);
             Route::get('log_jenis_berita', [LogsJenisBeritaController::class, 'index']);
             Route::get('log_berita', [LogsBeritaController::class, 'index']);
-
-            Route::get('kuliah', [TkuliahController::class, 'index']);
-            Route::get('kuliah/tambah', [TkuliahController::class, 'create']);
-            Route::post('kuliah/simpan', [TkuliahController::class, 'store']);
-            Route::get('kuliah/edit/{id}', [TkuliahController::class, 'edit']);
-            Route::post('kuliah/edit/simpan', [TkuliahController::class, 'update']);
-            Route::delete('kuliah/hapus/{id}', [TkuliahController::class, 'destroy']);
 
             Route::get('kerja', [TkerjaController::class, 'index']);
             Route::get('kerja/tambah', [TkerjaController::class, 'create']);
@@ -161,6 +152,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('wirausaha/edit/{id}', [TwirausahaController::class, 'edit']);
             Route::post('wirausaha/edit/simpan', [TwirausahaController::class, 'update']);
             Route::delete('wirausaha/hapus/{id}', [TwirausahaController::class, 'destroy']);
+            Route::get('wirausaha/detail/{id}', [TwirausahaController::class, 'detail']);
             Route::get('logs_wirausaha', [LogsWirausahaController::class, 'index']);
 
             Route::get('kaprog', [TkaprogController::class, 'index']);
@@ -176,7 +168,7 @@ Route::middleware(['auth'])->group(function () {
 
             Route::get('data-alumni/detail/{id}', [TkaprogController::class, 'show_alumni']);        
             Route::get('data-alumni-kaprog', [TkaprogController::class, 'alumni_kaprog']);        
-    
+    // Route::post('kaprog/update/{id}', [TkaprogController::class, 'update']);
         });
 
 

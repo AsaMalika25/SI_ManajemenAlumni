@@ -120,23 +120,6 @@ class TkuliahController extends Controller
      */
     public function destroy($id, Request $request)
     {
-        // $aksi = tkuliah::where('id_kuliah', $id)->first();
-        // if ($aksi) {
-        //     $aksi->delete();
-        //     // Pesan Berhasil
-        //     // $pesan = [
-        //     //     'success' => true,
-        //     //     'pesan'   => 'Data akun berhasil dihapus'
-        //     // ];
-        //     return redirect("kuliah")->with('success','data berhasill dihapus');
-        // } else {
-        //     // Pesan Gagal
-        //     // $pesan = [
-        //     //     'success' => false,
-        //     //     'pesan'   => 'Data gagal dihapus'
-        //     // ];
-        //     return redirect()->back();
-        // }
         $id_kuliah = $request->input('id_kuliah');
         $data = tkuliah::find($id_kuliah);
 

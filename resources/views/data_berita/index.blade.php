@@ -9,7 +9,7 @@
         <div class="card-body">
 
           <!-- tabel -->
-          <table class="table DataTable ">
+          <table class="table DataTable">
             <!-- head tabel -->
             <thead>
               <tr>
