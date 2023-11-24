@@ -100,7 +100,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('log_jenis_berita', [LogsJenisBeritaController::class, 'index']);
             Route::get('log_berita', [LogsBeritaController::class, 'index']);
 
-
+            Route::get('profil', [ProfilController::class, 'index']);
 
 Route::get('berita', [TberitaController::class, 'index']);
 Route::get('berita-alumni', [TberitaController::class, 'Berita']);

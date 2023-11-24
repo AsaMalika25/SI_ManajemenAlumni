@@ -5,7 +5,7 @@
             <h1 style="color: white;">Dashboard</h1>
         </div>
         <div class="d-flex">
-            <h3 style="color: white; margin-right: 1%;">Welcome, </h3><h3 style="color: rgb(60, 60, 138);"></h3>
+            <h3 style="color: white; margin-right: 1%;">Welcome, {{auth()->user()->username}}!</h3><h3 style="color: rgb(60, 60, 138);"></h3>
         </div>
     </div>
     <div class="container">
@@ -27,7 +27,7 @@
                 <div class="card-body text-success" style="text-align: center;">
                   <h2 class="card-title" ><i class="fa fa-briefcase fa-lg" style="font-size: 70px;" aria-hidden="true"></i></h2><br>
                   <h6 class="card-text"><b>Jumlah Alumni yang sedang bekerja sejumlah : {{$alumni_kerja}}</b></h6>
-                </div>
+                </div> 
                 <div class="card-footer bg-transparent border-success"><a href="">Selengkapnya >></a></div>
             </div>
             <div class="card border-primary mb-3 m-0 col me-2" style="max-width: 18rem; border-radius: 10px">

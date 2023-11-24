@@ -91,7 +91,7 @@ class TwirausahaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(twirausaha $tusaha, Request $request, string $id)
+    public function edit(twirausaha $tusaha, Request $request, string $id, talumni $talumni)
     {
         // 
         // $tusaha = twirausaha::where('id_wirausaha',$id)->first();
@@ -99,6 +99,7 @@ class TwirausahaController extends Controller
             'tusaha' => DB::table('views_wirausaha')
             ->where('id_wirausaha', $id)
             ->first(),
+            'alumni' => $talumni->all()
         ];
         return view('wirausaha.edit',$data);
     }
@@ -124,10 +125,11 @@ class TwirausahaController extends Controller
             'nama_usaha' => ['required'],
             'bidang' => ['required'],
             'gambar_usaha' => ['sometimes'],
+            'id_alumni' => ['required'],
             'id_wirausaha' => ['required'],
             ]
         );
-
+        // dd($data);
         if($data)
         {
             if($request->hasFile('gambar_usaha')) {

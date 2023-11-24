@@ -22,11 +22,12 @@
       </div>
       <div class="mb-3">
         <label for="alumni" class="font-form">Alumni</label>
+        <!-- <input type="hidden" class="form-control" name="id_alumni" value="{{$tusaha->id_alumni}}" /> -->
         <select class="form-control" name='id_alumni'>
           <option selected hidden> Pilih Alumni</option>
-          <!--  -->
-          <option value="{{$tusaha->nama}}">{{$tusaha->nama}}</option>
-          <!-- -->
+          @foreach($alumni as $t)
+          <option value="{{$t->id_alumni}}">{{$t->nama}}</option>
+          @endforeach
         </select>
       </div>
       <div class="form-group mt-2">
