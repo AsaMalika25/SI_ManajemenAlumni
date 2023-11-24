@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('tgl_post')->nullable(false);
             $table->integer('kode_berita',false)->nullable(false);
             $table->text('ket_berita')->nullable(false);
+            $table->enum('status',['accepted','rejected','pending'])->default('pending')->nullable(false);
 
             // $table->foreign('id_alumni')->references('id_alumni')->on('talumni')->onDelete('cascade')->onUpdate('cascade');
             // $table->foreign('id_superadmin')->references('id_superadmin')->on('tsuperadmin')->onDelete('cascade')->onUpdate('cascade');

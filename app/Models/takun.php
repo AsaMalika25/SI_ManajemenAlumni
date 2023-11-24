@@ -11,7 +11,7 @@ class takun extends Authenticatable
     use HasFactory;
 
     protected $table = "takun";
-    protected $fillable = ['username','password','role'] ;
+    protected $fillable = ['username','password','role','profile'] ;
     protected $primaryKey = 'id_akun' ;
     public $timestamps = false ;
     

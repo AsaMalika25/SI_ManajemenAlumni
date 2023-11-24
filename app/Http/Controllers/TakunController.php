@@ -74,7 +74,7 @@ class TakunController extends Controller
 
                 }elseif (Auth::user()->role == 'kaprog') {
 
-                    return redirect('kaprog');
+                    return redirect('dashboard');
                 }
                     
         }else {
@@ -142,34 +142,29 @@ class TakunController extends Controller
                 'username' => ['required'],
                 'password' => ['required'],
                 'role' =>['required'],
+                'profile' => ['required']
             ]
         );
-        if($request->input('id_akun') !== null){
-            //proses Update
-            $data['password'] = Hash::make($data['password']);
-            $dataUpdate = takun::where('id_akun', $request->input('id_akun'))
-                            ->update($data);
-        if($dataUpdate){
-            return redirect('list_akun');
-        }else{
-            return back()->with('error', 'Akun User gagal di update');
-        }
-        }else{
+        
+            if ($request->hasFile('profile')) {
+                $foto_file = $request->file('profile');
+                $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+                $foto_file->move(public_path('foto'), $foto_nama);
+                $data['profile'] = $foto_nama;
+            }
             //proses Insert
             $data['password'] = Hash::make($data['password']);
 
-            if($data):
-                // $data['id_akun']= 1;
-            //simpan jika sudah terisi semua
-                $takun->create($data);
-                return redirect('list_akun');
-            else:
-            //kembali ke form tambah dataa
-                return back()->with('erorr', 'Data User gagal ditambah');
-            endif;
-        }    
+            if($data){
 
-    }
+                $takun->create($data);
+
+                return redirect()->to('list_akun')->with('success','Data user telah ditambahkan');
+            }else{
+                return back()->with('erorr', 'Data User gagal ditambah');
+            } 
+                
+    }    
 
     /**
      * Display the specified resource.

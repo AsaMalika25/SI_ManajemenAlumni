@@ -13,6 +13,7 @@
               <br>
             </div>
           <form action="tambah_akun/tambah" method="post">
+            @csrf
             <div class="mb-3" >
               <label for="inputNama" class="form-label font-form">Username</label>
               <input type="text" class="form-control" id="inputNama" placeholder="Your Username" name="username" style="border-radius:  1.8635607321131447vh;" required>
@@ -30,7 +31,12 @@
                 <option value="alumni">Alumni</option>
               </select>
             </div>
-                @csrf
+
+            <div class="form-group mb-3">
+              <label>Upload Profile</label>
+              <input type="file" class="form-control font-form" placeholder="Your Profile" name="profile" style="border-radius:  1.8635607321131447vh;"/>
+            </div>
+
             <div class="col"> 
               <a href="list_akun" class="btn btn-warning" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  margin-top: 1rem;">Kembali</a>
               <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 1rem;">Simpan</button>

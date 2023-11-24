@@ -61,9 +61,23 @@ class TkaprogController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(tkaprog $tkaprog)
+    public function alumni_kaprog(tkaprog $tkaprog)
     {
-        //
+        $total_alumni = DB::select('SELECT CountNamaAlumni() AS totalalumni')[0]->totalalumni;
+
+        $data = [
+            'alumni' => DB::table('views_alumni')->get(),
+
+            'jumlah_alumni' => $total_alumni,
+        ];
+        return view('data_alumni.alumni_kaprog',$data);
+    }
+    public function show_alumni(tkaprog $tkaprog)
+    {
+        $data = [
+            'alumni' => DB::table('views_alumni')->first(),
+        ];
+        return view('data_kaprog.detail_alumni',$data);
     }
 
     /**

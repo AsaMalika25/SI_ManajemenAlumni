@@ -20,6 +20,9 @@
     </style> 
 </head>
 <body>
+
+
+
 <nav class="main-menu" style="z-index:9; height: 108%;" > 
             <div>
                 <a class="logo" href="">
@@ -162,22 +165,15 @@
                     </a>
                 </li>
                 <li>                                 
-                    <a href="{{url('alumni')}}">
+                    <a href="{{url('data-alumni-kaprog')}}">
                     <i class="fa fa-graduation-cap fa-lg"></i>
-                    <span class="nav-text">Kelola Alumni</span>
+                    <span class="nav-text">Daftar Alumni</span>
                     </a>
                 </li>
                     <li>
                         <a href="{{url('berita')}}">
                         <i class="fa fa-lightbulb-o fa-lg"></i>
                         <span class="nav-text">Kelola Berita</span> 
-                        </a>
-                    </li>
-                    
-                    <li>
-                        <a href="{{url('jenis_berita')}}">
-                        <i class="fa fa-lightbulb-o fa-lg"></i>
-                        <span class="nav-text">Kelola Jenis Berita</span> 
                         </a>
                     </li>
             @endif
@@ -212,16 +208,32 @@
             </li>  
             <hr>
             </ul>
-
-            <div class="dropdown" style="margin: 10px;">
-                <a href="{{url('profil/2')}}" class="d-flex  text-decoration-none" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="{{asset('img/3966983-removebg-preview.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
-                  <strong style="padding: 1px; margin-left: 12px;">Adhinda</strong>
-                </a>
             
-              </div>
+            
             </li>
 </nav>
+
+<header>
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-7"></div>
+            <div class="col-md-3"></div>
+            <div class="col-md-1">
+                <div class="dropdown" style="margin: 10px;">
+                    {{-- @foreach ($alumni as $item) --}}
+                        <a href="{{url('profile')}}" class="d-flex  text-decoration-none" id="dropdownUser2">
+                            <img src="{{asset('img/3966983-removebg-preview.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                            <strong style="padding: 1px; margin-left: 12px; color:#fff">{{{Auth::user()->username}}}</strong>
+                        </a>        
+                    {{-- @endforeach --}}
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
 
 <div class="container">
     @yield('content')

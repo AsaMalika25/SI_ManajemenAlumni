@@ -17,6 +17,7 @@
                 <th class="font-table" scope="col">Username</th>
                 <th class="font-table" scope="col">Password</th>
                 <th class="font-table" scope="col">Role</th>
+                <th class="font-table" scope="col">Profile</th>
                 <th class="font-table" scope="col">Aksi</th>
               </tr>
             </thead>

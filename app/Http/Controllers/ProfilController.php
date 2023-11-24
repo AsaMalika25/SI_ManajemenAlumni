@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\talumni;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class ProfilController extends Controller
@@ -11,12 +12,17 @@ class ProfilController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(talumni $talumni, Request $request)
+    public function index()
     {
+        $user = Auth::user();
+
         $data = [
-            'alumni' => DB::table('views_alumni')->get(),
+            'alumni' => DB::table('views_alumni')
+                        ->where('id_akun', $user->id_akun)
+                        ->get(),
         ];
-        return view('profile.index',$data);
+
+        return view('profile.index', $data);
     }
 
     /**

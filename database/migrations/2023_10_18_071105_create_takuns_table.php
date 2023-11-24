@@ -16,6 +16,7 @@ return new class extends Migration
             $table->integer('id_akun',true);
             $table->string('username')->nullable(false);
             $table->text('password')->nullable(false);
+            $table->text('profile')->nullable(true);
             $table->enum('role',['superadmin','alumni','kaprog']);
             $table->timestamps();
         });
