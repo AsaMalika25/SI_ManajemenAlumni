@@ -90,7 +90,7 @@ Route::middleware(['auth'])->group(function () {
             Route::get('tambah_akun', [TakunController::class, 'create']);
             Route::post('tambah_akun/tambah', [TakunController::class, 'store']);
             Route::get('list_akun/edit/{id}', [TakunController::class, 'edit']);
-            Route::post('list_akun/edit/simpan/{id}', [TakunController::class, 'update']);
+            Route::post('list_akun/edit/simpan/', [TakunController::class, 'store']);
             Route::delete('list_akun/hapus/{id}', [TakunController::class, 'destroy']);
             Route::get('list_akun/cetak_pdf', [TakunController::class, 'cetak_pdf']);
 
@@ -161,6 +161,10 @@ Route::middleware(['auth'])->group(function () {
             Route::delete('kaprog/hapus/{id}', [TkaprogController::class, 'destroy']);
             Route::get('kaprog/edit/{id}', [TkaprogController::class, 'edit']);
             Route::post('kaprog/edit/simpan', [TkaprogController::class, 'update']);
+
+            Route::get('confirm', [TberitaController::class, 'confirm']);
+            Route::post('confirm/acc', [TberitaController::class, 'acc']);
+            Route::post('confirm/rej', [TberitaController::class, 'reject']);
         });
 
         

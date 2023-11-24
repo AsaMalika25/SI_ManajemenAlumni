@@ -18,6 +18,7 @@
                 <th class="font-table" scope="col">Tanggal Post</th>
                 <th class="font-table" scope="col">Jenis Berita</th>
                 <th class="font-table" scope="col">Keterangan</th>
+                <th class="font-table" scope="col">Status</th>
                 <th class="font-table" scope="col">Gambar Berita</th>
                 <th class="font-table" scope="col">Aksi</th>
               </tr>
@@ -34,6 +35,15 @@
                 <td>{{$r->tgl_post}}</td>
                 <td>{{$r->jenis_berita}}</td>
                 <td>{{$r->ket_berita}}</td>
+                @if($r->status == 'accepted')
+                <td class="text-success">{{$r->status}}</td>
+                @endif
+                @if($r->status == 'rejected')
+                <td class="text-danger">{{$r->status}}</td>
+                @endif
+                @if($r->status == 'pending')
+                <td class="text-info">{{$r->status}}</td>
+                @endif
                 <td>
                   @if ($r->file)
                   <img src="{{url('foto') . '/' . $r->file}}" value="{{$r->file}}" style="max-width: 100px; height:100px;" />
@@ -65,6 +75,13 @@
             <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z" />
           </svg>
           TAMBAH
+        </a>
+        <a class="btn btn-primary" href="confirm" role="button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+          </svg>
+          KONFIRMASI
         </a>
       </div>
     </div>

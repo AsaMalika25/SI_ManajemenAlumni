@@ -26,10 +26,49 @@ class TberitaController extends Controller
     public function Berita(tberita $tberita)
     {
         $data = [
-            'tberita' => $tberita->all()
+            'tberita' => $tberita->where('status','accepted')->get(),
         ];
         return view('berita.index', $data);
     }
+    public function confirm(tberita $tberita)
+    {
+        $data = [
+            'tberita' => $tberita->where('status','pending')->get()
+        ];
+        return view('konfirmasi.index', $data);
+    }
+    public function acc(tberita $tberita, Request $request)
+    {
+        $data = $request->validate([
+            'id_berita' => ['required'],
+            'status' => ['required'],
+        ]);
+        if ($data) {
+            $tberita::where('id_berita', $request->input('id_berita'))->update($data);
+            
+            return redirect()->to('confirm')->with('success');
+        }else{
+            return abort('404');
+        }
+        
+    }
+
+    public function reject(tberita $tberita, Request $request)
+    {
+        $data = $request->validate([
+            'id_berita' => ['required'],
+            'status' => ['required'],
+        ]);
+        if ($data) {
+            $tberita::where('id_berita', $request->input('id_berita'))->update($data);
+            
+            return redirect()->to('confirm')->with('success');
+        }else{
+            return abort('404');
+        }
+        
+    }
+
     public function cetak_Berita(tberita $tberita)
     {
         $data = [
@@ -104,6 +143,7 @@ class TberitaController extends Controller
             'kode_berita' => ['required'],
             'ket_berita' => ['required'],
             'file' => ['required'], 
+            'status' => ['required'],   
         ]);
 
         if($data)

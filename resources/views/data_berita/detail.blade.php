@@ -40,7 +40,7 @@
                                 {!! $tberita->ket_berita !!}
                             </div> -->
 
-                            <p>{{!! $tberita->ket_berita !!}}</p>
+                            <p></p>
                         </div>
                     </div>
                 </div>
