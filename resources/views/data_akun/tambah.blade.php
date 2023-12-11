@@ -31,7 +31,7 @@
                 <option value="alumni">Alumni</option>
               </select>
             </div>
-
+            <br>
             <div class="form-group mb-3">
               <label>Upload Profile</label>
               <input type="file" class="form-control font-form" placeholder="Your Profile" name="profile" style="border-radius:  1.8635607321131447vh;"/>
