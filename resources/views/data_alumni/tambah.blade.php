@@ -44,7 +44,7 @@
 <!-- form tambah -->
 <div class="container" style="margin-top: 3rem;">
     <div>
-        <h2 style="color: #fff;"><b>Tambah Data Alumni</b></h2>
+        <h2 style="color: #fff; font-size:50px; text-align:center;"><b>Tambah Data Alumni</b></h2>
     </div>
     @if ($errors->any())
     <div class="alert alert-danger">
@@ -82,6 +82,7 @@
             <div class="col">
                 <label style="color: #fff;">Angkatan</label>
                 <select name="id_angkatan" class="form-control user">
+                    <option selected hidden> Pilih Angkatan</option>
                     @foreach($angkatan as $ang)
                     <option value="{{ $ang->id_angkatan }}">{{ $ang->no_angkatan }}
                     </option>
@@ -97,6 +98,7 @@
             <div class="col">
                 <label style="color: #fff;">User</label>
                 <select name="id_akun" class="form-control input-with-icon">
+                    <option selected hidden> Pilih User</option>
                     @foreach($akun as $ak)
                     <option value="{{ $ak->id_akun }}">{{ $ak->username }}</option>
                     @endforeach

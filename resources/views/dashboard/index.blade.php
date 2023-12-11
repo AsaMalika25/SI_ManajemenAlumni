@@ -2,10 +2,10 @@
 @section('content')
 <div class="container align-item-center ml-5" style="margin-top: 1rem;">
         <div>
-            <h1 style="color: white;">Dashboard</h1>
+            <h1 style="color: white; font-size:50px;">Dashboard</h1>
         </div>
         <div class="d-flex">
-            <h3 style="color: white; margin-right: 1%;">Welcome, {{auth()->user()->username}}</h3><h3 style="color: rgb(60, 60, 138);"></h3>
+            <h3 style="color: white; margin-right: 1%; font-size:50px;">Welcome, {{auth()->user()->username}}</h3><h3 style="color: rgb(60, 60, 138);"></h3>
         </div>
     </div>
     <div class="container">

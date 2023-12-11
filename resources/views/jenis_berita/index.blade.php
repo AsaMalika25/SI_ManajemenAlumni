@@ -15,7 +15,7 @@
             <!-- head tabel -->
             <thead>
               <tr>
-                <th class="font-table" scope="col">id</th>
+                <th class="font-table" scope="col">No</th>
                 <th class="font-table" scope="col">jenis_berita</th>
                 <th class="font-table" scope="col">Aksi</th>
               </tr>
@@ -26,7 +26,7 @@
             <tbody>
               @foreach($jenis_berita as $r)
               <tr>
-                <td>{{$r->id_jenis_berita}}</td>
+                <td>{{$loop->iteration}}</td>
                 <td>{{$r->jenis_berita}}</td>
                 <td>
                   <btn class="btnHapus" idJenisBerita="{{ $r->id_jenis_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 30px;"></btn>

@@ -72,7 +72,7 @@
       if (result.isConfirmed) {
         //Ajax Delete
         $.ajax({
-          type: 'DELETE',
+          type: 'delete',
           url: "kaprog/hapus/" + idKaprog,
           data: {
             id_kaprog: idKaprog,

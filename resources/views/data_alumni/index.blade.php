@@ -1,7 +1,8 @@
 @extends('layout.layouts')
 @section('content')
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-    <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST DATA ALUMNI</b></h1>
+    <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins; font-size:50px;"><b>LIST DATA ALUMNI</b></h1>
+        
     <br>
     <div class="justify-content-center d-flex">
         <div class="tab-content justify-content-center" style="max-width: max-content;">
@@ -43,9 +44,9 @@
                                 @endif
                                 </td> --}}
                                 <td>
-                                    <a href="{{url('alumni/detail/'. $item->id_alumni)}}"><img src="{{asset('img/gambar-seru.png')}}" alt="" width="30px;" height="30px;"></a>
-                                    <btn class="btn btnHapus" idAlumni="{{ $item->id_alumni }}"><img src="{{asset('img/trash.png')}}" alt="" width="30px;" height="30px;"></btn>
-                                    <a href="{{ url('alumni/edit/'. $item->id_alumni) }}" class="btn" style="padding-left:0px;"><img src="{{asset('img/edit.png')}}" alt="" width="30px;" height="30px;"></a>
+                                    <a href="{{url('alumni/detail/'. $item->id_alumni)}}"><img src="{{asset('img/gambar-seru.png')}}" alt="" width="20px;" height="20px;"></a>
+                                    <btn class="btn btnHapus" idAlumni="{{ $item->id_alumni }}"><img src="{{asset('img/trash.png')}}" alt="" width="20px;" height="20px;"></btn>
+                                    <a href="{{ url('alumni/edit/'. $item->id_alumni) }}" class="btn" style="padding-left:0px;"><img src="{{asset('img/edit.png')}}" alt="" width="20px;" height="20px;"></a>
                                 </td>
                             </tr>
                             @endforeach

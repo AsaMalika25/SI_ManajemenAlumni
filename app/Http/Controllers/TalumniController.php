@@ -79,17 +79,32 @@ class TalumniController extends Controller
         // mengambil data validasi
         $data = $request->validate([
             'nama' => ['required'],
-            'email' => ['required'],
+            'email' => ['required','unique:talumni,email'],
             'tgl_lahir' => ['required'],
             'sosmed' => ['required'],
             'id_angkatan' => ['required'],
             'ijazah' => ['required'],
-            'no_telp' => ['required'],
+            'no_telp' => ['required','max:20'],
             'id_akun' => ['required'],
             'alamat' => ['required'],
             'id_kelas' => ['required'],
             'jenkel' => ['required'],
+        ],[
+            'nama.required' => 'name has required',
+            'email.required' => 'email has required',
+            'email.unique' => 'email has already taken',
+            'no_telp.max' => 'max calling phone has 20 number',
+            'tgl_lahir.required' => 'tgl_lahir has required',
+            'sosmed.required' => 'sosmed has required',
+            'id_angkatan.required' => 'no_angkatan has required',
+            'ijazah.required' => 'ijazah has required',
+            'no_telp.required' => 'no_telp has required',
+            'id_akun.required' => 'username has required',
+            'alamat.required' => 'alamat has required',
+            'id_kelas.required' => 'nama_kelas has required',
+            'jenkel.required' => 'jenkel has required',
         ]);
+
         if ($request->hasFile('ijazah')) {
             $foto_file = $request->file('ijazah');
             $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
@@ -98,9 +113,10 @@ class TalumniController extends Controller
         }
 
         if ($talumni->create($data)) {
-            return redirect()->to('alumni')->with('success', 'Data surat baru berhasil ditambah');
+
+            return redirect()->to('alumni')->with('success', 'Data Alumni berhasil ditambah');
         }else {
-            return redirect()->back();
+            return redirect()->back()->with('error','re-check the data that has been created');
         }
     }
 
@@ -196,6 +212,7 @@ class TalumniController extends Controller
         
         if (file_exists($filePath) && unlink($filePath)) {
             $data->delete();
+            
             return response()->json(['success' => true]);
         } 
 

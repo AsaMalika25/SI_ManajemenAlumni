@@ -59,6 +59,7 @@ class TkuliahController extends Controller
         {
             if(tkuliah::create($data))
             {
+                
                 return redirect('/kuliah')->with('success', 'Data Berhasil di Update');
             }else
             {
@@ -108,6 +109,7 @@ class TkuliahController extends Controller
         {
            
             tkuliah::where('id_kuliah', $request->input('id_kuliah'))->update($data);
+            
             return redirect('/kuliah')->with('success', ' Berhasil di Update');
         }else 
         {
@@ -129,6 +131,7 @@ class TkuliahController extends Controller
         
         if ($data) {
             $data->delete();
+            
             return response()->json(['success' => true]);
         }
         }

@@ -35,11 +35,11 @@ class TwirausahaController extends Controller
         //     ->join('twirausaha', 'talumni.id_alumni', '=', 'twirausaha.id_alumni')
         //     ->first();
 
-        $data = [
-            'alumni'=>$talumni->all()
-        ];
+        $alumni = $talumni->all(); 
         // dd($usaha);
-        return view('wirausaha.tambah',$data);
+        return view('wirausaha.tambah',[
+            'alumni' => $alumni,
+        ]);
 
     }
 
@@ -71,6 +71,7 @@ class TwirausahaController extends Controller
 
             if(twirausaha::create($data))
             {
+                
                 return redirect('/wirausaha')->with('success', 'Data Berhasil di Update');
             }else
             {
@@ -141,6 +142,8 @@ class TwirausahaController extends Controller
                 $data['gambar_usaha'] = $foto_nama;
             }
             twirausaha::where('id_wirausaha', $request->input('id_wirausaha'))->update($data);
+
+            
             return redirect('/wirausaha')->with('success', ' Berhasil di Update');
         }else 
         {
@@ -163,6 +166,7 @@ class TwirausahaController extends Controller
         $filePath = public_path('foto') . '/' . $data->file;
 
             $data->delete();
+            
             return response()->json(['success' => true]);
         }
 

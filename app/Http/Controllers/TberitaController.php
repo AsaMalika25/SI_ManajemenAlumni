@@ -28,6 +28,7 @@ class TberitaController extends Controller
         $data = [
             'tberita' => $tberita->where('status','accepted')->get(),
         ];
+        
         return view('berita.index', $data);
     }
     public function confirm(tberita $tberita)
@@ -61,7 +62,7 @@ class TberitaController extends Controller
         ]);
         if ($data) {
             $tberita::where('id_berita', $request->input('id_berita'))->update($data);
-            
+
             return redirect()->to('confirm')->with('success');
         }else{
             return abort('404');

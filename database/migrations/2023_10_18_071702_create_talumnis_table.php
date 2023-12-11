@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tgl_lahir')->nullable(false);
             $table->text('alamat')->nullable(false);
             $table->string('email')->nullable(false);
-            $table->integer('no_telp')->nullable(false);
+            $table->bigInteger('no_telp')->nullable(false);
             $table->text('sosmed')->nullable(false);
             $table->text('ijazah');
             $table->enum('jenkel',['Laki-laki','Perempuan'])->nullable(false);

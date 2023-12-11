@@ -20,8 +20,7 @@ class DashboardController extends Controller
             'total_alumni' => talumni::count(),
             'alumni_kerja' => tkerja::count(),
             'alumni_kuliah' => tkuliah::count(),
-            'alumni_usaha' => twirausaha::count(),
-        
+            'alumni_usaha' => twirausaha::count(),   
         ];
         return view('dashboard.index', $data);
     }

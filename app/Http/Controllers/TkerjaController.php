@@ -60,6 +60,7 @@ class TkerjaController extends Controller
         {
             if($tkerja->create($data))
             {
+                
                 return redirect('kerja')->with('success', 'Data Berhasil di Update');
             }else
             {
@@ -109,6 +110,8 @@ class TkerjaController extends Controller
         {
            
             tkerja::where('id_kerja', $request->input('id_kerja'))->update($data);
+
+            
             return redirect('/kerja')->with('success', ' Berhasil di Update');
         }else 
         {

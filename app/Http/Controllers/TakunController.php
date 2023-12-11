@@ -73,7 +73,6 @@ class TakunController extends Controller
                     return redirect('data-alumni');
 
                 }elseif (Auth::user()->role == 'kaprog') {
-
                     return redirect('dashboard');
                 }
                     
