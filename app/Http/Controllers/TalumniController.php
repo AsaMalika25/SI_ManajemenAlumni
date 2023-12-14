@@ -29,7 +29,6 @@ class TalumniController extends Controller
         $total_alumni = DB::select('SELECT CountNamaAlumni() AS totalalumni')[0]->totalalumni;
 
         $data =[ 
-              
             'alumni' => DB::table('views_alumni')->get(),
             'jumlah_alumni' => $total_alumni,
         ];

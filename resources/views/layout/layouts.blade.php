@@ -215,7 +215,7 @@
             <li>
                 <div class="dropdown" style="margin: 10px;">
                     {{-- @foreach ($alumni as $item) --}}
-                    <a href="{{url('profile')}}" class="d-flex  text-decoration-none" id="dropdownUser2">
+                    <a href="{{url('/profile')}}" class="d-flex  text-decoration-none" id="dropdownUser2">
                         <img src="{{asset('img/3966983-removebg-preview.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
                         <strong style="padding: 1px; margin-left: 12px;">{{{Auth::user()->username}}}</strong>
                     </a>
@@ -223,33 +223,12 @@
                 </div>
             </li>
         </div>
-    </nav>
-
-    <!-- <header>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-7"></div>
-                <div class="col-md-3"></div>
-                <div class="col-md-1">
-                    <div class="dropdown" style="margin: 10px;">
-                        {{-- @foreach ($alumni as $item) --}}
-                        <a href="{{url('profile')}}" class="d-flex  text-decoration-none" id="dropdownUser2">
-                            <img src="{{asset('img/3966983-removebg-preview.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
-                            <strong style="padding: 1px; margin-left: 12px; color:#fff">{{{Auth::user()->username}}}</strong>
-                        </a>        
-                    {{-- @endforeach --}}
-                    
-                </div>
-            </div>
-        </div>
-    </div>
-    
-</header>
-
+    </nav> 
 
 <div class="container">
     @yield('content')
 </div>
+
 </body>
 
 
