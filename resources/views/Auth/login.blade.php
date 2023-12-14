@@ -7,11 +7,16 @@
     <meta name="google" value="notranslate"/>
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous"></script>
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/styleside.css')}}" rel="stylesheet">
     {{-- <link rel="stylesheet" type="text/css" href="css/menu.css"> --}}
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <style>
         body{
             background-color: #688EF2;
@@ -50,9 +55,8 @@
                                 <div class="form-group justify-content-center ms-3" ><br>
                                     <img src="img/3966983-removebg-preview.png" style="height: 150px;"> 
                                 </div>
-                                <span class="h1 ms-6"><b>
+                                <span class="h1 ms-6">
                                     LOGIN
-                                </b>
                                 </span>
                                 <div class="form-group"><br>
                                     <label>Username</label>
@@ -73,15 +77,24 @@
                                     </select> -->
                           
                                 <!-- </div> -->
-                                <br>
+                                
                             </div>
                             </div>
                             <div class="row">
                             <div class="col-md-4" style="margin-left: 9rem;">
+                                @if (session('error'))
+                                    <script>
+                                        // Perhatikan bahwa ini hanya akan muncul jika session('error') memiliki nilai.
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: '{{ session('error') }}',
+                                        });
+                                    </script>
+                                @endif
                                 <button type="submit" class="btn btn-success">LOGIN</button>
                             </div>
-                            
-                            <p>
+                           
                         </div>
                         </form>
             </div>
@@ -89,50 +102,6 @@
     </div>
 </body>
 <script type="text/javascript">
-
-    let timeout;
-    let password = document.getElementById('PassEntry');
-    let strengthBadge = document.getElementById('StrengthDisp');
-
-    let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
-    let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
-
-    function isStrongPassword(password) {
-        return strongPassword.test(password);
-    }
-
-    function StrengthChecker(PasswordParameter) {
-        if (PasswordParameter.length <= 8) {
-            strengthBadge.style.backgroundColor = 'red';
-            strengthBadge.textContent = 'Weak or Medium';
-            strengthBadge.style.display = 'block';
-            alert("Password should be at least 8 characters long.");
-            return;
-        }
-
-        if (isStrongPassword(PasswordParameter)) {
-            strengthBadge.style.backgroundColor = 'green';
-            strengthBadge.textContent = 'Strong';
-        } else if (mediumPassword.test(PasswordParameter)) {
-            strengthBadge.style.backgroundColor = 'yellow';
-            strengthBadge.textContent = 'Medium';
-        } else {
-            strengthBadge.style.backgroundColor = 'red';
-            strengthBadge.textContent = 'Weak';
-        }
-        strengthBadge.style.display = 'block';
-    }
-
-    password.addEventListener('input', () => {
-        clearTimeout(timeout);
-
-        timeout = setTimeout(() => {
-            StrengthChecker(password.value);
-        }, 500);
-    });
-
-
-
 
     let showPasswordBtn = document.querySelector('.show-password');
     let passwordInp = document.querySelector('.password-input');
