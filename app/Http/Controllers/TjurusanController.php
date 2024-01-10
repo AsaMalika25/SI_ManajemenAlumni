@@ -40,6 +40,7 @@ class TjurusanController extends Controller
             
             $tjurusan->create($data);
 
+            
             return redirect()->to('jurusan')->with('success','you have create data jurusan');
 
         }else {
@@ -80,6 +81,7 @@ class TjurusanController extends Controller
             $dataUpdate = tjurusan::where('id_jurusan',$request->input('id_jurusan'))
             ->update($data);
         if($dataUpdate){
+            
             return redirect('/jurusan')->with('success', 'jurusan Berhasil di Update');
         }else{
         return back()->with('error','Data jurusan gagal di update');
@@ -101,6 +103,8 @@ class TjurusanController extends Controller
         
         if ($data) {
             $data->delete();
+
+            
             return response()->json(['success' => true]);
         }
     }

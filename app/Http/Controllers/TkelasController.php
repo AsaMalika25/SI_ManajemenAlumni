@@ -75,6 +75,7 @@ class TkelasController extends Controller
             $kelasId = $tkelas->create($data)->id_kelas;
             DB::statement("CALL Createkelas(?, ?, ?)", [$data['id_jurusan'], $data['id_angkatan'], $data['nama_kelas']]);
             DB::commit();
+            
             return redirect('kelas')->with('success','data kamu berhasil ditambahkan');
         } catch (Exception $e) {
             // $e->getMessage();
@@ -125,6 +126,7 @@ class TkelasController extends Controller
             $dataUpdate = tkelas::where('id_kelas',$request->input('id_kelas'))
             ->update($data);
         if($dataUpdate){
+            
             return redirect('/kelas')->with('success', 'kelas Berhasil di Update');
         }else{
         return back()->with('error','Data kelas gagal di update');
@@ -146,6 +148,7 @@ class TkelasController extends Controller
         
         if ($data) {
             $data->delete();
+            
             return response()->json(['success' => true]);
         }
     }

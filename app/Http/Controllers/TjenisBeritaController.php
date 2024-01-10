@@ -45,6 +45,7 @@ class TjenisBeritaController extends Controller
         if(DB::statement("CALL CreateJenisBerita(?)", [$data['jenis_berita']])):
         // Simpan jika data terisi semua
     //    $jenis_berita->create($data);
+            
             return redirect('/jenis_berita')->with('succes','data jenis berita berhasil ditambah');
         else:
         // Kembali ke form tambah data
@@ -98,6 +99,8 @@ class TjenisBeritaController extends Controller
             $dataUpdate = tjenis_berita::where('id_jenis_berita',$request->input('id_jenis_berita'))
             ->update($data);
         if($dataUpdate){
+
+            
             return redirect('/jenis_berita')->with('success', 'Jenis berita Berhasil di Update');
         }else{
         return back()->with('error','Data Jenis berita gagal di update');
@@ -114,11 +117,13 @@ class TjenisBeritaController extends Controller
         $data = tjenis_berita::find($id_jenis_berita);
 
         if (!$data) {
+            
             return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
         }
         
         if ($data) {
             $data->delete();
+            
             return response()->json(['success' => true]);
         }
     }

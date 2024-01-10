@@ -17,19 +17,19 @@ class UserSeeder extends Seeder
         DB::table('takun')->insert([
             'username' => 'superadmin',
             'role' => 'superadmin',
-            'password' => Hash::make('superadmin'),
+            'password' => Hash::make('S3up#r4dm1n'),
        ]);
 
        DB::table('takun')->insert([
             'username' => 'alumni',
             'role' => 'alumni',
-            'password' => Hash::make('alumni'),
+            'password' => Hash::make('4lumn1_Sm@k'),
        ]);
 
        DB::table('takun')->insert([
             'username' => 'kaprog',
             'role' => 'kaprog',
-            'password' => Hash::make('kaprog'),
+            'password' => Hash::make('K@pr0gP@ssw0rd'),
        ]);
     }
 }

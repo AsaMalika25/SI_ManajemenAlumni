@@ -14,7 +14,7 @@
             <h3 class="card-title"> Jumlah : {{ $jumlahwirausaha ?? 0 }}</h3>
             <thead>
               <tr>
-                <th class="font-table" scope="col">Id</th>
+                <th class="font-table" scope="col">No</th>
                 <th class="font-table" scope="col">Alumni</th>
                 <th class="font-table" scope="col">Nama Usaha</th>
                 <th class="font-table" scope="col">Bidang Usaha</th>
@@ -27,7 +27,7 @@
             <tbody>
               @foreach($tusaha as $r)
               <tr>
-                <th scope="row">{{$r->id_wirausaha}}</th>
+                <th scope="row">{{$loop->iteration}}</th>
                 <td>{{$r->nama}}</td>
                 <td>{{$r->nama_usaha}}</td>
                 <td>{{$r->bidang}}</td>

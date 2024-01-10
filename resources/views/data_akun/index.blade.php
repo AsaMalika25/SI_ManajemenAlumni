@@ -1,7 +1,7 @@
 @extends('layout.layouts')
 @section('content')
 <div class="container mt-5 align-item-center" style="background-repeat: no-repeat; background-size: cover; background-position: center;">
-  <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins;"><b>LIST AKUN</b></h1>
+  <h1 class="d-flex justify-content-center" style="color: #fff; font-family: poppins; font-size:50px;"><b>LIST AKUN</b></h1>
   <br>
   <div class="justify-content-center d-flex">
     <div class="tab-content justify-content-center" style="max-width: max-content;">
@@ -13,11 +13,10 @@
             <!-- head tabel -->
             <thead>
               <tr>
-                <th class="font-table" scope="col">Id</th>
+                <th class="font-table" scope="col">No</th>
                 <th class="font-table" scope="col">Username</th>
                 <th class="font-table" scope="col">Password</th>
                 <th class="font-table" scope="col">Role</th>
-                <!-- <th class="font-table" scope="col">Profile</th> -->
                 <th class="font-table" scope="col">Aksi</th>
               </tr>
             </thead>
@@ -26,7 +25,7 @@
             <tbody>
               @foreach($takun as $r)
               <tr>
-                <th scope="row">{{$r->id_akun}}</th>
+                <th scope="row">{{$loop->iteration}}</th>
                 <td>{{$r->username}}</td>
                 <td>{{$r->password}}</td>
                 <td>{{$r->role}}</td>

@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Validation\Rule;
+
 
 class TakunController extends Controller
 {
@@ -51,7 +53,7 @@ class TakunController extends Controller
     {
         $request->validate([
             'username' => 'required',
-            'password' => 'required',
+            'password' => ['required','min:8', Rule::notIn('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])/'),],
         ], [
             'username.required' => 'Username harus diisi',
             'password.required' => 'Password harus diisi',
@@ -73,18 +75,20 @@ class TakunController extends Controller
                     return redirect('data-alumni');
 
                 }elseif (Auth::user()->role == 'kaprog') {
-
                     return redirect('dashboard');
                 }
-                    
-        }else {
-            return redirect()->back()->withErrors('The username and password entered are incorrect');
-        }
                 
+        }else{
+            return redirect()->back()->with('error', 'Password is weak or does not meet the minimum length requirement.');
+        }
+            
+        
+        
     }
 
     public function logout(){
         Session::flush();
+        Auth::logout();
         return redirect('/')->with('success','you are logout');
     }
     /**

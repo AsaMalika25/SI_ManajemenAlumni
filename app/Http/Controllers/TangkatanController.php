@@ -98,6 +98,7 @@ class TangkatanController extends Controller
             $dataUpdate = tangkatan::where('id_angkatan',$request->input('id_angkatan'))
             ->update($data);
         if($dataUpdate){
+            
             return redirect('/angkatan')->with('success', 'angkatan Berhasil di Update');
         }else{
         return back()->with('error','Data angkatan gagal di update');
@@ -131,6 +132,7 @@ class TangkatanController extends Controller
         
         if ($data) {
             $data->delete();
+            
             return response()->json(['success' => true]);
         }
     }

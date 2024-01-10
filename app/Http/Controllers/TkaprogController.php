@@ -49,6 +49,7 @@ class TkaprogController extends Controller
         {
             if(tkaprog::create($data))
             {
+                
                 return redirect('/kaprog')->with('success', 'Data Berhasil di Update');
             }else
             {
@@ -109,6 +110,7 @@ class TkaprogController extends Controller
             $dataUpdate = tkaprog::where('id_kaprog',$request->input('id_kaprog'))
             ->update($data);
         if($dataUpdate){
+            
             return redirect('/kaprog')->with('success', 'Kaprog Berhasil di Update');
         }else{
         return back()->with('error','Data Kaprog gagal di update');
@@ -122,7 +124,7 @@ class TkaprogController extends Controller
     public function destroy($id, Request $request, tkaprog $tkaprog)
     {
         $id_kaprog = $request->input('id_kaprog');
-        $data = $tkaprog->find($id_kaprog);
+        $data = tkaprog::find($id_kaprog);
         //  dd($data);
         if (!$data) {
             return response()->json(['success' => false, 'pesan' => 'Data tidak ditemukan'], 404);
@@ -130,7 +132,10 @@ class TkaprogController extends Controller
         
         if ($data) {
             $data->delete();
+            
             return response()->json(['success' => true]);
         }
-        }
+
+        return response()->json(['success' => false, 'msg' => 'pesan gagal di hapus']);
+    }
 }

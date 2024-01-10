@@ -15,7 +15,7 @@
             <!-- head tabel -->
             <thead>
               <tr>
-                <th class="font-table" scope="col">Id Kuliah</th>
+                <th class="font-table" scope="col">No</th>
                 <th class="font-table" scope="col">Alumni</th>
                 <th class="font-table" scope="col">Nama Lembaga</th>
                 <th class="font-table" scope="col">Jurusan Kuliah</th>
@@ -28,7 +28,7 @@
             <tbody>
               @foreach($alumni as $r)
               <tr>
-                <td>{{ $r->id_kuliah }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $r->nama }}</td>
                 <td>{{ $r->nama_lembaga }}</td>
                 <td>{{ $r->jurusan_kuliah }}</td>
