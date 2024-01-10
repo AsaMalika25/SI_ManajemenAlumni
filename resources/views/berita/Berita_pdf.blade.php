@@ -20,11 +20,16 @@
                 <img src="{{ url('foto') . '/' . $item->file }}" class="card-img-top" alt="...">              
               @endif --}}
               <div class="card-body">
+
+                @if($item->file)
+                  <img src="{{asset('foto/' . $item->file)}}"
+                      style="width:20px; height: 20px" />
+                @endif
+                
                 <h5 class="card-title">{{$item->judul_berita}}</h5>
                 <p class="card-text">{{$item->ket_berita}}</p>
                 <p class="card-text">{{$item->kode_berita}}</p>
                 <p class="card-text">{{$item->tgl_post}}</p>
-                <a href="#" class="btn btn-primary">cetak</a>
               </div>
             </div>    
           @endforeach   

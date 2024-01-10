@@ -125,12 +125,16 @@ class TkelasController extends Controller
             //Proses Update
             $dataUpdate = tkelas::where('id_kelas',$request->input('id_kelas'))
             ->update($data);
-        if($dataUpdate){
+
             
-            return redirect('/kelas')->with('success', 'kelas Berhasil di Update');
-        }else{
-        return back()->with('error','Data kelas gagal di update');
-        }
+
+            if($dataUpdate){
+                
+                return redirect('kelas')->with('success', 'kelas Berhasil di Update');
+            }else{
+
+                return back()->with('error','Data kelas gagal di update');
+            }
         }
     }
 

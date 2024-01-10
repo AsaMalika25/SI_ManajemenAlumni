@@ -17,12 +17,14 @@ class Adminonly
     public function handle(Request $request, Closure $next, ...$roles): Response
     {
         if (Auth::check() && in_array(Auth::user()->role, $roles)) {
-
+            
             return $next($request);
 
         }else {
-            return redirect('/')->withErrors('Silakan login terlebih dahulu');
+            return redirect('/dashboard')->withErrors('Anda tidak memiliki izin untuk mengakses halaman ini.');
         }
+
+        
         
     }
 }

@@ -20,11 +20,11 @@
             </div>
             <div class="form-group mb-3">
               <label>Password</label>
-              <input type="password" class="form-control font-form" placeholder="Your Password" name="password" name="nama" style="border-radius:  1.8635607321131447vh;"/>
+              <input type="password" class="form-control font-form" placeholder="Your Password" name="password" name="nama" style="border-radius:  1.8635607321131447vh;" required/>
             </div>
             <div class="form-group">
               <label>Role</label><br>
-              <select name="role" id="role" class="form-control"> 
+              <select name="role" id="role" class="form-control" required> 
                 <option disabled selected>Your Role</option>
                 <option value="superadmin">Super Admin</option>
                 <option value="kaprog">Kaprog</option>
@@ -34,12 +34,22 @@
             <br>
             <div class="form-group mb-3">
               <label>Upload Profile</label>
-              <input type="file" class="form-control font-form" placeholder="Your Profile" name="profile" style="border-radius:  1.8635607321131447vh;"/>
+              <input type="file" class="form-control font-form" placeholder="Your Profile" name="profile"/>
             </div>
 
             <div class="col"> 
               <a href="list_akun" class="btn btn-warning" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  margin-top: 1rem;">Kembali</a>
+              @if (session('error'))
+                <script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: '{{ session('error') }}',
+                    });
+                </script>
+              @endif
               <button type="submit" class="btn btn-primary" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; margin-top: 1rem;">Simpan</button>
+             
             </div>
           </form>  
      

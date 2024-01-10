@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous"></script>
     <link href="{{asset('css/bootstrap.css')}}" rel="stylesheet">
     <link href="{{asset('css/styleside.css')}}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="{{asset('img/3966983-removebg-preview.png')}}">
     {{-- <link rel="stylesheet" type="text/css" href="css/menu.css"> --}}
     <link rel="stylesheet" type="text/css" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
@@ -48,8 +49,8 @@
         <div class="card" style="width: 25rem;">
             <div class="card-body" style="align-items: center;">
                
-                        <form method="post" action="{{url('login')}}">
-                            @csrf
+                    <form method="post" action="{{url('login')}}">
+                        @csrf
                         <div class="row d-flex items-center">
                             <div class="ms-6">
                                 <div class="form-group justify-content-center ms-3" ><br>
@@ -67,8 +68,11 @@
                                     <input type="password" class="form-control @error('password') is-invalid @enderror password-input" style="width: 250px;" name="password" id="PassEntry"/>
                                     <i class="fa-solid fa-eye show-password"></i>
                                     <br>
-                                    <span id="StrengthDisp" class="badge displayBadge" style="width:250px;">Weak</span>
                                 </div>
+
+                                 @error('password')
+                                        <small class="alert alert-danger" style="font-size:10px;">{{ $message }}</small>
+                                @enderror
                                 <!-- <div class="form-group mt-2"><br> -->
                                     <!-- <label>Role</label>
                                     <select name="role" id="role" class="form-control">
@@ -79,24 +83,25 @@
                                 <!-- </div> -->
                                 
                             </div>
-                            </div>
-                            <div class="row">
-                            <div class="col-md-4" style="margin-left: 9rem;">
-                                @if (session('error'))
-                                    <script>
-                                        // Perhatikan bahwa ini hanya akan muncul jika session('error') memiliki nilai.
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: '{{ session('error') }}',
-                                        });
-                                    </script>
-                                @endif
-                                <button type="submit" class="btn btn-success">LOGIN</button>
-                            </div>
                            
+                            <div class="row">
+                                <div class="col-md-4" style="margin-left: 9rem;">
+                                    @if (session('error'))
+                                        <script>
+                                            // Perhatikan bahwa ini hanya akan muncul jika session('error') memiliki nilai.
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: '{{ session('error') }}',
+                                            });
+                                        </script>
+                                    @endif
+                                    <button type="submit" class="btn btn-success">LOGIN</button>
+                                </div>
+                           
+                            </div>
                         </div>
-                        </form>
+                    </form>
             </div>
         </div>
     </div>

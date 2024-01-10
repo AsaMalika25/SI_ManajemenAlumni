@@ -5,7 +5,9 @@
             <h1 style="color: white; font-size:50px;">Dashboard</h1>
         </div>
         <div class="d-flex">
+          @if (Auth::check())
             <h3 style="color: white; margin-right: 1%; font-size:50px;">Welcome, {{auth()->user()->username}}</h3><h3 style="color: rgb(60, 60, 138);"></h3>
+          @endif
         </div>
     </div>
     <div class="container">

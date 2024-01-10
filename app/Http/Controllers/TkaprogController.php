@@ -121,7 +121,7 @@ class TkaprogController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($id, Request $request, tkaprog $tkaprog)
+    public function destroy(Request $request, tkaprog $tkaprog)
     {
         $id_kaprog = $request->input('id_kaprog');
         $data = tkaprog::find($id_kaprog);
@@ -135,7 +135,5 @@ class TkaprogController extends Controller
             
             return response()->json(['success' => true]);
         }
-
-        return response()->json(['success' => false, 'msg' => 'pesan gagal di hapus']);
     }
 }

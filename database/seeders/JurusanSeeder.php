@@ -15,10 +15,11 @@ class JurusanSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
+        $nama_jurusan = ['Teknik Informatika', 'Teknik Mesin', 'Teknik kendaraan ringan', 'Teknik pengelasan', 'Kedokteran', 'ELektro', 'Kelautan'];
+
+        for ($i = 0; $i < 7; $i++) {
             DB::table('tjurusan')->insert([
-                'nama_jurusan' => $faker->text(20),
-               
+                'nama_jurusan' => $nama_jurusan[$i],
             ]);
         }
     }
