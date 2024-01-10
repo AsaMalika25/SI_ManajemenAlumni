@@ -19,11 +19,13 @@ return new class extends Migration
             a.*,
             k.nama_kelas,
             t.no_angkatan,
-            ak.username
+            ak.username,
+            f.profile
         FROM talumni a
         LEFT JOIN tkelas k ON a.id_kelas = k.id_kelas
         LEFT JOIN tangkatan t ON a.id_angkatan = t.id_angkatan
         LEFT JOIN takun ak ON a.id_akun = ak.id_akun
+        LEFT JOIN takun f ON a.id_akun = f.id_akun
         ');
     }
 

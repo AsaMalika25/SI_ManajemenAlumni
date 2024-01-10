@@ -46,12 +46,6 @@ Route::get('log', [logController::class, 'index']);
 Route::post('log/hapus', [logController::class, 'destroy']);
 
 
-
-
-
-
-
-
 Route::middleware(['auth'])->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index']);

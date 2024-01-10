@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Session;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Validation\Rule;
 
+
 class TakunController extends Controller
 {
     /**
@@ -150,6 +151,7 @@ class TakunController extends Controller
                 'password' => ['required','min:6'],
                 'profile' => ['sometimes'],
                 'role' =>['required'],
+                'profile' =>['sometimes'],
             ]
         );
 
@@ -175,6 +177,13 @@ class TakunController extends Controller
             $data['password'] = Hash::make($data['password']);
 
             if($data):
+        if($request->hasFile('file') && $request->file('profile')->isValid())
+        {
+            $foto_file = $request->file('profile');
+            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_file->move(public_path('img'), $foto_nama);
+            $data['profile'] = $foto_nama;
+        }
                 // $data['id_akun']= 1;
             //simpan jika sudah terisi semua
                 $takun->create($data);
