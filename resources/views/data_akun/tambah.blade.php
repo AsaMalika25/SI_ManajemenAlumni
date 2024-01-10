@@ -12,7 +12,7 @@
               <h1 class="h4 text-gray-900 font-nav" style="color: black"><b>Form Tambah Akun</b></h1>
               <br>
             </div>
-          <form action="tambah_akun/tambah" method="post">
+          <form action="tambah_akun/tambah" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3" >
               <label for="inputNama" class="form-label font-form">Username</label>

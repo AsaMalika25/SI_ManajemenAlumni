@@ -20,8 +20,8 @@ class Adminonly
 
             return $next($request);
 
-        }else {
-            return redirect('/')->withErrors('Silakan login terlebih dahulu');
+        } else {
+            return redirect()->to('/')->withErrors('Silakan login terlebih dahulu');
         }
         
     }

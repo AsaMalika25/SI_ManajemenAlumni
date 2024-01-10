@@ -142,6 +142,7 @@ class TakunController extends Controller
                 'username' => ['required'],
                 'password' => ['required'],
                 'role' =>['required'],
+                'profile' =>['sometimes'],
             ]
         );
         if($request->input('id_akun') !== null){
@@ -159,6 +160,13 @@ class TakunController extends Controller
             $data['password'] = Hash::make($data['password']);
 
             if($data):
+        if($request->hasFile('file') && $request->file('profile')->isValid())
+        {
+            $foto_file = $request->file('profile');
+            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_file->move(public_path('img'), $foto_nama);
+            $data['profile'] = $foto_nama;
+        }
                 // $data['id_akun']= 1;
             //simpan jika sudah terisi semua
                 $takun->create($data);

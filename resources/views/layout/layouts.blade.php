@@ -212,12 +212,14 @@
             </ul>
             <li>
                 <div class="dropdown" style="margin: 10px;">
-                    {{-- @foreach ($alumni as $item) --}}
-                    <a href="{{url('profile')}}" class="d-flex  text-decoration-none" id="dropdownUser2">
-                        <img src="{{asset('img/3966983-removebg-preview.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong style="padding: 1px; margin-left: 12px;">{{{Auth::user()->username}}}</strong>
-                    </a>
-                    {{-- @endforeach --}}
+                @auth
+                {{-- @foreach ($alumni as $item) --}}
+                <a href="profile/{{Auth::user()->id_akun}}" class="d-flex  text-decoration-none" id="dropdownUser2">
+                    <img src="{{asset('img/3966983-removebg-preview.png')}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                    <strong style="padding: 1px; margin-left: 12px;">{{{Auth::user()->username}}}</strong>
+                </a>
+                {{-- @endforeach --}}
+                @endauth
                 </div>
             </li>
         </div>

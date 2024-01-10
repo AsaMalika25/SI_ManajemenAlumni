@@ -32,7 +32,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', [TakunController::class,'index']);
+Route::get('/', [TakunController::class,'index'])->name('login');
 Route::post('login', [TakunController::class,'login']);
 Route::get('logout', [TakunController::class,'logout']);
 Route::get('register', [TakunController::class,'register']);
@@ -40,7 +40,9 @@ Route::get('register', [TakunController::class,'register']);
 Route::post('proses-register', [TakunController::class,'prosesregister']);
 
 Route::get('dashboard', [DashboardController::class, 'index']);
-Route::get('/profile', [ProfilController::class, 'index'])->name('alumni.profile');
+Route::get('profile/{id}', [ProfilController::class, 'index'])->name('profile');
+Route::get('profile/edit/{id}', [ProfilController::class, 'edit'])->name('editprofile');
+Route::post('profile/edit/simpan', [ProfilController::class, 'update']);
 
 Route::get('log', [logController::class, 'index']);
 Route::post('log/hapus', [logController::class, 'destroy']);

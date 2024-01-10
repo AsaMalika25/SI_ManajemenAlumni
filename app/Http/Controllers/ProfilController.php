@@ -20,6 +20,9 @@ class ProfilController extends Controller
             'alumni' => DB::table('views_alumni')
                         ->where('id_akun', $user->id_akun)
                         ->get(),
+            'kaprog' => DB::table('views_kaprog')
+                        ->where('id_akun', $user->id_akun)
+                        ->get(),
         ];
 
         return view('profile.index', $data);
@@ -54,7 +57,18 @@ class ProfilController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = Auth::user();
+
+        $data = [
+            'alumni' => DB::table('views_alumni')
+                        ->where('id_akun', $user->id_akun)
+                        ->get(),
+            'kaprog' => DB::table('views_kaprog')
+                        ->where('id_akun', $user->id_akun)
+                        ->get(),
+        ];
+
+        return view('profile.edit', $data);
     }
 
     /**
