@@ -84,14 +84,16 @@
                             <div class="col-md-4" style="margin-left: 9rem;">
                                 @if (session('error'))
                                     <script>
-                                        // Perhatikan bahwa ini hanya akan muncul jika session('error') memiliki nilai.
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Oops...',
-                                            text: '{{ session('error') }}',
+                                        document.addEventListener('DOMContentLoaded', function() {
+                                            Swal.fire({
+                                                icon: 'error',
+                                                title: 'Oops...',
+                                                text: '{!! addslashes(session('error')) !!}',
+                                            });
                                         });
                                     </script>
                                 @endif
+
                                 <button type="submit" class="btn btn-success">LOGIN</button>
                             </div>
                            
