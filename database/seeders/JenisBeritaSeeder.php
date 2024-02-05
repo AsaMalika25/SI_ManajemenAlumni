@@ -16,9 +16,11 @@ class JenisBeritaSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        foreach (range(1, 10) as $index) {
+        $jenis_berita = ['Demokrasi', 'Politik', 'Pendidikan', 'Kesehatan', 'Olahraga', 'Kebudayaan', 'Teknologi'];
+
+        for ($i = 0; $i < 7; $i++) {
             DB::table('tjenis_berita')->insert([
-                'jenis_berita' => $faker->text(50),
+                'jenis_berita' => $jenis_berita[$i],
             ]);
         }
     }

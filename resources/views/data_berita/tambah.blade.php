@@ -31,17 +31,17 @@
       </div>
       <div class="col">
         <label style="color: #fff;">Judul Berita</label>
-        <input type="text" class="form-control" name="judul_berita" aria-label="First name">
+        <input type="text" class="form-control" name="judul_berita" aria-label="First name" required>
       </div>
     </div><br>
     <div class="row">
       <div class="col">
         <label style="color: #fff;">Tanggal Post</label>
-        <input type="date" class="form-control" name="tgl_post" aria-label="First name">
+        <input type="date" class="form-control" name="tgl_post" aria-label="First name" required>
       </div>
       <div class="col">
         <label style="color: #fff;">Kode Berita</label>
-        <input type="text" class="form-control" name="kode_berita" aria-label="First name">
+        <input type="text" class="form-control" name="kode_berita" aria-label="First name" required>
       </div>
     </div><br>
     <div class="row">

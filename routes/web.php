@@ -32,28 +32,26 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', [TakunController::class,'index']);
+Route::get('/', [TakunController::class,'index'])->name('login');
 Route::post('login', [TakunController::class,'login']);
 Route::get('logout', [TakunController::class,'logout']);
 Route::get('register', [TakunController::class,'register']);
 Route::get('register', [TakunController::class,'register']);
 Route::post('proses-register', [TakunController::class,'prosesregister']);
 
-Route::get('dashboard', [DashboardController::class, 'index']);
-Route::get('/profile', [ProfilController::class, 'index'])->name('alumni.profile');
+
+
 
 Route::get('log', [logController::class, 'index']);
 Route::post('log/hapus', [logController::class, 'destroy']);
 
 
-
-
-
-
-
-
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('dashboard', [DashboardController::class, 'index']);
+
+    Route::get('/profile', [ProfilController::class, 'index'])->name('alumni.profile');
+    
     Route::middleware(['AdminOnly:superadmin,kaprog'])->group(function () {
 
         Route::get('berita', [TberitaController::class, 'index']);
@@ -72,6 +70,11 @@ Route::middleware(['auth'])->group(function () {
             Route::get('berita-alumni/tambah', [TberitaController::class, 'create_berita']);
             Route::post('berita-alumni/simpan', [TberitaController::class, 'store_berita']);
             Route::get('berita-alumni/cetak_pdf', [TberitaController::class, 'cetak_Berita']);
+
+            Route::get('profile-alumni', [ProfilController::class, 'profile']);
+            Route::post('profile-alumni/simpan', [ProfilController::class, 'create_profile']);
+
+           
         });
 
         Route::middleware(['AdminOnly:superadmin'])->group(function () {

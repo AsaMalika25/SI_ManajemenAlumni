@@ -33,7 +33,7 @@
                           <tr></tr>
                           @foreach($akun as $r)
                           <tr>  
-                            <th scope="row">{{$r->id_akun}}</th>
+                            <th scope="row">{{$loop->$iteration}}</th>
                             <td>{{$r->username}}</td>
                             <td>{{$r->password}}</td>
                             <td>{{$r->role}}</td>

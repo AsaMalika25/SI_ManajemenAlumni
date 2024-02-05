@@ -53,7 +53,7 @@ class TakunController extends Controller
     {
         $request->validate([
             'username' => 'required',
-            'password' => ['required','min:8', Rule::notIn('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])/'),],
+            'password' => ['required','min:6',],
         ], [
             'username.required' => 'Username harus diisi',
             'password.required' => 'Password harus diisi',
@@ -65,6 +65,7 @@ class TakunController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
+            if (Auth::check()) {
 
                 if (Auth::user()->role == 'superadmin') {
 
@@ -75,20 +76,23 @@ class TakunController extends Controller
                     return redirect('data-alumni');
 
                 }elseif (Auth::user()->role == 'kaprog') {
+
                     return redirect('dashboard');
                 }
-                
+            }
+
         }else{
-            return redirect()->back()->with('error', 'Password is weak or does not meet the minimum length requirement.');
+            return redirect()->back()->with('error', 'Password not macth.');
         }
             
         
         
     }
 
-    public function logout(){
-        Session::flush();
+    public function logout(Request $request){
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
         return redirect('/')->with('success','you are logout');
     }
     /**
@@ -144,10 +148,20 @@ class TakunController extends Controller
         $data = $request->validate(
             [
                 'username' => ['required'],
-                'password' => ['required'],
+                'password' => ['required','min:6'],
+                'profile' => ['sometimes'],
                 'role' =>['required'],
+                'profile' =>['sometimes'],
             ]
         );
+
+        if ($request->hasFile('profile')) {
+            $foto_file = $request->file('profile');
+            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_file->move(public_path('foto'), $foto_nama);
+            $data['profile'] = $foto_nama;
+        }
+
         if($request->input('id_akun') !== null){
             //proses Update
             $data['password'] = Hash::make($data['password']);
@@ -163,13 +177,20 @@ class TakunController extends Controller
             $data['password'] = Hash::make($data['password']);
 
             if($data):
+        if($request->hasFile('file') && $request->file('profile')->isValid())
+        {
+            $foto_file = $request->file('profile');
+            $foto_nama = md5($foto_file->getClientOriginalName() . time()) . '.' . $foto_file->getClientOriginalExtension();
+            $foto_file->move(public_path('img'), $foto_nama);
+            $data['profile'] = $foto_nama;
+        }
                 // $data['id_akun']= 1;
             //simpan jika sudah terisi semua
                 $takun->create($data);
                 return redirect('list_akun');
             else:
             //kembali ke form tambah dataa
-                return back()->with('erorr', 'Data User gagal ditambah');
+                return back()->withErrors('error', 'Data User gagal di tambah pastikan password mengandung huruf besar-kecil dan memiliki satu karakter unik serta angka numerik');
             endif;
         }    
 

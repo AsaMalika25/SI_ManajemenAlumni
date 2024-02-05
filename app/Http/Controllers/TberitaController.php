@@ -76,7 +76,7 @@ class TberitaController extends Controller
             'tberita' => $tberita->all()
         ];
         $pdf = Pdf::loadview('berita.Berita_pdf', $data);
-    	return $pdf->download('Berita.pdf');
+    	return $pdf->stream('Berita.pdf');
     }
 
     /**

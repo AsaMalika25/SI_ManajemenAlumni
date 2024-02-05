@@ -16,14 +16,27 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        $totalAlumni = talumni::count();
+        $alumniKerja = tkerja::count();
+        $alumniKuliah = tkuliah::count();
+        $alumniUsaha = twirausaha::count();
+
+        // Calculate the result of the subtraction
+        $hasilPengurangan = $totalAlumni - ($alumniKerja + $alumniKuliah + $alumniUsaha);
+
+        // Make sure the result is not negative
+        $hasilPengurangan = max(0, $hasilPengurangan);
+
         $data = [
-            'total_alumni' => talumni::count(),
-            'alumni_kerja' => tkerja::count(),
-            'alumni_kuliah' => tkuliah::count(),
-            'alumni_usaha' => twirausaha::count(),
+            'total_alumni' => $totalAlumni,
+            'alumni_kerja' => $alumniKerja,
+            'alumni_kuliah' => $alumniKuliah,
+            'alumni_usaha' => $alumniUsaha,
             
-            'hasilPengurangan' => talumni::count() - (tkerja::count() + tkuliah::count() + twirausaha::count()),
+        
+        'hasilPengurangan' => $hasilPengurangan,
         ];
+
         return view('dashboard.index', $data);
     }
 

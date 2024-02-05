@@ -50,7 +50,7 @@ class TalumniController extends Controller
         ]; 
  
     	$pdf = Pdf::loadview('data_alumni.alumni_pdf', $data);
-    	return $pdf->download('data_alumni.pdf');
+    	return $pdf->stream('data_alumni.pdf');
     }
     /**
      * Show the form for creating a new resource.
@@ -125,7 +125,7 @@ class TalumniController extends Controller
     public function show(talumni $talumni, $id)
     {
         $data = [
-            'alumni' => DB::table('views_alumni')->first(),
+            'alumni' => DB::table('views_alumni')->where('id_alumni', $id)->first(),
         ];
         return view('data_alumni.detail',$data);
     }
