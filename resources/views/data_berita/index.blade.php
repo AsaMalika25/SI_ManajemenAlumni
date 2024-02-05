@@ -20,7 +20,11 @@
                 <th class="font-table" scope="col">Keterangan</th>
                 <th class="font-table" scope="col">Status</th>
                 <th class="font-table" scope="col">Gambar Berita</th>
+                @if (Auth::check())
+                 @if (Auth::user()->role == 'superadmin')
                 <th class="font-table" scope="col">Aksi</th>
+                @endif
+                @endif
               </tr>
             </thead>
             <!-- end head tabel -->
@@ -49,11 +53,15 @@
                   <img src="{{url('foto') . '/' . $r->file}}" value="{{$r->file}}" style="max-width: 100px; height:100px;" />
                   @endif
                 </td>
+                @if (Auth::check())
+                  @if (Auth::user()->role == 'superadmin')
                 <td>
                   <a href="berita/detail/{{ $r->id_berita }}"><img src="{{asset('img/gambar-seru.png')}}" alt="" style="width: 20px;height:20px;"></a>
                   <btn class="btnHapus" idBerita="{{ $r->id_berita }}"><img src="{{asset('img/trash.png')}}" alt="" style="width: 20px;height:20px;"></btn>
                   <a href="berita/edit/{{$r->id_berita}}"><img src="{{asset('img/edit.png')}}" alt="" style="width: 20px;height:20px;"></a>
                 </td>
+                  @endif
+                @endif
               </tr>
               @endforeach
             </tbody>
@@ -76,6 +84,8 @@
           </svg>
           TAMBAH
         </a>
+        @if (Auth::check())
+          @if (Auth::user()->role == 'superadmin')
         <a class="btn btn-primary" href="confirm" role="button">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -83,6 +93,8 @@
           </svg>
           KONFIRMASI
         </a>
+        @endif
+        @endif
       </div>
     </div>
   </div>
