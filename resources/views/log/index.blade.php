@@ -21,7 +21,7 @@
                                 <table class="table table-hover table-bordered DataTable mt-2">
                                     <thead>
                                         <tr>
-                                            <th>Data Alumni</th>
+                                            <th>Data</th>
                                             <th>Hapus</th>
                                         </tr>
                                     </thead>
