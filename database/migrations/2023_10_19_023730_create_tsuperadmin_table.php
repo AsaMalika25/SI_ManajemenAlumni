@@ -11,20 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tsuperadmin', function (Blueprint $table) {
-            $table->integer('id_superadmin',true);
-            $table->integer('id_akun',false)->nullable(false);
-            $table->string('username')->nullable(false);
-            $table->text('password')->nullable(false);
-            $table->string('nama')->nullable(false);
-            $table->string('email')->nullable(false);
+        // Schema::create('tsuperadmin', function (Blueprint $table) {
+        //     $table->integer('id_superadmin',true);
+        //     $table->integer('id_akun',false)->nullable(false);
+        //     $table->string('username')->nullable(false);
+        //     $table->text('password')->nullable(false);
+        //     $table->string('nama')->nullable(false);
+        //     $table->string('email')->nullable(false);
 
-            $table->foreign('id_akun')
-                ->references('id_akun')->on('takun')
-                ->onUpdate('cascade')->onDelete('cascade');
+        //     $table->foreign('id_akun')
+        //         ->references('id_akun')->on('takun')
+        //         ->onUpdate('cascade')->onDelete('cascade');
 
-            $table->timestamps();
-        });
+        //     $table->timestamps();
+        // });
 
     }
 
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tjenis_berita');
+        // Schema::dropIfExists('tjenis_berita');
     }
 };

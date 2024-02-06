@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('bidang')->nullable(false);
             $table->text('gambar_usaha')->nullable(false);
 
-            // $table->foreign('id_alumni')->references('id_alumni')->on('talumni')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_alumni')->references('id_alumni')->on('talumni')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });
